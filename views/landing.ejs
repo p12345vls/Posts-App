@@ -1,0 +1,22 @@
+<% include partials/header %>
+
+<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+    <input id="tags" class="awesomplete form-control mr-sm-2 "
+           name="search" type="text" placeholder="Search"
+           data-list="">
+    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
+</form>
+
+</div>
+
+</nav>
+<%  include ./partials/flsh %>
+
+
+<h1>Landing Page!</h1>
+
+<p>Welcome to YelpCamp</p>
+
+<a href="/posts">View All Posts</a>
+
+<% include partials/footer %>

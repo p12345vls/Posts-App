@@ -1,0 +1,170 @@
+<% include ../partials/header %>
+
+
+<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+    <input id="tags" class="awesomplete form-control mr-sm-2 "
+           name="search" type="text" placeholder="Search"
+           data-list="<%= availableTags %>">
+    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
+</form>
+</div>
+
+</nav>
+<% include ../partials/flsh %>
+<% var userImage; %>
+<% var userComment; %>
+
+<div class="container  " style="max-width:500px;">
+
+    <div class="card  shadow-sm p-1 mb-1 bg-light rounded hover">
+        <div class="card-body">
+
+            <% if(nameSearch) { %>
+                <div class=" bg-white name" id="name">
+                    <h3 class="card-title  text-left col ">
+                        <%= post.name %>
+                    </h3>
+                </div>
+            <% }else { %>
+                <h3 class="card-title  text-left col ">
+                    <%= post.name %>
+                </h3>
+            <% } %>
+
+            <h6 class="card-subtitle  row">
+                <div class="col-3">
+
+                    <% users.forEach(function(user){ %>
+                        <% if(post.author.id == user.id){ %>
+                            <% userComment = user %>
+                            <% userImage = user.avatar %>
+                        <% } %>
+
+                    <% }); %>
+
+                        <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
+
+                </div>
+
+
+                <div class="col-sm-5 text-left">
+                    <div>
+                        <strong><em class="ml-n5 pl-1">posted by <%= post.author.username %></em>
+                        </strong>
+                    </div>
+                    <div>
+                        <small><em class="ml-n5 pl-1"><%= moment(post.createdAt).fromNow() %></em></small>
+                    </div>
+                </div>
+            </h6>
+        </div>
+
+        <img class="container img-fluid " src="<%= post.image %> " alt="">
+        <div class="card-body">
+
+
+            <strong><em><p class="card-text">Description</p></em></strong>
+
+            <% if(descriptionSearch) { %>
+
+
+                <div class="mt-2 bg-white pilled " id="name">
+                    <p class="d-inline text-muted "><%= post.description %> </p>
+                </div>
+            <% } else { %>
+                <p class="d-inline text-muted"><%= post.description %> </p>
+            <% } %>
+
+            <hr class="mb-2">
+
+            <% if(post.comments == false){ %>
+                <h6 class="text-muted  " style="font-size: 13px;">
+                    No comments yet
+                </h6>
+
+            <% }else{ %>
+
+                <strong class=" ">
+                    <em class="">
+                        <p class="card-text mb-1">Comments <i class="fas fa-comments"></i></p>
+                    </em>
+                </strong>
+
+                <% post.comments.forEach(function(comment){ %>
+
+
+                    <% if( comment.id == commentSearch){ %>
+            <div class="mb-md-2 bg-white pilled " id="<%= commentSearch %>">
+                <% } else { %>
+                <div class="mb-md-2 bg-white pilled ">
+                    <% } %>
+
+                    <% users.forEach(function(user){ %>
+                        <% if(comment.author.id.equals(user.id)){ %>
+                            <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+                        <% } %>
+                    <% }); %>
+
+                    <strong><%= comment.author.username %></strong>
+
+                    <small class="ml-5">
+                        <em class="ml-n5 pl-1"><%= moment(comment.createdAt).fromNow() %></em>
+                    </small>
+                    <br>
+
+
+                    <h6 class="text-muted d-inline " style="font-size: 13px;">
+                        <%= comment.text %>
+                    </h6>
+                </div>
+
+                <% }); %>
+                <% } %>
+                <a href="/posts" class="card-link">back to posts</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+
+            if ($("#<%= nameSearch %>")) {
+
+                setTimeout(function () {
+                    $("#name").addClass('borderHighlight');
+                }, 1000);
+            }
+
+//------------------------------------------
+            if ($("#<%= descriptionSearch %>")) {
+
+                setTimeout(function () {
+                    $("#desc").addClass('borderHighlight');
+                }, 1000);
+            }
+//-------------------------------------------
+
+//-------------------------------------------
+            if ($("#<%= commentSearch %>")) {
+
+                $('html, body').animate({
+                    scrollTop: $("#<%= commentSearch %>").offset().top - 100
+                }, 1000);
+
+
+                setTimeout(function () {
+                    $("#<%= commentSearch %>").addClass('borderHighlight');
+                }, 1000);
+            }
+//-----------------------------------------
+
+        });
+    </script>
+
+
+<% include ../partials/footer %>

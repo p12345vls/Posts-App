@@ -1,0 +1,356 @@
+<% include ../partials/head %>
+<% var userImage; %>
+<% var userComment; %>
+
+<nav class="  mb-3 bg-white hover navbar navbar-expand-md navbar-dark  sticky-top main-menu  border border-dark border-top-0 border-left-0 border-right-0 ">
+    <a class="navbar-brand " href="/posts">Navbar</a>
+    <button class="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon bg-primary rounded"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse " id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto  ">
+
+            <% if(!currentUser){ %>
+
+                <li class="nav-item ">
+                    <a class="nav-link text-secondary" href="/login" id="nav1" aria-haspopup="true"
+                       aria-expanded="false">Login
+                        <i class="fas fa-sign-in-alt text-primary"></i></a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link text-secondary" href="/register" id="nav2" aria-expanded="false">Sigh Up <i
+                                class="fas fa-user-plus text-primary"></i></a>
+                </li>
+
+            <% } else { %>
+                <li class="nav-item ">
+                    <a class=" nav-link text-secondary " href="/logout" id="nav3" aria-haspopup="true"
+                       aria-expanded="false">
+                        Log Out <i class="fas fa-sign-out-alt text-primary"></i>
+                    </a>
+
+                </li>
+                <% var firstComment = true; %>
+                <% posts.forEach(function(post){ %>
+                    <% if(post.comments != false){ %>
+                        <% post.comments.forEach(function(comment){ %>
+                            <% if(comment.author.id.equals(currentUser.id)){ %>
+                                <% firstComment = false; %>
+                            <% } %>
+                        <% }); %>
+                    <% } %>
+                <% }); %>
+
+                <% if(firstComment){ %>
+                    <li class="nav-item ">
+                        <a href="/posts" class="nav-link userName-top" id="nav3" aria-haspopup="true"
+                           aria-expanded="false"> no comments
+                        </a>
+
+                    </li>
+                <% }  else { %>
+
+                    <div class="dropDown1 pt-2">
+                        <strong><a href="" class="d-inline m-2 text-decoration-none text-dark">Logged in
+                                as <%= currentUser.username %></a></strong>
+
+                        <i class="fas fa-angle-down dropbtn" id=""></i>
+                        <div class="dropDown1-content">
+
+
+                            <a href="/userPosts" class="text-decoration-none text-dark ">
+                                <i class="fas fa-pen-square"> <span class="span-drop text-black-50">my posts</span></i>
+                            </a>
+
+                            <a href="/users/<%= currentUser.id %>" class="text-decoration-none text-dark">
+
+                                <i class="fas fa-user-alt"> <span class="span-drop text-black-50">my profile</span></i>
+                            </a>
+
+                            <a href="/posts" class="text-decoration-none text-dark">
+                                <i class="fas fa-home"> <span class="span-drop text-black-50"> home</span></i>
+                            </a>
+                        </div>
+                    </div>
+
+                <% } %>
+
+
+                <li class="nav-item m-1">
+                    <div class="user-comment-img avatar-top rounded-circle border border-primary " style="background-image:url('<%= currentUser.avatar %>');"></div>
+                    <span class="dot1"></span>
+                    <span class="dot2"></span>
+                </li>
+
+            <% } %>
+
+        </ul>
+        <h4 class="rounded p-1 pl-2 pr-2 mt-1 nav-text-center  font-weight-light">
+            My Comments
+        </h4>
+
+
+        <form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+            <input id="tags" class="awesomplete form-control mr-sm-2 "
+                   name="search" type="text" placeholder="Search"
+                   data-list="<%= availableTags %>">
+            <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i>
+            </button>
+        </form>
+    </div>
+
+</nav>
+
+<!--end of nav======================================================================-->
+
+<% include ../partials/flsh %>
+
+
+<!-- - - - - - - - - - - - - -->
+<% var moreDesc,
+        someText,
+        show,
+        moreComment,
+        someComment,
+        bodyComment,
+        commentArrow,
+        allComment; %>
+<!-- - - - - - - - - - - - - - - -->
+
+
+<div class="container p-0 " style="max-width:500px; ">
+
+    <% posts.forEach(function(post){ %>
+
+
+        <div class="card shadow-sm p-1 mb-1 bg-light rounded hover">
+            <div class="card-body">
+                <div class="row">
+
+                    <h3 class="card-title  text-left col p-2 pl-4">
+                        <%= post.name %>
+                    </h3>
+
+                </div>
+
+                <h6 class="card-subtitle  row ">
+
+                    <% users.forEach(function(user){ %>
+                        <% if(post.author.id.equals(user.id)){ %>
+                            <% userComment = user %>
+                            <% userImage = user.avatar %>
+                        <% } %>
+
+                    <% }); %>
+
+                    <div class="col-3 ">
+                        <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
+
+
+                    </div>
+
+                    <div class="col-sm-5 text-left ">
+
+                        <div>
+                            <strong><em class="ml-n5 pl-1">posted by <%= post.author.username %></em> </strong>
+                        </div>
+                        <div>
+                            <small><em class="ml-n5 pl-1"><%= moment(post.createdAt).fromNow() %></em></small>
+                        </div>
+
+
+                    </div>
+
+                </h6>
+
+            </div>
+
+            <img class="container img-fluid " src="<%= post.image %> " alt="">
+
+            <div class="card-body   ">
+
+                <strong><em><p class="card-text ">Description</p></em></strong>
+                <% if(post.description.length < 100) { %>
+
+                    <p class="d-inline text-muted"><%= post.description %></p>
+
+                <% } else { %>
+
+                    <% show = uiid(); %>
+                    <% someText = uiid(); %>
+                    <% moreDesc = uiid(); %>
+
+                    <div id="" class="  d-inline " style="display: block;">
+                        <div id="some-desc" class="  d-inline " style="display: block;">
+
+                            <p id="<%= show %>" class="text-muted" style="display:none;">
+                                <%= post.description %>
+                            </p>
+
+                            <p id="<%= someText %>" class="text-muted ">
+                                <%= post.description.substring(0, 100); %> ...<a id="<%= moreDesc %>"
+                                                                                 class="btn d-inline-flex m-n2">
+                                    <small class="text-primary">more</small>
+                                </a>
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <a id="moreDesc" class="moreDesc  card-link  d-inline"></a>
+                    <div id="full-desc" class=" d-inline" style=""></div>
+                <% } %>
+
+                <% if(post.comments != false){ %>
+                    <hr class="mb-2">
+
+                    <strong><em class=""><p class="card-text mb-1">Comments <i class="fas fa-comments"></i></p></em>
+                    </strong>
+                    <% var counter = 0; var counter2 = 0; %>
+
+
+                    <% post.comments.forEach(function(comment){ %>
+
+
+
+                        <div class="mb-md-2 bg-white   border-muted pilled">
+
+                            <% users.forEach(function(user){ %>
+
+
+
+
+
+
+                                <% if(comment.author.id.equals(user.id)){ %>
+
+                                    <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+
+                                <% } %>
+
+                            <% }); %>
+
+                            <strong><%= comment.author.username %></strong>
+                            <small class="ml-5">
+                                <em class="ml-n5 pl-1"><%= moment(comment.createdAt).fromNow() %></em>
+                            </small>
+
+                            <% if(comment.author.id.equals(currentUser.id)){ %>
+
+                                <div class="text-muted mt-n2 mb-3 d-inline">
+
+                                    <a href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit"
+                                       class="card-link btn btn-outline-primary  d-inline  mr-1 ml-1">
+                                        <i class=" ml-n1 mr-n2 fas  fa-edit "></i>
+                                    </a>
+
+                                    <form id="delete" action="/posts/<%= post._id %>/comments/<%= comment._id %>/?_method=DELETE"
+                                          method="POST" class="d-inline">
+                                        <button class="  btn btn-outline-primary btn-sm d-inline  mr-1 ml-1  ">
+                                            <i class=" mr-1 ml-1 fas fa-trash-alt"></i></button>
+                                    </form>
+
+
+                                </div>
+
+                            <% } %>
+
+                            <br>
+
+                            <% if(comment.text.length > 100){ %>
+
+
+                                <% moreComment = uiid() %>
+                                <% someComment = uiid() %>
+                                <% bodyComment = uiid() %>
+                                <% allComment = uiid() %>
+                                <% commentArrow = uiid() %>
+
+                                <div class="dialogbox">
+                                    <div class="body" id='<%= bodyComment %>'>
+
+                                        <span id="<%= commentArrow %>" class="arrow tip-arrowUp btn">
+                                            <i class=" fas fa-arrows-alt-v text-primary"></i>
+                                        </span>
+
+                                        <span class="tip tip-up"></span>
+
+                                        <div class="message">
+                                            <span id="<%= allComment %>" style="display: none;">
+                                                <%= comment.text %>
+                                            </span>
+                                            <span id="<%= someComment %>">
+                                                <%= comment.text.substring(0, 100); %>
+                                                <small class="text-primary"> ...
+                                                    <a id="<%= moreComment %>"class="btn d-inline-flex m-n2">
+                                                        <small class="text-primary">more </small>
+                                                    </a>
+                                                </small>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <% } else { %>
+
+                                <div class="dialogbox">
+                                    <div class="body">
+                                        <span class="tip tip-up"></span>
+                                        <div class="message">
+                                            <span>  <%= comment.text %></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <% } %>
+
+                        </div>
+
+                        <% include ../partials/ejs/toggleComment %>
+
+
+                    <% }); %>
+
+                <% } else { %>
+
+                    <span class="text-muted"> There are not comments for this post yet</span>
+                <% } %>
+
+                <% var sum = counter - counter2; %>
+
+                <% if(sum < 1){ %>
+                    <div class="mt-2">
+                        <h6 class="text-muted d-inline " style="font-size: 13px;">
+                            No more comments
+                        </h6>
+                    </div>
+                <% } %>
+                <% if(sum == 1 ){ %>
+                    <h6 class="text-muted d-inline" style="font-size: 13px;">
+                        <%= sum %> more comment
+                    </h6>
+                <% } %>
+                <% if(sum > 1 ){ %>
+                    <h6 class="text-muted d-inline" style="font-size: 13px;">
+                        <%= sum %> more comments
+                    </h6>
+                <% } %>
+
+            </div>
+        </div>
+
+    <% }); %>
+
+</div>
+
+<% include ../partials/footer %>
+

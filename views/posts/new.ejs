@@ -1,0 +1,86 @@
+<% include ../partials/header %>
+<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+    <input id="tags" class="awesomplete form-control mr-sm-2 "
+           name="search" type="text" placeholder="Search"
+           data-list="">
+    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
+</form>
+
+</div>
+
+</nav>
+<%  include ../partials/flsh %>
+
+
+
+<div id="allText" class="d-none"> <%= availableTags %> </div>
+
+<div class="container-form bg-white p-0  mx-auto">
+    <table class="table table-borderless">
+        <tr>
+            <tbody class="p-0">
+            <form id="login_form" class="" action="/posts " method="POST" enctype="multipart/form-data">
+                <div class="text-center mb-3 pt-3">
+                    <h2 class="d-inline"> Add New Post </h2>
+                </div>
+
+                <div class="row ">
+                    <div class="col-md-10 mx-auto ">
+
+                        <div class="hover form-group mt-2">
+                            <input type="text" id="title" class="form-control" name="post[name]" maxlength="30" required>
+                            <label class="form-control-placeholder" for="title">title</label>
+                        </div>
+
+                        <div class=" form-group">
+                            <i class="fa fa-2x fa-image text-right text-primary"><small> </small>
+                                <small class=" pr-5 form-control-placeholder" style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
+                                    <input type="file"  class="" name="image" accept="image/*" >
+                                </small>
+                            </i>
+
+                        </div>
+
+                        <!--<div class="hover form-group mt-2">-->
+                            <!--<input type="text" id="or video url" class="form-control" name="post[video]" maxlength="30" required>-->
+                            <!--<label class="form-control-placeholder" for="or video url">or video url</label>-->
+                        <!--</div>-->
+
+
+
+                        <div class="hover form-group ">
+                            <textarea type="text" id="description" class="form-control" name="post[description]" cols="100"
+                                      rows="3" required></textarea>
+                            <label class="form-control-placeholder " for="description">description</label>
+                        </div>
+
+                        <div class="form-group row">
+
+                            <div class="text-center col-1 ">
+                                <button id="sbmt" class=" btn btn-primary">submit</button>
+                            </div>
+
+                            <div class="d-inline text-center ml-5 col-sm">
+                                <div id="loading" class="d-inline ml-5 "></div>
+                            </div>
+                            <div class="col-sm"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+
+            </tr>
+            <tr class="bg-light ">
+                <div class="back-grey text-decoration-none ">
+
+                </div>
+            </tr>
+
+            </tbody>
+    </table>
+</div>
+
+
+<% include ../partials/footer %>

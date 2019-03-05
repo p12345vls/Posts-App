@@ -1,0 +1,36 @@
+<script>
+    $(document).ready(function () {
+
+        var oddOrEvenComm = 0;
+
+        //show the description if it is more than 100 characters
+        $("#<%= moreDesc %>").click(function () {
+            $('#<%= someText %>').css('display', 'none');
+            $('#<%= show %>').fadeIn(800).css('display', 'block');
+        });
+
+        //toggle the comment if it is more than 100 characters
+        $('#<%= commentArrow %>').click(function () {
+            oddOrEvenComm += 1;
+            if (oddOrEvenComm % 2 === 0) {
+                $(('#<%= someComment %>')).css('display', 'block');
+                $('#<%= allComment %>').css('display', 'none');
+                $('#<%= bodyComment %>').css('box-shadow', '1px 2px 5px white');
+            } else {
+                $('#<%= someComment %>').css('display', 'none');
+                $('#<%= allComment %>').css('display', 'block');
+                $('#<%= bodyComment %>').css('box-shadow', '1px 2px 5px #888');
+            }
+        });
+
+    });
+
+
+</script>
+
+
+
+
+
+
+

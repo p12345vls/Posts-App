@@ -1,0 +1,86 @@
+<% include ./partials/header %>
+
+
+<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+    <input id="tags" class="awesomplete form-control mr-sm-2 "
+           name="search" type="text" placeholder="Search"
+           data-list="<%= availableTags%>">
+    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
+</form>
+
+</div>
+
+</nav>
+
+
+
+
+<div class="container-form bg-white p-0  mx-auto hover2 fadeInDown">
+    <table class="table table-borderless">
+        <tbody class="p-0">
+        <tr>
+            <form id="login_form" class=""  action="/login " method="POST">
+                <div class="text-center  pt-2">
+                    <h2 class="mb-lg-n2 fadeIn second "> Login </h2>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12 mx-auto ">
+
+                        <div class="hover form-group mt-2">
+                            <input type="text" id="username" class="form-control" name="username" required>
+                            <label class="form-control-placeholder" for="username">username</label>
+                        </div>
+
+                        <div class="hover form-group ">
+                            <input type="password" id="password" class="form-control" name="password" required>
+                            <label class="form-control-placeholder " for="password">password</label>
+                        </div>
+
+                        <div class="form-group row mb-lg-n2">
+
+                            <div class="text-center col-3 ml-n1">
+                                <button id="sbmt" class=" btn btn-primary">submit</button>
+                            </div>
+                            <div class="custom-control custom-checkbox col-4 mt-2">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">remember me </label>
+                            </div>
+
+                            <div class="d-inline text-center ml-5 col-2 mt-1 ">
+                                <div id="loading" class="d-inline "></div>
+                            </div>
+                            <div class="col-sm "></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </tr>
+
+
+        <tr class="bg-light ">
+            <div class="back-grey text-decoration-none " >
+
+
+                    <div class="container pl-4 p-3 ">
+                        <div class="row">
+                            <div class="col">
+                                <a  href=" " class=" text-decoration-none"><small>&nbsp;&nbsp;&nbsp;Forgot Password&nbsp;</small> </a>
+                            </div>
+                            <div class="col">
+                                <small>New User?&nbsp;</small> <a  class=" text-decoration-none" href="/register" for=""> Sign Up </a>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>
+
+
+<%  include ./partials/flsh %>
+
+<% include ./partials/footer %>

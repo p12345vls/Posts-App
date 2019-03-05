@@ -1,0 +1,325 @@
+
+ .fa-angle-down, .userName-top, .twitter-blue {
+    color: #257aff !important;
+}
+
+.navbar-brand{
+    margin-bottom:-18px;
+    margin-top:-18px;
+    font-family: 'Libre Barcode 39 Text', cursive;
+    font-size:40px!important;
+    color: black !important;
+}
+
+nav.top{
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+body {
+    background: #e6ecf0 !important;
+}
+
+::placeholder {
+    color: #257aff !important;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #257aff !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #257aff !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #257aff !important;
+}
+
+.back-grey {
+    background-color: #f5f8fa;
+    height: 60px;
+
+}
+
+
+.dropbtn {
+    border: none;
+    cursor: pointer;
+}
+
+.dropDown1 {
+    position: relative;
+    display: inline-block;
+}
+
+.dropDown1-content {
+
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropDown1-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropDown1-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropDown1:hover .dropDown1-content {
+    display: block;
+}
+
+.dropDown1:hover .dropbtn {
+    color: #3e8e41;
+}
+
+.span-drop {
+    font-family: 'Helvetica Neue', serif;
+    font-size: smaller;
+}
+
+.img-fluid {
+    padding: 0px !important;
+    border-radius: 8px 8px 0px 0px;
+
+}
+
+.hover:hover {
+    box-shadow: 0 0 10px rgba(33, 33, 33, .2) !important;
+}
+
+.hover2:hover {
+    box-shadow: 0 0 40px rgba(33, 33, 33, .2) !important;
+}
+
+
+.hover2 {
+    box-shadow: 0 0 15px rgba(33, 33, 33, .2) !important;
+}
+
+.container-form {
+    width: 500px;
+    margin-top: 100px;
+}
+
+.container-message {
+    width: 650px;
+    z-index: 2;
+
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-height:10px;
+
+}
+
+.container {
+    max-width: 700px !important;
+}
+
+
+/*-------comment box-----------------*/
+.tip {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    background: transparent;
+    border: 8px solid #b8bdc2;
+}
+
+.tip-up {
+    top: -16px; /* Same as body margin top + border */
+    left: 7px;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+}
+
+
+.arrow {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    /*background: transparent;*/
+    /*border: 8px solid #4567fa;*/
+
+    top: 10px; /* Same as body margin top + border */
+    left: -25px;
+}
+
+.tip-arrowUp{
+    /*top: 23px; !* Same as body margin top + border *!*/
+    /*left: -17px;*/
+    /*border-right-color: transparent;*/
+    /*border-left-color: transparent;*/
+    /*!*border-top-color: transparent;*!*/
+    /*border-bottom-color: transparent;*/
+}
+
+
+.dialogbox .body {
+    position: relative;
+
+    margin: 9px 9px 9px auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.body .message {
+    min-height: 10px;
+    display: flex;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #797979;
+}
+
+.shadow {
+    box-shadow:1px 2px 5px #888;
+}
+
+.thumb{
+    display: inline-block;
+    width: 280px;
+    height: 340px;
+    float:left; margin-top: -30px;
+    background-position: center center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+}
+
+.all-posts-img{
+    width: 690px;
+    height: 492px;
+
+    background-position: center center;
+    background-size: cover;
+}
+
+.user-post-img{
+    width: 50px;
+    height: 50px;
+
+    background-position: center center;
+    background-size: cover;
+}
+.user-comment-img{
+    width: 35px;
+    height: 35px;
+
+    background-position: center center;
+    background-size: cover;
+}
+
+/*.pic-user-desc{*/
+
+    /*position: fixed;*/
+    /*width: 300px;*/
+    /*height:240px;*/
+
+    /*background-position: center center;*/
+    /*background-size: cover;*/
+    /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0*/
+/*}*/
+
+
+
+/*-------end -------------------*/
+
+
+/*--------------------------*/
+
+.borderHighlight {
+    border: 1px solid green;
+
+    border-radius: 5px;
+    padding: 5px;
+    margin: -5px;
+    transition: padding 0.5s, margin 0.5s;
+}
+
+.name {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.avatar-comments-img {
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.avatar-expand {
+    width: 50px;
+    height: 50px;
+    transition: width 0.5s, height 0.5s;
+}
+
+.avatar-img {
+    width: 50px;
+    height: 50px;
+}
+
+.nav-text-center {
+    background-color: white;
+    display: flex;
+    margin-right: 20px;
+
+    z-index: 2;
+    font-weight: bold;
+    color: black;
+}
+
+/*//==============*/
+.avatar-top {
+    width: 30px;
+    height: 30px
+}
+
+.avatar-online {
+    width: .8vw;
+    position: absolute;
+    margin-left: 22px;
+    margin-top: -32px;
+    z-index: -1;
+}
+
+.dot1 {
+    height: 12px;
+    width: 12px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 22px;
+    margin-top: -30px;
+}
+
+.dot2 {
+    height: 8px;
+    width: 8px;
+    background-color: #00FF00;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 24px;
+    margin-top: -28px;
+}
+
+#userEdit{
+    margin-left: -60px!important;
+
+}

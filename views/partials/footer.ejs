@@ -1,0 +1,30 @@
+<script>
+
+
+    $(document).ready(function () {
+//-----------------------------------------------------------
+
+
+//-----------------------------------------------------------
+        //for closing the flash message
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 3000);
+//-----------------------------------------------------------
+
+
+        $('[data-toggle="popover"]').popover();
+
+        $("#sbmt").click(function () {
+            $('input[type="text"]').each(function () {
+                if ($(this).val() != "") {
+                    $('#loading').html('<i  class="fas fa-sync fa-spin text-secondary "></i>');
+                }
+            });
+        });
+    });
+
+</script>
+</body>
+
+</html>

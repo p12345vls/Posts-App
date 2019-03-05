@@ -1,0 +1,65 @@
+<% include ../partials/header %>
+
+
+<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
+    <input id="tags" class="awesomplete form-control mr-sm-2 "
+           name="search" type="text" placeholder="Search"
+           data-list="">
+    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
+</form>
+
+</div>
+
+</nav>
+
+<%  include ../partials/flsh %>
+
+
+<div class="container-form bg-white p-0  mx-auto">
+    <table class="table table-borderless">
+        <tr>
+            <tbody class="p-0">
+    <form id="edit" class="" action="/posts/ <%= post._id %> /comments/<%= comment._id %>?_method=PUT "
+          method="POST">
+        <h2 class="text-center p-3">Edit Comment </h2>
+
+        <div class="row ">
+            <div class="col-md-10 mx-auto ">
+
+
+                <div class="hover form-group ">
+                    <textarea type="text" id="new_comment" class="form-control" name="comment[text]" cols="100" rows="3"
+                              required><%= comment.text %></textarea>
+                    <label class="form-control-placeholder " for="new_comment"></label>
+                </div>
+
+                <div class="form-group row">
+                    <div class="text-center col-1 ">
+                        <button id="sbmt" class=" btn btn-primary">submit</button>
+                    </div>
+
+                    <div class="d-inline text-center ml-5 col-sm">
+                        <div id="loading" class="d-inline ml-5 "></div>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    </tr>
+    <tr class="bg-light ">
+        <div class="back-grey text-decoration-none ">
+
+        </div>
+    </tr>
+
+            </tbody>
+    </table>
+</div>
+
+
+
+<% include ../partials/footer %>
+
+
