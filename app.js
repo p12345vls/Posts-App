@@ -59,6 +59,13 @@ app.locals.moment = require('moment');
 app.get("/", function (req, res) {
     res.render('landing');
 });
+app.get("/contact", function (req, res) {
+    res.render('contact-us');
+});
+
+
+
+app.use("/", indexRoutes);
 
 
 app.use("/", indexRoutes);

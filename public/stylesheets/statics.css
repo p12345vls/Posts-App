@@ -6,6 +6,9 @@
     .text-link {
         font-size: 10px !important;
     }
+    .space{
+        display: none;
+    }
 }
 @media only screen and (max-width: 600px) {
     .footer{
@@ -13,14 +16,24 @@
         position: relative!important;
     }
 }
-.footer{
-    position: fixed;
-}
+
 @media only screen and (max-width: 1000px) {
     .heading{
         font-size: 30px;
     }
+
 }
+
+@media only screen and (min-width: 1000px) {
+    .heading{
+        font-size: 45px;
+    }
+    .space{
+        display: none;
+    }
+}
+
+
 @media only screen and (max-width: 760px) {
     .heading{
         font-size: 25px;
