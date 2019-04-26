@@ -1,22 +1,148 @@
-<% include partials/header %>
-
-<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
-    <input id="tags" class="awesomplete form-control mr-sm-2 "
-           name="search" type="text" placeholder="Search"
-           data-list="">
-    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
-</form>
-
-</div>
-
-</nav>
-<%  include ./partials/flsh %>
+<% include ./partials/headStatics %>
+<style>
 
 
-<h1>Landing Page!</h1>
 
-<p>Welcome to YelpCamp</p>
 
-<a href="/posts">View All Posts</a>
 
-<% include partials/footer %>
+
+</style>
+
+<main class="text-left page landing-page" xmlns="http://www.w3.org/1999/html">
+    <section>
+        <div class="jumbotron">
+            <h1 class="text-center"></h1>
+            <p class="space "style="height: 50px;"></p>
+            <div class="container" style="width: 1000px;">
+                <h1 class="text-left"><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong></h1>
+
+                <h1 class="text-left"><strong class="heading">Hellenic American Hippocratic Society</strong></h1>
+                <!--modal button ---------------------------------------------------------------------------------------------------------------------->
+
+                <p class="text-left">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Be a Member
+                    </button>
+                </p>
+                <!--modal button ---------------------------------------------------------------------------------------------------------------------->
+
+            </div>
+        </div>
+    </section>
+    <div class="container" style="max-width: 700px;">
+        <hr style="color: #000000;background-color: #ffffff;">
+        <p class="text-left d-table-row" style="font-size: 14px;">The Hellenic&nbsp;American Hippocratic Society is a
+            private, non-profit society of physicians and scientists whose main interest is the study of the
+            musculoskeletal system. Members of the society are United States or Canada or Greek citizens
+            or permanent residents. The members of the society work together to promote the exchange of ideas,
+            experiences and professional opportunities within the field of orthopaedic surgery. In addition, it is the
+            focus of the society to recognize
+            outstanding contributions to knowledge or understanding of orthopaedic problems. It is within the scope of
+            the society to promote scientific or professional interactions in the forms of scientific meetings,
+            observership programs or any
+            other forms of professional activity that strengthen the understanding and treatment of the orthopaedic
+            diseases as well as the professional achievements of the&nbsp;members.</p>
+        <hr>
+    </div>
+    <section class="text-center clean-block features" data-aos="zoom-in" data-aos-delay="350" data-aos-once="true">
+        <div class="container">
+            <h3 class="text-center text-primary" style="color: rgb(77,140,204);"><span class="fa-stack"><i
+                            class="fa fa-circle fa-stack-2x text-muted"></i><i
+                            class="fas fa-award fa-stack-1x fa-inverse"></i></span>Recognition
+                Levels</h3>
+        </div>
+        <div class="container" style="width: 350px;background-color: #f6f6f6;">
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p class="mt-2">Olympic Founder<br>$5000 or more</p>
+                            <p>Founder<br>$2000-$5000</p>
+                            <p>Patron<br>$1000-$2000</p>
+                            <p>Friend<br>$500-$1000</p>
+
+                            <button class="btn btn-primary btn-block btn-sm mb-2"
+                                    data-aos="zoom-in" data-aos-duration="150"
+                                    type="submit" style="background-color: rgba(0,123,255,0.74);">
+                                Join NOW
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div></div>
+        <section class="text-center d-flex footer" style="bottom:0; left:0; right:0; ">
+            <p class="bottom mt-2">© 2019 by the Hellenic American Hippocratic Orthopaedic Society<br/></p>
+        </section>
+    </section>
+
+    <!-- Modal -------------------------------------------------------------------------------------------------------------------------->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content page registration-page">
+
+                <!--membership form-------------------------------------------------------------------------------------------------->
+
+                <section class="clean-block clean-form dark">
+                    <div class="">
+                        <button type="button" class="close mt-5 mr-2" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                        <div class="block-heading mt-n5">
+                            <h2 class="text-info heading-modal">Membership Application</h2>
+                            <p class="modal-heading-parag">Members of the society can register using this form.</p>
+                        </div>
+
+                        <form class="">
+                            <div class="mt-n4">
+                                <div class="form-group input-group-sm"><label for="name"><small> Name</small></label>
+                                    <input class="form-control item " type="text" id="name"></div>
+                                <div class="form-group input-group-sm mt-n3"><label for="email"><small> Email</small></label>
+                                    <input class="form-control item" type="email" id="email">
+                                </div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="street"><small> Street Address</small></label>
+                                    <input class="form-control item " type="text" id="street"></div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="city"><small> City</small></label>
+                                    <input class="form-control item " type="text" id="city"></div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="state"><small> State</small></label>
+                                    <input class="form-control item " type="text" id="state"></div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="country"><small> Country</small></label>
+                                    <input class="form-control item " type="text" id="country"></div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="zip"><small> Zip Code</small></label>
+                                    <input class="form-control item " type="text" id="zip"></div>
+
+                                <div class="form-group input-group-sm mt-n3"><label for="phone"><small> Phone</small></label>
+                                    <input class="form-control item " type="text" id="phone"></div>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" type="submit">Submit $100.00</button>
+                        </form>
+                    </div>
+                </section>
+                <!--end membership form-------------------------------------------------------------------------------------------------->
+
+            </div>
+        </div>
+    </div>
+    <!--end Modal ----------------------------------------------------------------------------------------------------------------------->
+
+</main>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+<script src="assets/js/script.min.js"></script>
+
+</html>

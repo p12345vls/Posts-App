@@ -68,7 +68,7 @@ app.use('/userPosts', userRoutes);
 
 
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 // app.listen(8000, () => {
 //     // eslint-disable-next-line no-console
