@@ -1,0 +1,50 @@
+
+<% include ../partials/head-admin %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+    <strong><a class="navbar-brand" href="../admin1">Administrator</a></strong>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ">
+
+            <li class="nav-item active">
+                <a class="nav-link  btn btn-outline-info m-1" href="/admin1/members">All Members <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link btn btn-outline-success m-1" href="/admin1/new">Add Member <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-primary btn btn-outline-warning m-1" href="/admin1/logoutAdmin">Log Out</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info text-center">Add New Member</h2>
+                </div>
+                <form id="" class="" action="/admin1/newMember " method="POST" >
+                    <div class="form-group"><label>Name</label><input class="form-control" name="name" type="text">
+                    </div>
+                    <div class="form-group"><label>Role</label><input class="form-control" name="role" type="text"></div>
+                    <div class="form-group"><label>Address</label><input class="form-control" name="address" type="text"></div>
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+
+<% include ../partials/admin-footer %>

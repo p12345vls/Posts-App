@@ -1,0 +1,39 @@
+<% include ../partials/headStatics %>
+<main class="page ">
+    <section class="clean-block clean-form dark">
+        <h1 class="img-fluid text-center"><img class="img-fluid" src="assets/img/vegas-meeting.png"></h1>
+        <div class="col-md-12 search-table-col">
+            <div class="table-responsive table-bordered table table-hover table-bordered results">
+                <table class="table table-bordered table-hover">
+                    <thead class="bill-header cs">
+                    <tr>
+                        <th id="trs-hd" class="col-2">Name</th>
+                        <th id="trs-hd" class="col-3">Role</th>
+                        <th id="trs-hd" class="col-3">Address</th>
+                    </tr>
+                    </thead>
+                    <% members.forEach(function(member){ %>
+                        <tbody>
+                        <tr>
+                            <td><%= member.name %></td>
+                            <td><%= member.role %></td>
+                            <td><%= member.address %></td>
+                        </tr>
+                        </tbody>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<% include ../partials/footerStatics %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+<script src="assets/js/script.min.js"></script>
+
+</html>

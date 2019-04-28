@@ -1,0 +1,60 @@
+<% include ./partials/head-admin %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+    <strong><a class="navbar-brand" href="#">Administrator</a></strong>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ">
+            <% if (isAdmin) { %>
+                <li class="nav-item active">
+                    <a class="nav-link  btn btn-outline-info m-1" href='/admin1/members'>All Members <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link btn btn-outline-success m-1" href="/admin1/new">Add Member <span
+                                class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-primary btn btn-outline-warning m-1" href="/members/logoutAdmin">Log Out</a>
+                </li>
+            <% } %>
+
+        </ul>
+    </div>
+</nav>
+
+<h3 class="text-center text-primary"><%=message%></h3>
+
+<% if (!isAdmin) { %>
+<main class="page contact-us-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Admin Login</h2>
+            </div>
+            <form id="" class="" action="/admin1" method="POST">
+                <div class="form-group"><label>password</label>
+                    <input class="form-control" name="password" type="password"></div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+        <% } %>
+    </section>
+</main>
+
+
+<% include ./partials/footerStatics %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+<script src="assets/js/script.min.js"></script>
+
+</html>
