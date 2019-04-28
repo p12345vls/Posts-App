@@ -23,6 +23,7 @@ router.post('/', function (req, res) {
             }
         });
     } else {
+        isAdmin = false;
         message = 'wrong password please try again';
         res.render('adminLogin', {isAdmin: false, message: message})
     }
@@ -40,6 +41,7 @@ router.get('/members', function (req, res) {
             }
         });
     } else {
+        isAdmin = false;
         message = 'wrong password please try again';
         res.render('adminLogin', {isAdmin: false, message: message})
     }
@@ -63,15 +65,16 @@ router.post('/newMember', function (req, res) {
 //NEW - show form to create new member
 router.get("/new", function (req, res) {
     if (isAdmin) {
-    res.render("members/new");
-    }else{
+        res.render("members/new");
+    } else {
+        isAdmin = false;
         res.render('adminLogin', {isAdmin: false, message: ''})
     }
 });
 
 router.get('/logoutAdmin', (req, res) => {
-
-    res.render('adminLogin', {isAdmin: false,message:"logged out"});
+    isAdmin = false;
+    res.render('adminLogin', {isAdmin: false, message: "logged out"});
 });
 
 module.exports = router;
