@@ -44,7 +44,7 @@
                             <td><%= member.address %></td>
                             <% if( isAdmin) { %>
                                 <td><form id='editForm' class="form-check-inline" action="/admin1/<%= member.id %>/edit" method="get" > <button id="edit" class="btn btn-info btn-sm " type="submit">Edit</button></form>
-                                    <form id='editForm' class="form-check-inline" action="/admin1/<%= member.id %>/edit" method="get" > <button class="btn btn-danger btn-sm" type="submit">Delete</button></form>
+                                    <form id='editForm' class="form-check-inline" action="/admin1/<%= member.id %>?_method=DELETE" method="POST" > <button class="btn btn-danger btn-sm" type="submit">Delete</button></form>
                                 </td>
                             <% } %>
                         </tr>

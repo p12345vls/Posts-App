@@ -61,30 +61,18 @@ app.use(function (req, res, next) {
 
 app.locals.moment = require('moment');
 
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
     res.render('landing');
 });
-app.get("/contact", function (req, res) {
+app.get("/contact", (req, res) => {
     res.render('contact-us');
 });
-
-// // login admin for members in Hellenic American Hippocratic
-// var isAdmin = false;
-// app.get('/admin', function (req, res) {
-//     res.render('adminLogin', {isAdmin: isAdmin})
-// });
-//
-// app.post('/admin', function (req, res) {
-//     isAdmin = true;
-//     Member.find({}, (err, members) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.render('members/membersAdmin', {members: members,isAdmin: isAdmin})
-//         }
-//     });
-// });
-
+app.get('/hippocrates', (req, res) => {
+    res.render('hippocrates');
+});
+app.get('/about',(req,res)=>{
+    res.render('about');
+});
 
 app.use("/", indexRoutes);
 app.use("/posts", postRoutes);
