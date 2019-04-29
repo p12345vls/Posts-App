@@ -68,7 +68,7 @@ app.get("/contact", (req, res) => {
     res.render('contact-us');
 });
 app.get('/hippocrates', (req, res) => {
-    res.render('hippocrates');
+    res.render('Hippocrates');
 });
 app.get('/about',(req,res)=>{
     res.render('about');
