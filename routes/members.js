@@ -8,7 +8,7 @@ var isAdmin = false;
 //INDEX - show all members
 router.get("/", (req, res) => {
 
-    Member.find({}, (err, members) => {
+    Member.find({}, null, {sort: {name: 1}}, (err, members) => {
 
         if (err) {
             console.log(err);

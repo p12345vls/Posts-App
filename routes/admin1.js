@@ -106,6 +106,22 @@ router.put('/:id', (req, res) => {
     }
 });
 
+router.delete('/:id', (req, res) => {
+    if (isAdmin) {
+        Member.findByIdAndRemove(req.params.id, (err, member) => {
+            if (err) {
+                console.log(err);
+                res.redirect('back');
+            } else {
+                Member.find({}, (err, members) => {
+                    res.render('members/admin', {members: members, isAdmin: isAdmin, message: ''})
+                });
+            }
+        });
+    }
+});
+
+
 router.get('/logoutAdmin', (req, res) => {
     isAdmin = false;
     res.render('adminLogin', {isAdmin: false, message: "logged out"});

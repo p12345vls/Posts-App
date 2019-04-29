@@ -33,13 +33,10 @@
                     <h2 class="text-info text-center">Add New Member</h2>
                 </div>
                 <form id="" class="" action="/admin1/newMember " method="POST" >
-                    <div class="form-group"><label>Name</label><input class="form-control" name="name" type="text">
-                    </div>
-                    <div class="form-group"><label>Role</label><input class="form-control" name="role" type="text"></div>
-                    <div class="form-group"><label>Address</label><input class="form-control" name="address" type="text"></div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit">Add</button>
-                    </div>
+                    <div class="form-group"><label>Name</label><input class="form-control" name="name" type="text" required> </div>
+                    <div class="form-group"><label>Role</label><input class="form-control" name="role" type="text" required></div>
+                    <div class="form-group"><label>Address</label><input class="form-control" name="address" type="text" required></div>
+                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Add</button></div>
                 </form>
             </div>
         </section>
