@@ -6,7 +6,7 @@ var locus = require('locus');
 var isAdmin = false;
 
 //INDEX - show all members
-router.get("/", function (req, res) {
+router.get("/", (req, res) => {
 
     Member.find({}, (err, members) => {
 
