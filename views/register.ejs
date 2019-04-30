@@ -1,5 +1,8 @@
 <% include ./partials/header %>
 
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
     <input id="tags" class="awesomplete form-control mr-sm-2 "
            name="search" type="text" placeholder="Search"
@@ -24,25 +27,25 @@
     </div>
 <% } %>
 
-<div class="container-form bg-white p-0  mx-auto hover2 fadeInDown">
-    <table class="table table-borderless">
+<div class="container-form bg-white p-0  mx-auto hover2  border-top border-primary ">
+    <table class="table table-borderless ">
         <tr>
             <tbody class="p-0">
             <form id="signUp" class="" action="/register " method="POST" enctype="multipart/form-data">
                 <div class="text-center pt-2">
-                    <h2 class="d-inline fadeIn second "> Sign Up </h2>
+                    <h2 class="d-inline fadeIn "> Sign Up </h2>
                 </div>
 
                 <div class="card-body">
                     <div class="col-md-12 mx-auto ">
 
                         <div class="hover form-group mt-2">
-                            <input type="text" id="username" class="form-control" name="username" required>
+                            <input type="text" id="username" class="form-control" name="username" required >
                             <label class="form-control-placeholder" for="username">username</label>
                         </div>
 
                         <div class="hover form-group ">
-                            <input type="password" id="password" class="form-control" name="password" required>
+                            <input type="password" id="password" class="form-control" name="password" required minlength="6">
                             <label class="form-control-placeholder " for="password">password</label>
                         </div>
 
@@ -89,7 +92,6 @@
                             </div>
                         </div>
 
-
                     </div>
 
                 </div>
@@ -103,5 +105,5 @@
     </table>
 </div>
 
-
+<script>document.querySelector('title').innerText = "Sign Up Info Share"</script>
 <% include ./partials/footer %>

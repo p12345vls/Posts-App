@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-
 <form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
     <input id="tags" class="awesomplete form-control mr-sm-2 "
            name="search" type="text" placeholder="Search"
@@ -13,37 +12,44 @@
 </nav>
 
 
+<div class="container hover2  mt-4 border-top border-primary" style=" height:500px; margin: auto; background-color: #f2f2f2 ">
 
-<div class="container hover2 rounded" style=" height:500px; margin: auto; background-color: #f2f2f2 ">
+        <h1 class="text-center mb-n4 "> <%= user.firstName %>  <%= user.lastName %></h1>
 
     <div style="float:left; width:90%; height:55%; margin-top:15%; margin-left: 5%; background-color: white;
  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="row">
 
 
         <div class="thumb rounded col-6" style=" background-image: url('<%= user.avatar %>');">
+
             <% if(currentUser && (currentUser.id == user.id)){ %>
                 <div class="float-right">
 
                     <div class="dropdown ">
-                        <i class="fa fa-ellipsis-v btn btn-block text-primary shadow-lg" id="dropdownMenuButton" data-toggle="dropdown"
+                        <i class="fa fa-ellipsis-v btn btn-block text-primary shadow-lg" id="dropdownMenuButton"
+                           data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
                         <div class="dropdown-menu text-center" id="userEdit">
-                            <a href="/users/<%= user.id %>/edit/imageEdit" class="dropdown-item btn btn-block">Change</a>
+                            <a href="/users/<%= user.id %>/edit/imageEdit"
+                               class="dropdown-item btn btn-block">Change</a>
 
                         </div>
                     </div>
 
                 </div>
             <% } %>
+
         </div>
+
         <div class="col-6 ">
-            <h4> <%= user.firstName.substr(0, 10) %> , <%= user.lastName.substr(0, 10) %>
+            <h4>
 
                 <% if(currentUser && (currentUser.id == user.id)){ %>
                     <div class="float-right">
 
                         <div class="dropdown ">
-                            <i class="fa fa-ellipsis-v btn btn-block text-primary " id="dropdownMenuButton" data-toggle="dropdown"
+                            <i class="fa fa-ellipsis-v btn btn-block text-primary " id="dropdownMenuButton"
+                               data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
                             <div class="dropdown-menu text-center" id="userEdit">
                                 <a href="/users/:<%= user.id %>/edit" class="dropdown-item btn btn-block">Edit</a>
@@ -55,6 +61,7 @@
                 <% } %>
 
             </h4>
+
             <h6><i class="far fa-user"></i><em>  <%= user.username %>,
                     Joined <%= moment(user.joinedSince).fromNow() %></em></h6>
             from <%= user.city %> <i class="fas fa-map-marker-alt"></i><br>
@@ -68,3 +75,4 @@
 
 
 
+<script>document.querySelector('title').innerText = "My Profile"</script>

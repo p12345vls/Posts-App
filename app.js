@@ -61,6 +61,7 @@ app.use(function (req, res, next) {
 
 app.locals.moment = require('moment');
 
+// static pages routes ----------------------------------
 app.get("/", (req, res) => {
     res.render('landing');
 });
@@ -73,6 +74,10 @@ app.get('/hippocrates', (req, res) => {
 app.get('/about',(req,res)=>{
     res.render('about');
 });
+app.get('/case',(req,res)=>{
+    res.render('orthopedic-case');
+});
+// end static pages routes -------------------------------
 
 app.use("/", indexRoutes);
 app.use("/posts", postRoutes);
