@@ -31,32 +31,38 @@
                 </h3>
             <% } %>
 
-            <h6 class="card-subtitle  row">
-                <div class="col-3">
+                <h6 class="card-subtitle  row">
 
                     <% users.forEach(function(user){ %>
-                        <% if(post.author.id == user.id){ %>
+                        <% if(post.author.id.equals(user.id)){ %>
                             <% userComment = user %>
                             <% userImage = user.avatar %>
                         <% } %>
 
                     <% }); %>
 
+                    <div class="col-1 ">
+
                         <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
-
-                </div>
-
-
-                <div class="col-sm-5 text-left">
-                    <div>
-                        <strong><em class="ml-n5 pl-1">posted by <%= post.author.username %></em>
-                        </strong>
                     </div>
-                    <div>
-                        <small><em class="ml-n5 pl-1"><%= moment(post.createdAt).fromNow() %></em></small>
+
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <div>
+                            <strong>
+                                <em class="col">
+                                    posted by
+                                    <a href="/users/<%= post.author.id %>"> <%= post.author.username %></a>
+                                    <div class="col">
+                                        <small ><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
+                                    </div>
+                                </em>
+                            </strong>
+                        </div>
                     </div>
-                </div>
-            </h6>
+
+
+                </h6>
         </div>
 
         <img class="container img-fluid " src="<%= post.image %> " alt="">
@@ -101,7 +107,8 @@
 
                     <% users.forEach(function(user){ %>
                         <% if(comment.author.id.equals(user.id)){ %>
-                            <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+                            <div class="user-comment-img rounded-circle border border-primary "
+                                 style="background-image:url('<%= user.avatar %>');"></div>
                         <% } %>
                     <% }); %>
 

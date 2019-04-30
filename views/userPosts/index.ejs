@@ -68,8 +68,7 @@
 
                             <a href="/posts/new" class="text-decoration-none text-dark">
 
-                                <i class="  fas  fa-plus"> <span
-                                            class="span-drop text-black-50 ml-1"> new post</span></i>
+                                <i class=" fas  fa-plus"> <span class="span-drop text-black-50 ml-1"> new post</span></i>
                             </a>
 
 
@@ -185,24 +184,27 @@
 
                         <% }); %>
 
-                        <div class="col-3">
+                            <div class="col-1 ">
 
-
-                            <div class="user-post-img rounded-circle border border-primary "
-                                 style="background-image:url('<%= userImage %>');"></div>
-
-                        </div>
-
-
-                        <div class="col-sm-5 text-left">
-                            <div>
-                                <strong><em class="ml-n5 pl-1">posted by <%= post.author.username %></em>
-                                </strong>
+                                <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
                             </div>
-                            <div>
-                                <small><em class="ml-n5 pl-1"><%= moment(post.createdAt).fromNow() %></em></small>
+
+                            <div class="col-1"></div>
+                            <div class="col-8">
+                                <div>
+                                    <strong>
+                                        <em class="col">
+                                            posted by
+                                            <a href="users/<%= post.author.id %>"> <%= post.author.username %></a>
+                                            <div class="col">
+                                                <small ><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
+                                            </div>
+                                        </em>
+                                    </strong>
+                                </div>
                             </div>
-                        </div>
+
+
                     </h6>
                 </div>
 
