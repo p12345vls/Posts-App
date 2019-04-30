@@ -15,6 +15,12 @@
         font-size: 10px;
         position: relative!important;
     }
+    td{
+        font-size: 11px;
+    }
+    th{
+        font-size: 13px;
+    }
 }
 
 @media only screen and (max-width: 1000px) {
