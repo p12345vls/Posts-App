@@ -94,7 +94,8 @@
 
                 <% } %>
                 <li class="nav-item m-1">
-                    <div class="user-comment-img avatar-top rounded-circle border border-primary " style="background-image:url('<%= currentUser.avatar %>');"></div>
+                    <div class="user-comment-img avatar-top rounded-circle border border-primary "
+                         style="background-image:url('<%= currentUser.avatar %>');"></div>
                     <span class="dot1"></span>
                     <span class="dot2"></span>
                 </li>
@@ -133,7 +134,9 @@
         allComment; %>
 
 <!-- - - - - - - - - - - - - - - -->
-
+<% if(firstTime) { %>
+    <h3 class="text-center">No Post yet</h3>
+<% } else { %>
 
 <div class="container p-0 " style="max-width:500px; ">
 
@@ -185,7 +188,8 @@
                         <div class="col-3">
 
 
-                            <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
+                            <div class="user-post-img rounded-circle border border-primary "
+                                 style="background-image:url('<%= userImage %>');"></div>
 
                         </div>
 
@@ -262,7 +266,8 @@
                                         <% users.forEach(function(user){ %>
                                             <% if(comment.author.id.equals(user.id)){ %>
 
-                                                <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+                                                <div class="user-comment-img rounded-circle border border-primary "
+                                                     style="background-image:url('<%= user.avatar %>');"></div>
 
                                             <% } %>
 
@@ -329,7 +334,7 @@
                                     </div>
                                 <% } %>
 
-                              <% include ../partials/ejs/toggleComment%>
+                                <% include ../partials/ejs/toggleComment %>
 
                                 <% counter++; %>
 
@@ -374,6 +379,8 @@
             </div>
         <% } %>
     <% }); %>
+
+    <% } %>
 </div>
 
 <% include ../partials/footer %>

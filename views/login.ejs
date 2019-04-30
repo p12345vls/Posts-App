@@ -1,6 +1,5 @@
 <% include ./partials/header %>
 
-
 <form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
     <input id="tags" class="awesomplete form-control mr-sm-2 "
            name="search" type="text" placeholder="Search"
@@ -15,13 +14,13 @@
 
 
 
-<div class="container-form bg-white p-0  mx-auto hover2 fadeInDown">
+<div class="container-form bg-white p-0  mx-auto hover2  border-top border-primary">
     <table class="table table-borderless">
         <tbody class="p-0">
         <tr>
             <form id="login_form" class=""  action="/login " method="POST">
                 <div class="text-center  pt-2">
-                    <h2 class="mb-lg-n2 fadeIn second "> Login </h2>
+                    <h2 class="mb-lg-n2 fadeIn  "> Login </h2>
                 </div>
                 <div class="card-body">
                     <div class="col-md-12 mx-auto ">
@@ -38,11 +37,11 @@
 
                         <div class="form-group row mb-lg-n2">
 
-                            <div class="text-center col-3 ml-n1">
+                            <div class="text-center col-4 ml-n1">
                                 <button id="sbmt" class=" btn btn-primary">submit</button>
                             </div>
-                            <div class="custom-control custom-checkbox col-4 mt-2">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <div class="custom-control custom-checkbox col-6 ">
+                                <input type="checkbox" class="custom-control-input " id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">remember me </label>
                             </div>
 
@@ -80,6 +79,7 @@
 
 </div>
 
+<script>document.querySelector('title').innerText = "Login Info Share"</script>
 
 <%  include ./partials/flsh %>
 
