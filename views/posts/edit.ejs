@@ -15,7 +15,7 @@
     <table class="table table-borderless">
         <tr>
             <tbody class="p-0">
-            <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST">
+            <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
                 <div class="text-center mb-3 text-secondary">
                     <h2 class="d-inline"> Edit <%= post.name %></h2>
                 </div>
@@ -31,13 +31,13 @@
                             <input type="text" name="post[name]" value=" <%= post.name %>"
                                    class="form-control">
                         </div>
+                        <div class=" form-group">
+                            <i class="fa fa-2x fa-image text-right text-primary"><small> </small>
+                                <small class=" pr-5 form-control-placeholder" style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
+                                    <input type="file"  class="" name="image" accept="image/*" >
+                                </small>
+                            </i>
 
-                        <div class="input-group mb-3 input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">image </span>
-                            </div>
-                            <input type="text" name="post[image]" value="<%= post.image %>"
-                                   class="form-control">
                         </div>
 
                         <div class="form-group">

@@ -141,7 +141,7 @@ router.get("/", function (req, res) {
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
 
-   console.log(req.file.path);
+    console.log(req.file.path);
     cloudinary.uploader.upload(req.file.path, function (result) {
         // add cloudinary url for the image to the post object under image property
         req.body.post.image = result.secure_url;
@@ -209,17 +209,43 @@ router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
 });
 
 //update
-router.put('/:id', middleware.checkPostOwnership, (req, res) => {
+router.put('/:id', middleware.checkPostOwnership, upload.single('image'), function (req, res) {
 
-    Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-        console.log("req.body " + updatedPost);
-        if (err) {
-            res.redirect("/posts");
-        } else {
-            //redirect somewhere(show page)
-            res.redirect("/posts/" + req.params.id);
-        }
-    });
+    // Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+    //     console.log("req.body " + updatedPost);
+    //     if (err) {
+    //         res.redirect("/posts");
+    //     } else {
+    //         //redirect somewhere(show page)
+    //         res.redirect("/posts/" + req.params.id);
+    //     }
+    // });
+
+    // in case empty image
+    if (req.file === undefined) {
+        res.redirect('back')
+    } else {
+
+
+        cloudinary.uploader.upload(req.file.path, function (result) {
+            // add cloudinary url for the image to the post object under image property
+            req.body.post.image = result.secure_url;
+            // add author to post
+            req.body.post.author = {
+                id: req.user._id,
+                username: req.user.username
+            };
+            Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+                console.log("req.body " + updatedPost);
+                if (err) {
+                    res.redirect("/posts");
+                } else {
+                    //redirect somewhere(show page)
+                    res.redirect("/posts/" + req.params.id);
+                }
+            });
+        });
+    }
 });
 
 router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
@@ -233,7 +259,6 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
         }
     });
 });
-
 
 
 function escapeRegex(text) {
