@@ -323,3 +323,12 @@ body {
     margin-left: -60px!important;
 
 }
+ .col-space{
+     display: none;
+ }
+
+ @media only screen and (max-width: 600px) {
+     .col-space{
+         display: block;
+     }
+ }
