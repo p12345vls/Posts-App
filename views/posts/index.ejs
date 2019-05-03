@@ -82,24 +82,27 @@
                 </h6>
             </div>
             <a href="posts/<%= post._id %>">
-                <!--if it is a video-->
-                <% if(true) { %>
+                <% if(post.image != undefined){ %>
+                    <!--if it is a video-->
+                    <!--encodeURIComponent(post.image).substring(encodeURIComponent(post.image))-->
+                    <!--post.image.substring(post.image.length - 3) === 'mp4'-->
+                    <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
+                            || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
+
+                        <hr>
+                        <video class="all-posts-img container-fluid rounded" controls>
+                            <source type="video/mp4" src="<%= post.image %>"/>
+                            Your browser does not support HTML5 video.
+                        </video>
 
 
-                    <hr>
-                    <video class="all-posts-img container-fluid rounded" controls>
-                        <source type="video/mp4" src="<%= post.image %>"/>
-                        Your browser does not support HTML5 video.
-                    </video>
-
-
-                <% } else { %>
-                    <!--it is an image-->
-                    <div class="all-posts-img container-fluid rounded "
-                         style=" background-image: url('<%= post.image %>');"></div>
-                <% } %>
+                    <% } else { %>
+                        <!--it is an image-->
+                        <div class="all-posts-img container-fluid rounded "
+                             style=" background-image: url('<%= post.image %>');"></div>
+                    <% } %>
             </a>
-
+            <% } %>
 
             <div class="card-body ">
                 <strong><em class=""><p class="card-text ">Description</p></em> </strong>
