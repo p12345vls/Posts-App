@@ -134,7 +134,6 @@ router.get("/", function (req, res) {
 });
 
 
-
 function createPost(req, res) {
     Posts.create(req.body.post, function (err, post) {
         if (err) {
@@ -147,16 +146,17 @@ function createPost(req, res) {
 }
 
 
-
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
     // eval(locus)
-    // if(req.file.path.substring(req.file.path.length - 3) === 'mp4'
-    //     || req.file.path.substring(req.file.path.length - 3) === 'mov'){
-    if(true){
-        uploadVideo(req, res);
-    } else {
+
+    if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
+        req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png') {
         uploadImage(req, res);
+    } else {
+        uploadVideo(req, res);
     }
 
 });
