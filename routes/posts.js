@@ -15,8 +15,8 @@ var storage = multer.diskStorage({
     }
 });
 var imageFilter = function (req, file, cb) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|mov|m4v|mpeg-4|3gpp)$/i)) {
-        return cb(new Error('Only image files are allowed'), false);
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|mov)$/i)) {
+        return cb(new Error('Only image files are allowed and videos .mov, mp4'), false);
     }
     cb(null, true);
 };
