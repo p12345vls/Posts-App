@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,20 +19,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="156" column="30" lean-forward="true" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
+            <state relative-caret-position="212">
+              <caret line="143" column="49" lean-forward="true" selection-start-line="143" selection-start-column="49" selection-end-line="143" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/posts/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="236" column="30" lean-forward="true" selection-start-line="236" selection-start-column="30" selection-end-line="236" selection-end-column="30" />
+            <state relative-caret-position="78">
+              <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
               <folding>
                 <element signature="n#h4#0;n#!!top" expanded="true" />
                 <element signature="n#form#0;n#!!top" expanded="true" />
@@ -48,15 +49,16 @@
                 <element signature="n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#em#0;n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#em#0;n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#video#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#p#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#p#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#a#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#strong#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -227,8 +229,8 @@
         <option value="$PROJECT_DIR$/public/stylesheets/main.css" />
         <option value="$PROJECT_DIR$/views/userPosts/index.ejs" />
         <option value="$PROJECT_DIR$/views/posts/new.ejs" />
-        <option value="$PROJECT_DIR$/views/posts/index.ejs" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
+        <option value="$PROJECT_DIR$/views/posts/index.ejs" />
       </list>
     </option>
   </component>
@@ -429,7 +431,7 @@
       <workItem from="1556432328443" duration="157000" />
       <workItem from="1556490892225" duration="12817000" />
       <workItem from="1556504558948" duration="10350000" />
-      <workItem from="1556580035202" duration="59273000" />
+      <workItem from="1556580035202" duration="60374000" />
     </task>
     <task id="LOCAL-00001" summary="added edit">
       <created>1556500177097</created>
@@ -508,14 +510,36 @@
       <option name="project" value="LOCAL" />
       <updated>1556852227631</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="phone video upload test">
+      <created>1556853773292</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1556853773292</updated>
+    </task>
+    <task id="LOCAL-00013" summary="phone video upload test">
+      <created>1556853782229</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1556853782229</updated>
+    </task>
+    <task id="LOCAL-00014" summary="phone video upload test">
+      <created>1556854372526</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1556854372526</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="614873000" />
+    <option name="totallyTimeSpent" value="615974000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-106" width="1792" height="1005" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931413" visible="true" weight="0.14229248" />
       <window_info id="Structure" order="1" sideWeight="0.5006859" side_tool="true" weight="0.29956427" />
@@ -599,7 +623,8 @@
     <MESSAGE value="update responsiveness" />
     <MESSAGE value="update edit post" />
     <MESSAGE value="added video upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="added video upload" />
+    <MESSAGE value="phone video upload test" />
+    <option name="LAST_COMMIT_MESSAGE" value="phone video upload test" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/models/admin.js" />
@@ -1347,10 +1372,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/posts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="143" column="49" lean-forward="true" selection-start-line="143" selection-start-column="49" selection-end-line="143" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/posts/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="236" column="30" lean-forward="true" selection-start-line="236" selection-start-column="30" selection-end-line="236" selection-end-column="30" />
+        <state relative-caret-position="78">
+          <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
           <folding>
             <element signature="n#h4#0;n#!!top" expanded="true" />
             <element signature="n#form#0;n#!!top" expanded="true" />
@@ -1367,15 +1399,16 @@
             <element signature="n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#em#0;n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#em#0;n#strong#0;n#div#0;n#div#2;n#h6#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#video#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#p#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#p#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#a#0;n#p#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#strong#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
@@ -1397,13 +1430,6 @@
             <element signature="n#a#0;n#h6#1;n#div#1;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
             <element signature="n#a#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/posts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="156" column="30" lean-forward="true" selection-start-line="156" selection-start-column="30" selection-end-line="156" selection-end-column="30" />
         </state>
       </provider>
     </entry>
