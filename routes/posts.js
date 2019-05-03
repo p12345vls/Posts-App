@@ -151,7 +151,6 @@ function createPost(req, res) {
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
     // all formats (jpg|jpeg|png|gif|mp4|mov|m4v|mpeg-4|3gpp)
-  eval(locus)
 
    if (req.file.path.substring(req.file.path.length - 3) === 'mp4' || req.file.path.substring(req.file.path.length - 3) === 'mov') {
         uploadVideo(req, res);
