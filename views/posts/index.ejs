@@ -61,7 +61,8 @@
 
                     <div class="col-1 ">
 
-                        <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
+                        <div class="user-post-img rounded-circle border border-primary "
+                             style="background-image:url('<%= userImage %>');"></div>
                     </div>
 
                     <div class="col-1 col-space"></div>
@@ -72,22 +73,34 @@
                                     posted by
                                     <a href="users/<%= post.author.id %>"> <%= post.author.username %></a>
                                     <div class="col">
-                                        <small ><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
+                                        <small><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
                                     </div>
                                 </em>
                             </strong>
                         </div>
                     </div>
                 </h6>
-
             </div>
-
             <a href="posts/<%= post._id %>">
+                <!--if it is a video-->
+                <% if(post.image.substring(post.image.length - 3) === 'mp4') { %>
 
 
-                <div class="all-posts-img container-fluid rounded " style=" background-image: url('<%= post.image %>');"></div>
+                    <hr>
+                    <video class="all-posts-img container-fluid rounded" controls>
+                        <source type="video/mp4" src="<%= post.image %>"/>
+                        Your browser does not support HTML5 video.
+                    </video>
 
+
+                <% } else { %>
+                    <!--it is an image-->
+                    <div class="all-posts-img container-fluid rounded "
+                         style=" background-image: url('<%= post.image %>');"></div>
+                <% } %>
             </a>
+
+
             <div class="card-body ">
                 <strong><em class=""><p class="card-text ">Description</p></em> </strong>
                 <% if(post.description.length < 100) { %>
@@ -137,7 +150,8 @@
                                     <% users.forEach(function(user){ %>
                                         <% if(comment.author.id.equals(user.id)){ %>
 
-                                            <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+                                            <div class="user-comment-img rounded-circle border border-primary "
+                                                 style="background-image:url('<%= user.avatar %>');"></div>
 
                                         <% } %>
                                     <% }); %>

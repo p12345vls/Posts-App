@@ -7,9 +7,9 @@
 
 //-----------------------------------------------------------
         //for closing the flash message
-        setTimeout(function () {
-            $(".alert").alert('close');
-        }, 3000);
+        // setTimeout(function () {
+        //     $(".alert").alert('close');
+        // }, 3000);
 //-----------------------------------------------------------
 
 
@@ -17,7 +17,7 @@
 
         $("#sbmt").click(function () {
             $('input[type="text"]').each(function () {
-                if ($(this).val() != "") {
+                if ($(this).val() !== "") {
                     $('#loading').html('<i  class="fas fa-sync fa-spin text-secondary "></i>');
                 }
             });
