@@ -150,9 +150,9 @@ function createPost(req, res) {
 
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
-    //eval(locus)
-    if(encodeURIComponent(req.file.path).substring(encodeURIComponent(req.file.path).length - 3) === 'mp4'
-        || encodeURIComponent(req.file.path).substring(encodeURIComponent(req.file.path).length - 3) === 'mov'){
+    // eval(locus)
+    if(req.file.path.substring(req.file.path.length - 3) === 'mp4'
+        || req.file.path.substring(req.file.path.length - 3) === 'mov'){
         uploadVideo(req, res);
     } else {
         uploadImage(req, res);
