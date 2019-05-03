@@ -15,13 +15,13 @@ var storage = multer.diskStorage({
     }
 });
 var imageFilter = function (req, file, cb) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4)$/i)) {
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|mov|m4v|mpeg-4|3gpp)$/i)) {
         return cb(new Error('Only image files are allowed'), false);
     }
     cb(null, true);
 };
 
-var upload = multer({storage: storage});   //, fileFilter: imageFilter});
+var upload = multer({storage: storage, fileFilter: imageFilter});
 
 var cloudinary = require('cloudinary');
 
@@ -150,8 +150,9 @@ function createPost(req, res) {
 
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
+    // all formats (jpg|jpeg|png|gif|mp4|mov|m4v|mpeg-4|3gpp)
 
-    if (true){//req.file.path.substring(req.file.path.length - 3) === 'mp4') {
+   if (req.file.path.substring(req.file.path.length - 3) === 'mp4' || req.file.path.substring(req.file.path.length - 3) === 'mov') {
         uploadVideo(req, res);
     } else {
         uploadImage(req, res);

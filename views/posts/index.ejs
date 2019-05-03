@@ -82,9 +82,10 @@
                 </h6>
             </div>
             <a href="posts/<%= post._id %>">
-                <!--if it is a video-->
-                <% if(true) { %>
 
+
+                <!--if it is a video from local or from iphone -->
+                <% if((post.image.substring(post.image.length - 3) === 'mp4')|| (post.image.substring(post.image.length - 3) === 'mov')) { %>
 
                     <hr>
                     <video class="all-posts-img container-fluid rounded" controls>
