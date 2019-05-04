@@ -5,13 +5,9 @@ var Comment = require('../models/comment');
 var User = require('../models/user');
 var middleware = require("../middleware/index");
 var func = require('../js/functions');
-
-
 var locus = require('locus');
-
 var request = require('request');
 var multer = require('multer');
-
 
 var storage = multer.diskStorage({
     filename: function (req, file, callback) {
@@ -19,8 +15,8 @@ var storage = multer.diskStorage({
     }
 });
 var imageFilter = function (req, file, cb) {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-        return cb(new Error('Only image files are allowed'), false);
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|mov)$/i)) {
+        return cb(new Error('Only image files are allowed or videos (mp4, mov'), false);
     }
     cb(null, true);
 };
@@ -121,7 +117,7 @@ router.get("/", function (req, res) {
                 if (err) {
                     console.log(err);
                 } else {
-                    // eval(locus);
+
                     res.render("posts/index", {
                         posts: allPosts,
                         users: foundUsers,
@@ -138,27 +134,31 @@ router.get("/", function (req, res) {
 });
 
 
+function createPost(req, res) {
+    Posts.create(req.body.post, function (err, post) {
+        if (err) {
+            req.flash('error', err.message);
+            return res.redirect('back');
+        }
+        req.flash('success', 'New Post Created');
+        res.redirect('/posts');
+    });
+}
+
+
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
+    // eval(locus)
 
-   console.log(req.file.path);
-    cloudinary.uploader.upload(req.file.path, function (result) {
-        // add cloudinary url for the image to the post object under image property
-        req.body.post.image = result.secure_url;
-        // add author to post
-        req.body.post.author = {
-            id: req.user._id,
-            username: req.user.username
-        };
-        Posts.create(req.body.post, function (err, post) {
-            if (err) {
-                req.flash('error', err.message);
-                return res.redirect('back');
-            }
-            req.flash('success', 'New Post Created');
-            res.redirect('/posts');
-        });
-    });
+    if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
+        req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png') {
+        uploadImage(req, res);
+    } else {
+        uploadVideo(req, res);
+    }
+
 });
 
 //NEW - show form to create new post
@@ -209,17 +209,43 @@ router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
 });
 
 //update
-router.put('/:id', middleware.checkPostOwnership, (req, res) => {
+router.put('/:id', middleware.checkPostOwnership, upload.single('image'), function (req, res) {
 
-    Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-        console.log("req.body " + updatedPost);
-        if (err) {
-            res.redirect("/posts");
-        } else {
-            //redirect somewhere(show page)
-            res.redirect("/posts/" + req.params.id);
-        }
-    });
+    // Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+    //     console.log("req.body " + updatedPost);
+    //     if (err) {
+    //         res.redirect("/posts");
+    //     } else {
+    //         //redirect somewhere(show page)
+    //         res.redirect("/posts/" + req.params.id);
+    //     }
+    // });
+
+    // in case empty image
+    if (req.file === undefined) {
+        res.redirect('back')
+    } else {
+
+
+        cloudinary.uploader.upload(req.file.path, function (result) {
+            // add cloudinary url for the image to the post object under image property
+            req.body.post.image = result.secure_url;
+            // add author to post
+            req.body.post.author = {
+                id: req.user._id,
+                username: req.user.username
+            };
+            Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+                console.log("req.body " + updatedPost);
+                if (err) {
+                    res.redirect("/posts");
+                } else {
+                    //redirect somewhere(show page)
+                    res.redirect("/posts/" + req.params.id);
+                }
+            });
+        });
+    }
 });
 
 router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
@@ -228,13 +254,44 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
             console.log(err);
             res.redirect('/posts');
         } else {
-
             res.redirect('/userPosts');
         }
     });
 });
 
+function uploadImage(req, res) {
+    cloudinary.uploader.upload(req.file.path, function (result) {
+        // add cloudinary url for the image to the post object under image property
+        req.body.post.image = result.secure_url;
+        // add author to post
+        req.body.post.author = {
+            id: req.user._id,
+            username: req.user.username
+        };
+        createPost(req, res);
+    });
+}
 
+
+function uploadVideo(req, res) {
+    cloudinary.v2.uploader.upload_large(req.file.path, {resource_type: "video"},
+        function (error, result) {
+            console.log(result, error);
+            if (error) {
+                req.flash('error', error.message + "\nMaximum file size limit is 110MB");
+                res.redirect('back')
+            } else {
+                // eval(locus)
+                req.body.post.image = result.secure_url;
+                // add author to post
+                req.body.post.author = {
+                    id: req.user._id,
+                    username: req.user.username
+                };
+                createPost(req, res);
+            }
+        });
+}
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

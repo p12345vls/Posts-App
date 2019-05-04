@@ -9,49 +9,52 @@
 </div>
 
 </nav>
-<%  include ../partials/flsh %>
 
 
+<% include ../partials/flsh %>
+
+<div id="wait-message"></div>
 
 <div id="allText" class="d-none"> <%= availableTags %> </div>
 
 <div class="container-form bg-white p-0  mx-auto">
     <table class="table table-borderless">
         <tr>
-            <tbody class="p-0">
-            <form id="login_form" class="" action="/posts " method="POST" enctype="multipart/form-data">
-                <div class="text-center mb-3 pt-3">
+            <tbody class="p-0 card-body">
+            <form id="post_form" class="" action="/posts " method="POST" enctype="multipart/form-data">
+                <div class="text-center  pt-3">
                     <h2 class="d-inline"> Add New Post </h2>
+                    <h3 id="loading-message" class="text-center text-warning"></h3>
                 </div>
 
                 <div class="row ">
-                    <div class="col-md-10 mx-auto ">
+                    <div class="col-md-10 mx-auto card-body">
 
                         <div class="hover form-group mt-2">
-                            <input type="text" id="title" class="form-control" name="post[name]" maxlength="30" required>
+                            <input type="text" id="title" class="form-control" name="post[name]" maxlength="30"
+                                   required>
                             <label class="form-control-placeholder" for="title">title</label>
                         </div>
-
+                        <p class="text-muted">Image or Video<em><small> (up to 10MB)</small></em></p>
                         <div class=" form-group">
-                            <i class="fa fa-2x fa-image text-right text-primary"><small> </small>
-                                <small class=" pr-5 form-control-placeholder" style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
-                                    <input type="file"  class="" name="image" accept="image/*" >
+
+                            <i class="fa fa-camera-retro fa-2x text-right text-primary">
+                                <small></small>
+                                <small class=" pr-5 form-control-placeholder"
+                                       style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
+                                    <input type="file" id="media" class="" name="image" accept="image/*;video/*"
+                                           required>
                                 </small>
                             </i>
 
                         </div>
 
-                        <!--<div class="hover form-group mt-2">-->
-                            <!--<input type="text" id="or video url" class="form-control" name="post[video]" maxlength="30" required>-->
-                            <!--<label class="form-control-placeholder" for="or video url">or video url</label>-->
-                        <!--</div>-->
-
-
 
                         <div class="hover form-group ">
-                            <textarea type="text" id="description" class="form-control" name="post[description]" cols="100"
+                            <textarea type="text" id="description" id="desc" class="form-control" name="post[description]"
+                                      cols="100"
                                       rows="3" required></textarea>
-                            <label class="form-control-placeholder " for="description">description</label>
+                            <label class="form-control-placeholder"  for="description">description</label>
                         </div>
 
                         <div class="form-group row">
@@ -81,6 +84,18 @@
             </tbody>
     </table>
 </div>
+<script>
+
+    $("#sbmt").click(function () {
+        var isTitle = document.querySelector("#title").value!=='';
+        var isText = document.querySelector("textarea").value !=='';
+        var isImage =document.querySelector("#media").value !=='';
+         if (isTitle&& isText&& isImage){
+             $('#wait-message').html('<h1 id="pulse">Uploading in progress..</h1>');
+         }
+
+    });
+</script>
 
 
 <% include ../partials/footer %>

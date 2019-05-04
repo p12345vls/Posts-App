@@ -1,7 +1,35 @@
+.hover:hover {
+    box-shadow: 0 0 10px rgba(33, 33, 33, .2) !important;
+}
+
+.hover2:hover {
+    box-shadow: 0 0 40px rgba(33, 33, 33, .2) !important;
+}
 
 
+.hover2 {
+    box-shadow: 0 0 15px rgba(33, 33, 33, .2) !important;
+}
+.letter-spacing{
+    letter-spacing: 2px;
+}
+@media only screen and (max-width: 800px) {
+    .title-mobile{
+        display: block;
+    }
+    .title-desktop{
+        display: none;
+    }
+}
 
-
+@media only screen and (min-width: 800px) {
+    .title-mobile{
+        display: none;
+    }
+    .title-desktop{
+        display: block;
+    }
+}
 @media only screen and (max-width: 1185px) {
     .text-link {
         font-size: 10px !important;
@@ -20,6 +48,9 @@
     }
     th{
         font-size: 13px;
+    }
+    .small-font {
+        font-size: 10px;!important;
     }
 }
 

@@ -1,4 +1,9 @@
 <% include ./partials/headStatics %>
+<style>
+    .input-group-sm{
+        margin-top: 10px!important;
+    }
+</style>
 
 <main class="text-left page landing-page" xmlns="http://www.w3.org/1999/html">
     <section>
@@ -88,29 +93,29 @@
 
                         <form class="">
                             <div class="mt-n4">
-                                <div class="form-group input-group-sm"><label for="name"><small> Name</small></label>
-                                    <input class="form-control item " type="text" id="name"></div>
-                                <div class="form-group input-group-sm mt-n3"><label for="email"><small> Email</small></label>
-                                    <input class="form-control item" type="email" id="email">
+                                <div class="form-group input-group-sm">
+                                    <input class="form-control item  hover" type="text" id="name" placeholder="full name"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item hover" type="email" id="email" placeholder="email">
                                 </div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="street"><small> Street Address</small></label>
-                                    <input class="form-control item " type="text" id="street"></div>
+                                <div class="form-group input-group-sm mt-n3">    <!--<label for="street"><small> Street Address</small></label>-->
+                                    <input class="form-control item  hover" type="text" id="street" placeholder="street"></div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="city"><small> City</small></label>
-                                    <input class="form-control item " type="text" id="city"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item  hover" type="text" id="city" placeholder="city"></div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="state"><small> State</small></label>
-                                    <input class="form-control item " type="text" id="state"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item  hover" type="text" id="state" placeholder="state"></div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="country"><small> Country</small></label>
-                                    <input class="form-control item " type="text" id="country"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item  hover" type="text" id="country" placeholder="country"></div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="zip"><small> Zip Code</small></label>
-                                    <input class="form-control item " type="text" id="zip"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item  hover" type="text" id="zip" placeholder="zip code"></div>
 
-                                <div class="form-group input-group-sm mt-n3"><label for="phone"><small> Phone</small></label>
-                                    <input class="form-control item " type="text" id="phone"></div>
+                                <div class="form-group input-group-sm mt-n3">
+                                    <input class="form-control item  hover" type="text" id="phone" placeholder="phone"></div>
                             </div>
 
                             <button class="btn btn-primary btn-block" type="submit">Submit $100.00</button>
@@ -125,6 +130,7 @@
     <!--end Modal ----------------------------------------------------------------------------------------------------------------------->
 
 </main>
+
 <script>document.querySelector('.home-link').style.color = "black"</script>
 <script>document.querySelector('title').innerText = "Home"</script>
 <% include ./partials/footerStatics%>
@@ -133,5 +139,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 <script src="assets/js/script.min.js"></script>
-
+</body>
 </html>

@@ -1,19 +1,76 @@
-<% include ../partials/header %>
-
-<h4 class="rounded p-1 pl-2 pr-2 mt-1 nav-text-center font-weight-light">
-    All Posts
-</h4>
+<% include ../partials/headInfoShare %>
 
 
-<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
-    <input id="tags" class="awesomplete form-control mr-sm-2 "
-           name="search" type="text" placeholder="Search"
-           data-list="<%= availableTags %>">
-    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
-</form>
-</div>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+
+    <div class="container"><a class="navbar-brand logo" href="/"><img src="assets/img/logo-hp.png"
+                                                                      style="height: 40px;width: 45px;"></a>
+
+        <h3 class="title-mobile letter-spacing mt-2 text-secondary ">ALL POSTS</h3>
+
+        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <% if(!currentUser){ %>
+
+
+                <div class="options d-flex justify-content-between align-items-center mr-auto">
+
+                    <div class="btn-group">
+                        <a href="/login"><button type="button" class="btn btn-sm btn-outline-success"><i
+                                    class="fa fa-sign-in fa-lg"></i>Log In</button></a>
+                        <a href="/register"><button type="button" class="  btn btn-sm btn-outline-primary"><i class="fas fa-user-plus"></i>Sign Up</button></a>
+                    </div>
+
+                </div>
+
+                <h3 class="title-desktop letter-spacing mt-2 text-info ">ALL POSTS</h3>
+
+
+            <% } else { %>
+
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item m-2">
+                        <a class=" nav-link text-dark " href="/logout" id="nav3" aria-haspopup="true"
+                           aria-expanded="false">
+                            Log Out <i class="fas fa-sign-out-alt text-dark"></i>
+                        </a>
+                    </li>
+
+                    <div class="options d-flex justify-content-between align-items-center mr-auto">
+                        <div  class="btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
+                              style="background-image:url('<%= currentUser.avatar %>');">
+                        </div>
+                        <div class="btn-group">
+                            <a href="/posts/new"><button type="button" class="small-font btn btn-sm btn-outline-success">Add Post</button></a>
+                            <a href="/userPosts"><button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts</button></a>
+                            <a href="/userPosts/comments"><button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments</button></a>
+                            <a href="/users/<%= currentUser.id %>"><button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile</button></a>
+                        </div>
+
+                    </div>
+
+
+
+                </ul>
+            <% } %>
+
+            <form action="/posts" method="GET" class="form-inline my-2 my-lg-0 ml-auto ">
+                <input id="tags" class="awesomplete form-control mr-sm-2 "
+                       name="search" type="text" placeholder="search here"
+                       data-list="<%= availableTags %>">
+                <button class="btn btn-outline-primary my-2 my-sm-0" value="Search" type="submit"><i
+                            class="fas fa-search "></i></button>
+            </form>
+
+        </div>
+    </div>
 
 </nav>
+
 <% include ../partials/flsh %>
 
 
@@ -29,7 +86,7 @@
 
 <!-- - - - - - - - - - - - - - - -->
 
-<div class="container  p-0 " style="max-width:500px; ">
+<div class="container-body  p-0 top-position">
 
     <div id="start"></div>
 
@@ -61,7 +118,8 @@
 
                     <div class="col-1 ">
 
-                        <div class="user-post-img rounded-circle border border-primary " style="background-image:url('<%= userImage %>');"></div>
+                        <div class="user-post-img rounded-circle border border-primary "
+                             style="background-image:url('<%= userImage %>');"></div>
                     </div>
 
                     <div class="col-1 col-space"></div>
@@ -72,22 +130,38 @@
                                     posted by
                                     <a href="users/<%= post.author.id %>"> <%= post.author.username %></a>
                                     <div class="col">
-                                        <small ><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
+                                        <small><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
                                     </div>
                                 </em>
                             </strong>
                         </div>
                     </div>
                 </h6>
-
             </div>
-
             <a href="posts/<%= post._id %>">
 
+                <% if(post.image != undefined){ %>
+                    <!--if it is a video-->
+                    <!--encodeURIComponent(post.image).substring(encodeURIComponent(post.image))-->
+                    <!--post.image.substring(post.image.length - 3) === 'mp4'-->
+                    <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
+                            || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
 
-                <div class="all-posts-img container-fluid rounded " style=" background-image: url('<%= post.image %>');"></div>
+                        <hr>
+                        <video class="all-posts-img container-fluid rounded" controls>
+                            <source type="video/mp4" src="<%= post.image %>"/>
+                            Your browser does not support HTML5 video.
+                        </video>
 
+
+                    <% } else { %>
+                        <!--it is an image-->
+                        <div class="all-posts-img container-fluid rounded "
+                             style=" background-image: url('<%= post.image %>');"></div>
+                    <% } %>
             </a>
+            <% } %>
+
             <div class="card-body ">
                 <strong><em class=""><p class="card-text ">Description</p></em> </strong>
                 <% if(post.description.length < 100) { %>
@@ -137,7 +211,8 @@
                                     <% users.forEach(function(user){ %>
                                         <% if(comment.author.id.equals(user.id)){ %>
 
-                                            <div class="user-comment-img rounded-circle border border-primary " style="background-image:url('<%= user.avatar %>');"></div>
+                                            <div class="user-comment-img rounded-circle border border-primary "
+                                                 style="background-image:url('<%= user.avatar %>');"></div>
 
                                         <% } %>
                                     <% }); %>
@@ -244,6 +319,12 @@
         </div>
     <% }); %>
 </div>
+
+<script>
+    document.getElementById('tags').addEventListener('change', function () {
+        document.querySelector('form').submit();
+    });
+</script>
 
 <script>document.querySelector('title').innerText = "All Posts"</script>
 <% include ../partials/footer %>

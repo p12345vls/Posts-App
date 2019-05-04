@@ -45,30 +45,23 @@ cloudinary.config({
 
 var tags;
 router.get("/register", function (req, res) {
-    post.find({}).sort([['_id', -1]]).populate("comments").exec(function (err, allposts) {
-        if (err) {
-            console.log(err);
-        }
-        tags = allFields(allposts);
-        res.render("register", {availableTags: tags});
-    });
+    res.render("register", {availableTags: tags});
 });
 //handle sign up logic
 router.post("/register", upload.single('image'), function (req, res) {
+
 
     var avatarImg = req.body.image;
     var newUser;
     cloudinary.uploader.upload(req.file.path, function (result) {
         avatarImg = result.secure_url;
-
-
         newUser = new User({
             username: req.body.username,
             password: req.body.password,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            firstName: '',
+            lastName: '',
             avatar: avatarImg,
-            city: req.body.city,
+            city: '',
             email: req.body.email
         });
 
@@ -93,15 +86,7 @@ router.post("/register", upload.single('image'), function (req, res) {
 
 // show login form
 router.get("/login", function (req, res) {
-    post.find({}).sort([['_id', -1]]).populate("comments").exec(function (err, allposts) {
-        if (err) {
-            console.log(err);
-        }
-        tags = allFields(allposts);
-
-        res.render("login", {availableTags: tags});
-    });
-
+    res.render("login");
 });
 
 //==============================================================
@@ -145,7 +130,7 @@ router.get('/users/:id/edit', (req, res) => {
 
 
 //update user fields except image
-router.put('/users/:id',(req, res) => {
+router.put('/users/:id', (req, res) => {
 
 
     User.findByIdAndUpdate(req.params.id, req.body.user, function (err, updatedUser) {
@@ -167,7 +152,7 @@ router.get('/users/:id/edit/imageEdit', (req, res) => {
 
 
 //update picture with post, instead of put, since body has multipart data
-router.post('/users/:id/imageEdit',upload.single('image'), (req, res) => {
+router.post('/users/:id/imageEdit', upload.single('image'), (req, res) => {
 
     var avatarImg;
 
@@ -175,20 +160,21 @@ router.post('/users/:id/imageEdit',upload.single('image'), (req, res) => {
         avatarImg = result.secure_url;
 
 
-        User.findByIdAndUpdate(req.params.id, {$set:{avatar:avatarImg}}, {new: true}, function (err, updatedUser) {
-                console.log("\nreq.body " + updatedUser);
-                if (err) {
-                    res.redirect("/users/show");
-                } else {
-                    //redirect somewhere(show page)
-                    res.redirect("/users/" + req.params.id);
-                }
-            });
+        User.findByIdAndUpdate(req.params.id, {$set: {avatar: avatarImg}}, {new: true}, function (err, updatedUser) {
+            console.log("\nreq.body " + updatedUser);
+            if (err) {
+                res.redirect("/users/show");
+            } else {
+                //redirect somewhere(show page)
+                res.redirect("/users/" + req.params.id);
+            }
+        });
 
 
     });
 
 });
+
 //================================================================
 
 function allFields(allposts) {

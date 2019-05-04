@@ -177,6 +177,12 @@ body, html {
     }
 }
 
+@media screen and (max-width: 360px) {
+    #header-form{
+        font-size: 29px;
+    }
+}
+
 strong {
     font-weight: 700
 }
@@ -184,3 +190,11 @@ strong {
 .highlight {
     color: #0b2e13;
 }
+#tags::placeholder {
+
+    font-size: 12px;
+}
+#tags{
+    width:10em ;
+}
+
