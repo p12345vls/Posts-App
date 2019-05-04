@@ -1,109 +1,97 @@
-<% include ./partials/header %>
+<% include ./partials/headInfoShare %>
+<style></style>
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+    <div class="container"><a class="navbar-brand logo" href="/"><img src="assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a>
 
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
-    <input id="tags" class="awesomplete form-control mr-sm-2 "
-           name="search" type="text" placeholder="Search"
-           data-list="">
-    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
-</form>
-
-</div>
-
-</nav>
-
-<% include ./partials/flsh %>
-
-<% if (typeof message != "undefined"){ %>
-    <div class="container-message text-center flash ">
-        <div id="warning-alert" class="alert alert-warning alert-dismissible fade show" role="alert">
-            <%= message %>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav m-auto">
+                <li class="nav-item " role="presentation">
+                    <a class="nav-link  home-link" href="/posts"><strong class="text-link "><i class="fas fa-home "> </i> All Posts</strong></a></li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" href="/login">
+                        <strong class="text-link about-link">Already a User ? <span class="text-primary">Login</span></strong><br></a></li>
+            </ul>
         </div>
     </div>
-<% } %>
+</nav>
 
-<div class="container-form bg-white p-0  mx-auto hover2  border-top border-primary ">
-    <table class="table table-borderless ">
-        <tr>
-            <tbody class="p-0">
+
+<main class="page contact-us-page">
+
+    <% if (typeof message != "undefined"){ %>
+        <div class="container-message text-center flash" style="z-index: 2">
+            <div id="warning-alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <%= message %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    <% } %>
+
+
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 id="header-form" class="text-info">Register to Info Share</h2>
+            </div>
             <form id="signUp" class="" action="/register " method="POST" enctype="multipart/form-data">
-                <div class="text-center pt-2">
-                    <h2 class="d-inline fadeIn "> Sign Up </h2>
-                </div>
+                <div class="form-group">
+                    <input class="form-control" id="username" name="username" type="text" placeholder="username" required></div>
+                <div class="form-group">
+                    <input class="form-control" id="pass" name="password" type="password" placeholder="password" required minlength="6"></div>
+                <div class="form-group">
+                    <input class="form-control" id="email" name="email" type="email" placeholder="email" required></div>
 
-                <div class="card-body">
-                    <div class="col-md-12 mx-auto ">
+                <div class=" form-group ">
+                    <label for="files" class="btn btn-outline-secondary btn-sm">Select Image Avatar</label><small><span id="url" class="ml-2"></span></small>
+                          <input id='files' type="file"  class="d-none" name="image" accept="image/*" required ></div>
 
-                        <div class="hover form-group mt-2">
-                            <input type="text" id="username" class="form-control" name="username" required >
-                            <label class="form-control-placeholder" for="username">username</label>
-                        </div>
-
-                        <div class="hover form-group ">
-                            <input type="password" id="password" class="form-control" name="password" required minlength="6">
-                            <label class="form-control-placeholder " for="password">password</label>
-                        </div>
-
-                        <div class="hover form-group ">
-                            <input type="text" id="firstName" class="form-control" name="firstName" required>
-                            <label class="form-control-placeholder " for="firstName">first name</label>
-                        </div>
-
-                        <div class="hover form-group ">
-                            <input type="text" id="lastName" class="form-control" name="lastName" required>
-                            <label class="form-control-placeholder " for="lastName">last name</label>
-                        </div>
-
-                        <div class=" form-group">
-                            <i class="fa fa-camera-retro fa-2x text-right text-primary"><small> </small>
-                                <small class=" pr-5 form-control-placeholder" style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
-                                    <input type="file"  class="" name="image" accept="image/*" required>
-                                </small>
-                            </i>
-
-                        </div>
-                        <div class="hover form-group ">
-                            <input type="text" id="city" class="form-control" name="city" required>
-                            <label class="form-control-placeholder " for="city">city</label>
-                        </div>
-
-                        <div class="hover form-group ">
-                            <input type="email" id="email" class="form-control" name="email" required>
-                            <label class="form-control-placeholder " for="email">email</label>
-                        </div>
-
-                        <div class="form-group row mb-lg-n2">
-
-                            <div class="text-center col-3 ml-n1">
-                                <button id="sbmt" class=" btn btn-primary">submit</button>
-                            </div>
-
-                            <div class="d-inline text-center  col-2 mt-1 ">
-                                <div id="loading" class="d-inline "></div>
-                            </div>
-                            <div class="col mr-0">
-                                <span><small>already user</small></span> <a href="login" class="text-decoration-none">
-                                    login</a>
-                            </div>
-                        </div>
-
-                    </div>
-
+                <div class="form-group">
+                    <button id='btn' class="btn btn-primary btn-block" type="submit">Sign Up</button>
                 </div>
             </form>
-            </tr>
-            <tr class="bg-light ">
-                <div class="back-grey text-decoration-none "></div>
-            </tr>
+        </div>
+    </section>
+</main>
 
-            </tbody>
-    </table>
-</div>
+<footer class="page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
+    <div class="footer-copyright">
+        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+    </div>
+</footer>
 
+
+<script>
+   // show to the user that the image is required
+    document.querySelector('#btn').addEventListener('click', (event) => {
+        if(document.querySelector('#username').value!==''&&
+            document.querySelector('#pass').value!==''&&
+            document.querySelector('#email').value!==''){
+
+            if(document.querySelector('#files').value===''){
+                alert('please enter an image avatar')
+            }
+        }
+    });
+    // add the text of the selected file next to 'select image'
+    document.querySelector('#files').addEventListener('change', (event) => {
+        let url = document.querySelector('#files').value;
+         document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
+
+    });
+
+
+</script>
 <script>document.querySelector('title').innerText = "Sign Up Info Share"</script>
-<% include ./partials/footer %>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="assets/js/smoothproducts.min.js"></script>
+<script src="assets/js/theme.js"></script>
+</body>
+</html>
