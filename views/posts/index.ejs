@@ -1,9 +1,9 @@
 <% include ../partials/headInfoShare %>
-
+<script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
 
-    <div class="container"><a class="navbar-brand logo" href="/"><img src="assets/img/logo-hp.png"
+    <div class="container"><a class="navbar-brand logo " href="/"><img src="assets/img/logo-hp.png"
                                                                       style="height: 40px;width: 45px;"></a>
 
         <h3 class="title-mobile letter-spacing mt-2 text-secondary ">ALL POSTS</h3>
@@ -20,14 +20,14 @@
                 <div class="options d-flex justify-content-between align-items-center mr-auto">
 
                     <div class="btn-group">
-                        <a href="/login"><button type="button" class="btn btn-sm btn-outline-success"><i
+                        <a href="/login"><button type="button" class="btn btn-sm btn-outline-success mr-2"><i
                                     class="fa fa-sign-in fa-lg"></i>Log In</button></a>
                         <a href="/register"><button type="button" class="  btn btn-sm btn-outline-primary"><i class="fas fa-user-plus"></i>Sign Up</button></a>
                     </div>
 
                 </div>
 
-                <h3 class="title-desktop letter-spacing mt-2 text-info ">ALL POSTS</h3>
+                <h3 class="title-desktop letter-spacing mt-2 text-black-50 ">ALL POSTS</h3>
 
 
             <% } else { %>
@@ -41,11 +41,11 @@
                     </li>
 
                     <div class="options d-flex justify-content-between align-items-center mr-auto">
-                        <div  class="btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
+                        <div  class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
                               style="background-image:url('<%= currentUser.avatar %>');">
                         </div>
                         <div class="btn-group">
-                            <a href="/posts/new"><button type="button" class="small-font btn btn-sm btn-outline-success">Add Post</button></a>
+                            <a href="/posts/new"><button type="button" class="small-font btn btn-sm btn-outline-success">New Post</button></a>
                             <a href="/userPosts"><button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts</button></a>
                             <a href="/userPosts/comments"><button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments</button></a>
                             <a href="/users/<%= currentUser.id %>"><button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile</button></a>
@@ -94,15 +94,13 @@
     <% var userComment; %>
 
     <% posts.forEach(function(post){ %>
-
-
         <div class="card shadow-sm p-1 mb-1 bg-light rounded hover">
             <div class="card-body">
-
+                <span style="font-size: 25px">Post Title: </span>
 
                 <a class="text-decoration-none" href="posts/<%= post._id %>"><h3
                             class="card-title  text-left col p-2 ">
-                        <%= post.name %>
+                         <%= post.name %>
                     </h3>
                 </a>
 
@@ -148,7 +146,7 @@
                             || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
 
                         <hr>
-                        <video class="all-posts-img container-fluid rounded" controls>
+                        <video class="container-fluid rounded" style="" controls>
                             <source type="video/mp4" src="<%= post.image %>"/>
                             Your browser does not support HTML5 video.
                         </video>
@@ -312,8 +310,7 @@
 
                 </div>
                 <a href="/posts/<%= post._id %>/comments/new"
-                   class="card-link btn btn-primary btn-sm d-inline">
-                    <i class="fas fa-plus"></i>
+                   class="card-link btn btn-outline-success btn-sm d-inline"><i class="fas fa-plus"></i>add a comment
                 </a>
             </div>
         </div>
