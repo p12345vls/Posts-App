@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/posts/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/new.ejs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/posts/new.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="78" column="73" lean-forward="true" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
+            <state relative-caret-position="195">
+              <caret line="70" column="3" selection-start-line="70" selection-start-column="3" selection-end-line="73" />
               <folding>
                 <element signature="n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -58,10 +59,42 @@
                 <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#textarea#0;n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#3;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
-                <element signature="n#footer#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#footer#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#!!top" expanded="true" />
+                <element signature="n#script#0;n#!!top" expanded="true" />
                 <element signature="n#script#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/login.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="404">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#button#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,7 +231,6 @@
         <option value="$PROJECT_DIR$/views/Hippocrates.ejs" />
         <option value="$PROJECT_DIR$/public/stylesheets/statics.css" />
         <option value="$PROJECT_DIR$/views/contact-us.ejs" />
-        <option value="$PROJECT_DIR$/views/login.ejs" />
         <option value="$PROJECT_DIR$/views/partials/headStatics.ejs" />
         <option value="$PROJECT_DIR$/views/partials/headInfoShare.ejs" />
         <option value="$PROJECT_DIR$/views/register.ejs" />
@@ -206,6 +238,7 @@
         <option value="$PROJECT_DIR$/public/stylesheets/main.css" />
         <option value="$PROJECT_DIR$/views/posts/index.ejs" />
         <option value="$PROJECT_DIR$/views/posts/new.ejs" />
+        <option value="$PROJECT_DIR$/views/login.ejs" />
       </list>
     </option>
   </component>
@@ -375,7 +408,7 @@
       <workItem from="1556504558948" duration="10350000" />
       <workItem from="1556580035202" duration="69599000" />
       <workItem from="1556909277383" duration="52326000" />
-      <workItem from="1557083689434" duration="10875000" />
+      <workItem from="1557083689434" duration="11931000" />
     </task>
     <task id="LOCAL-00001" summary="added edit">
       <created>1556500177097</created>
@@ -643,11 +676,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557095939636</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="improved add post2">
+      <created>1557096199599</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1557096199599</updated>
+    </task>
+    <task id="LOCAL-00040" summary="improved add post3">
+      <created>1557096689649</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1557096689649</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="688400000" />
+    <option name="totallyTimeSpent" value="689456000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1281" y="-106" width="1496" height="1000" extended-state="0" />
@@ -666,7 +713,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.497006" visible="true" weight="0.25660792" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.497006" visible="true" weight="0.2555066" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502994" side_tool="true" weight="0.25381264" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3292683" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -743,7 +790,8 @@
     <MESSAGE value="update top position" />
     <MESSAGE value="improved add post" />
     <MESSAGE value="improved add post2" />
-    <option name="LAST_COMMIT_MESSAGE" value="improved add post2" />
+    <MESSAGE value="improved add post3" />
+    <option name="LAST_COMMIT_MESSAGE" value="improved add post3" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/mongoose/lib/utils.js">
@@ -1356,13 +1404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/login.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="22" column="18" lean-forward="true" selection-end-line="72" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/head.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1490,8 +1531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/posts/new.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="78" column="73" lean-forward="true" selection-start-line="78" selection-start-column="73" selection-end-line="78" selection-end-column="73" />
+        <state relative-caret-position="195">
+          <caret line="70" column="3" selection-start-line="70" selection-start-column="3" selection-end-line="73" />
           <folding>
             <element signature="n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#nav#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1512,10 +1553,40 @@
             <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#textarea#0;n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
-            <element signature="n#footer#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#footer#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#!!top" expanded="true" />
             <element signature="n#script#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/login.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#button#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#li#0;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#li#1;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#a#0;n#li#1;n#ul#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
