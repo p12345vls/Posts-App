@@ -1,12 +1,11 @@
 <% include ../partials/headInfoShare %>
-<script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar">
 
     <div class="container"><a class="navbar-brand logo " href="/"><img src="assets/img/logo-hp.png"
                                                                       style="height: 40px;width: 45px;"></a>
 
-        <h3 class="title-mobile letter-spacing mt-2 text-secondary ">ALL POSTS</h3>
+        <h3 class="title-mobile letter-spacing mt-2 text-black ">ALL POSTS</h3>
 
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
             <span class="sr-only ">Toggle navigation</span>
@@ -27,7 +26,7 @@
 
                 </div>
 
-                <h3 class="title-desktop letter-spacing mt-2 text-black-50 ">ALL POSTS</h3>
+                <h3 class="title-desktop letter-spacing mt-2 text-black ">ALL POSTS</h3>
 
 
             <% } else { %>
@@ -52,9 +51,6 @@
                         </div>
 
                     </div>
-
-
-
                 </ul>
             <% } %>
 
@@ -70,11 +66,11 @@
     </div>
 
 </nav>
-
 <% include ../partials/flsh %>
+<!--end nav ----------------------------------------------------------------------------------------------------------->
 
 
-<!-- - - - - - - - - - - - - -->
+<!-- - - - - - -  ------      ---------------------  body -----------------------------------------      - - - - - - -->
 <% var moreDesc,
         someText,
         show,
@@ -86,7 +82,8 @@
 
 <!-- - - - - - - - - - - - - - - -->
 
-<div class="container-body  p-0 top-position">
+
+<div class="container-body  p-0 top-position ">
 
     <div id="start"></div>
 
@@ -95,12 +92,13 @@
 
     <% posts.forEach(function(post){ %>
         <div class="card shadow-sm p-1 mb-1 bg-light rounded hover">
-            <div class="card-body">
-                <span style="font-size: 25px">Post Title: </span>
 
-                <a class="text-decoration-none" href="posts/<%= post._id %>"><h3
+            <div class="card-body " style="background-color: #e5f0f8">
+                <!--<span style="font-size: 25px">Post Title: </span> ----------------------------------------->
+
+                <a style="" class="text-decoration-none" href="posts/<%= post._id %>"><h3
                             class="card-title  text-left col p-2 ">
-                         <%= post.name %>
+                        <%= post.name %>
                     </h3>
                 </a>
 
@@ -145,12 +143,13 @@
                     <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
                             || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
 
-                        <hr>
-                        <video class="container-fluid rounded" style="" controls>
-                            <source type="video/mp4" src="<%= post.image %>"/>
-                            Your browser does not support HTML5 video.
-                        </video>
 
+                        <div class="text-center bg-light "style=" background-image: url('/assets/img/qsKIY.png')">
+                            <video id="myVideo" class=" img-fluid rounded" style="" controls>
+                                <source type="video/mp4" src="<%= post.image %>"preload="metadata"/>
+                                Your browser does not support HTML5 video.
+                            </video>
+                        </div>
 
                     <% } else { %>
                         <!--it is an image-->
@@ -160,7 +159,7 @@
             </a>
             <% } %>
 
-            <div class="card-body ">
+            <div class="card-body" >
                 <strong><em class=""><p class="card-text ">Description</p></em> </strong>
                 <% if(post.description.length < 100) { %>
 
@@ -173,14 +172,10 @@
                     <% moreDesc = uiid(); %>
 
                     <div id="" class="  d-inline " style="display: block;">
-
-
                         <div id="some-desc" class="  d-inline " style="display: block;">
-
                             <p id="<%= show %>" class="text-muted" style="display:none;">
                                 <%= post.description %>
                             </p>
-
                             <p id="<%= someText %>" class="text-muted ">
                                 <%= post.description.substring(0, 100); %> ...<a id="<%= moreDesc %>"
                                                                                  class="btn d-inline-flex m-n2">
@@ -283,7 +278,7 @@
 
                     <% } else { %>
                         <hr>
-                        <span class="text-muted"> There are not comments for this post yet</span>
+                        <span class="text-muted"><small> There are not comments for this post yet</small></span>
                     <% } %>
 
                     <% var sum = counter - counter2; %>
@@ -318,6 +313,7 @@
 </div>
 
 <script>
+
     document.getElementById('tags').addEventListener('change', function () {
         document.querySelector('form').submit();
     });
