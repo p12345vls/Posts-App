@@ -19,7 +19,9 @@
 body {
     background: #e6ecf0 !important;
 }
-
+.body-post{
+    background-color: #e9ecef;
+}
 ::placeholder {
     color: #257aff !important;
     opacity: 1; /* Firefox */
@@ -118,8 +120,8 @@ body {
     margin:auto;
     z-index: 2;
 
-    /*position: absolute;*/
-    top: 80px;
+    position: absolute;
+    top: 85px;
     left: 0;
     right: 0;
     max-height:10px;
@@ -131,16 +133,58 @@ body {
     margin: auto;
 
 }
+.new-post-page{
+    margin-top: 100px;
+    /*max-width: 500px;*/
+    /*margin:auto;*/
+}
+ #title-for-post::placeholder{
+     color: #989a9c !important;
+ }
 
  @media only screen and (min-width: 760px) {
      .top-position{
          margin-top: 90px;
+     }
+     .container-message {
+         max-width: 700px;
+         margin:auto;
+         z-index: 2;
+
+         position: absolute;
+         top: 85px;
+         left: 0;
+         right: 0;
+         max-height:10px;
+         opacity: 0.7;
      }
  }
 
  @media only screen and (max-width: 420px) {
      .top-position{
          margin-top: 60px;
+     }
+     .post-title{
+         font-size: 20px;
+     }
+     .login-page{
+         margin-top: -40px;
+     }
+     .register-page{
+         margin-top: -40px;
+     }
+
+     .container-message {
+         max-width: 700px;
+         margin:auto;
+         z-index: 2;
+
+         position: absolute;
+         top: 55px;
+         left: 0;
+         right: 0;
+         max-height:10px;
+         opacity: 0.7;
      }
  }
 
