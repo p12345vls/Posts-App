@@ -66,13 +66,13 @@
         </div>
     </section>
 </main>
-<!---->
+<!--do not display it in mobile formats-->
 
-    <div class="footer-copyright dark position-absolute bg-dark text-center text-muted "style="bottom:0; left: 0;right:0; font-size: 15px">
-        <p class="">© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+<footer class="page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
+    <div class="footer-copyright">
+        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
     </div>
-
-
+</footer>
 
 <script>
     // show to the user that the image or video is required
@@ -89,13 +89,11 @@
         }
 
     });
-
     // add the text of the selected file next to 'select image'
     document.querySelector('#files').addEventListener('change', (event) => {
         let url = document.querySelector('#files').value;
         document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
     });
-
 </script>
 
 <script>
