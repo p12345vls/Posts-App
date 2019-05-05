@@ -16,7 +16,7 @@
 </nav>
 
 
-<main class="page mt-n5">
+<main class="page mt-n5 mb-4">
 
     <% if (typeof message != "undefined"){ %>
         <div class="container-message text-center flash" style="z-index: 2">
@@ -60,11 +60,8 @@
                 <div class="form-group">
                     <button id='btn' class="btn btn-primary btn-block" type="submit">Submit </button>
                 </div>
-
-
+                <!--gif loading-->
                     <div id="loading" class="text-center "></div>
-
-
             </form>
         </div>
     </section>
@@ -78,7 +75,6 @@
 
 
 <script>
-
     // show to the user that the image or video is required
     document.querySelector('#btn').addEventListener('click', (event) => {
         if(document.querySelector('#desc').value!==''&&
@@ -99,9 +95,6 @@
         let url = document.querySelector('#files').value;
         document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
     });
-
-
-
 
 </script>
 
