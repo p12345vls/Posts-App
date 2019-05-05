@@ -2,6 +2,14 @@
     box-shadow: 0 0 10px rgba(33, 33, 33, .2) !important;
 }
 
+.input-group-sm{
+    margin-top: 10px!important;
+}
+
+.navbar{
+    margin-top: -10px!important;
+}
+
 .hover2:hover {
     box-shadow: 0 0 40px rgba(33, 33, 33, .2) !important;
 }

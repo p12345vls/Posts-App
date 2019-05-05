@@ -131,9 +131,20 @@ body {
     margin: auto;
 
 }
- .top-position{
-     margin-top: 100px;
+
+ @media only screen and (min-width: 760px) {
+     .top-position{
+         margin-top: 90px;
+     }
  }
+
+ @media only screen and (max-width: 420px) {
+     .top-position{
+         margin-top: 60px;
+     }
+ }
+
+
 
 /*-------comment box-----------------*/
 .tip {
