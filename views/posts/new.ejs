@@ -1,20 +1,22 @@
 <% include ../partials/headInfoShare%>
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-    <div class="container"><a class="navbar-brand logo" href="/"><img src="/assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a>
 
+    <div class="container"><a class="navbar-brand logo" href="/"><img src="/assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a>
+        <h3 class="title-mobile letter-spacing mt-2 text-black ">New Post</h3>
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
             <span class="sr-only ">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
-            <h3 class="m-auto">Add a New Post</h3>
+            <h3 class="title-desktop letter-spacing mt-2 m-auto text-black ">Add a New Post</h3>
         </div>
     </div>
+
 </nav>
 
 
-<main class="page m-n5">
+<main class="page mt-n5">
 
     <% if (typeof message != "undefined"){ %>
         <div class="container-message text-center flash" style="z-index: 2">
@@ -27,9 +29,9 @@
         </div>
     <% } %>
 
-        <% var title = "<small><em> max 30 char</em></small>"%>
 
-    <section class="clean-block clean-form dark">
+
+    <section class="clean-block clean-form dark ">
         <div class="container">
             <div class="block-heading">
                 <!--<h2 id="header-form" class="text-info">Add a New Post</h2>-->
@@ -39,7 +41,7 @@
                 <h3 id="loading-message" class="text-center text-warning"></h3>
                 <!--add a title-->
                 <div class="form-group">
-                    <input type="text" id="title-for-post" class="form-control" name="post[name]" maxlength="30" placeholder="title" required></div>
+                    <input type="text" id="title-for-post" class="form-control hover" name="post[name]" maxlength="30" placeholder="title" required></div>
                 <!--select image or video-->
                 <div class=" form-group ">
                     <label for="files" class="btn btn-outline-secondary btn-sm">
