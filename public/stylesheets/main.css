@@ -19,7 +19,9 @@
 body {
     background: #e6ecf0 !important;
 }
-
+.body-post{
+    background-color: #e9ecef;
+}
 ::placeholder {
     color: #257aff !important;
     opacity: 1; /* Firefox */
@@ -118,8 +120,8 @@ body {
     margin:auto;
     z-index: 2;
 
-    /*position: absolute;*/
-    top: 80px;
+    position: absolute;
+    top: 85px;
     left: 0;
     right: 0;
     max-height:10px;
@@ -131,17 +133,64 @@ body {
     margin: auto;
 
 }
+.new-post-page{
+    margin-top: 100px;
+    /*max-width: 500px;*/
+    /*margin:auto;*/
+}
+ #title-for-post::placeholder{
+     color: #989a9c !important;
+ }
 
  @media only screen and (min-width: 760px) {
      .top-position{
          margin-top: 90px;
      }
+     .container-message {
+         max-width: 700px;
+         margin:auto;
+         z-index: 2;
+
+         position: absolute;
+         top: 85px;
+         left: 0;
+         right: 0;
+         max-height:10px;
+         opacity: 0.7;
+     }
+
  }
 
  @media only screen and (max-width: 420px) {
      .top-position{
          margin-top: 60px;
      }
+     .post-title{
+         font-size: 20px;
+     }
+     .login-page{
+         margin-top: -40px;
+     }
+     .register-page{
+         margin-top: -40px;
+     }
+
+     .container-message {
+         max-width: 700px;
+         margin:auto;
+         z-index: 2;
+
+         position: absolute;
+         top: 55px;
+         left: 0;
+         right: 0;
+         max-height:10px;
+         opacity: 0.7;
+     }
+     .hide-in-mobile{
+         display: none!important;
+     }
+
  }
 
 
@@ -171,9 +220,51 @@ body {
     /*background: transparent;*/
     /*border: 8px solid #4567fa;*/
 
-    top: 10px; /* Same as body margin top + border */
-    left: -25px;
+    top: -3px; /* Same as body margin top + border */
+    left: -50px;
 }
+
+ .arrow-down {
+     width: 50px;
+     height: 50px;
+     background: rgba(84, 223, 108, 0);
+     position: relative;
+ }
+
+ .arrow-down.active {
+     background: rgba(84, 223, 108, 0);
+ }
+
+ .arrow-down:before, .arrow-down:after {
+     content: "";
+     display: block;
+     width: 20px;
+     height: 5px;
+     background: blue;
+     position: absolute;
+     top: 20px;
+     transition: transform .5s;
+ }
+
+ .arrow-down:before {
+     right: 21px;
+     border-top-left-radius: 10px;
+     border-bottom-left-radius: 10px;
+     transform: rotate(45deg);
+ }
+
+ .arrow-down:after {
+     right: 10px;
+     transform: rotate(-45deg);
+ }
+
+ .arrow-down.active:before {
+     transform: rotate(-45deg);
+ }
+
+ .arrow-down.active:after {
+     transform: rotate(45deg);
+ }
 
 .tip-arrowUp{
     /*top: 23px; !* Same as body margin top + border *!*/
