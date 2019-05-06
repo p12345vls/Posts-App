@@ -28,9 +28,10 @@
             <% } else { %>
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item m-2">
-                        <a class=" nav-link text-dark " href="/logout" id="nav3" aria-haspopup="true"
-                           aria-expanded="false">
-                            Log Out <i class="fas fa-sign-out-alt text-dark"></i>
+                        <a href="/logout">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                                <i class="fa fa-sign-out fa-lg"></i>Log out
+                            </button>
                         </a>
                     </li>
                     <div class="options d-flex justify-content-between align-items-center mr-auto">
@@ -80,6 +81,8 @@
         someComment,
         bodyComment,
         commentArrow,
+        upArrow,
+        downArrow,
         allComment; %>
 <!-- - - - - - - - - - - - - - - -->
 
@@ -172,6 +175,8 @@
                             </p>
                         </div>
                     </div>
+                    <!--show the description if it is more than 100 characters-->
+                    <% include ../partials/ejs/showDescription %>
                 <% } %>
                 <!--if there are comments display up to three comments-->
                 <div>
@@ -202,10 +207,13 @@
                                         <% bodyComment = uiid() %>
                                         <% allComment = uiid() %>
                                         <% commentArrow = uiid() %>
+                                        <% upArrow = uiid() %>
+                                        <% downArrow = uiid()%>
                                         <div class="dialogbox ">
                                             <div class="body" id='<%= bodyComment %>'>
-                                                <span id="<%= commentArrow %>" class="arrow tip-arrowUp btn">
-                                                     <i class=" fas fa-arrows-alt-v text-primary"></i>
+
+                                                <span  id="<%= commentArrow %>"  class="arrow tip-arrowUp btn">
+                                                    <div style="transform: scale(0.5)" class="arrow-down" onclick="this.classList.toggle('active')"></div>
                                                 </span>
                                                 <span class="tip tip-up"></span>
                                                 <div class="message">

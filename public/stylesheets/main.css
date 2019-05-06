@@ -187,7 +187,7 @@ body {
          max-height:10px;
          opacity: 0.7;
      }
-     .page-footer{
+     .hide-in-mobile{
          display: none!important;
      }
 
@@ -220,9 +220,51 @@ body {
     /*background: transparent;*/
     /*border: 8px solid #4567fa;*/
 
-    top: 10px; /* Same as body margin top + border */
-    left: -25px;
+    top: -3px; /* Same as body margin top + border */
+    left: -50px;
 }
+
+ .arrow-down {
+     width: 50px;
+     height: 50px;
+     background: rgba(84, 223, 108, 0);
+     position: relative;
+ }
+
+ .arrow-down.active {
+     background: rgba(84, 223, 108, 0);
+ }
+
+ .arrow-down:before, .arrow-down:after {
+     content: "";
+     display: block;
+     width: 20px;
+     height: 5px;
+     background: blue;
+     position: absolute;
+     top: 20px;
+     transition: transform .5s;
+ }
+
+ .arrow-down:before {
+     right: 21px;
+     border-top-left-radius: 10px;
+     border-bottom-left-radius: 10px;
+     transform: rotate(45deg);
+ }
+
+ .arrow-down:after {
+     right: 10px;
+     transform: rotate(-45deg);
+ }
+
+ .arrow-down.active:before {
+     transform: rotate(-45deg);
+ }
+
+ .arrow-down.active:after {
+     transform: rotate(45deg);
+ }
 
 .tip-arrowUp{
     /*top: 23px; !* Same as body margin top + border *!*/
