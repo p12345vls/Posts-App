@@ -5,10 +5,18 @@
 }
 
 .wrapper-profile {
-
     max-width: 500px;
     margin: auto;
 }
+
+@media only screen and (max-width: 420px) {
+    .wrapper-profile {
+        margin-top: 54px!important;
+    }
+
+}
+
+
 
 .profile-pic {
     width: 150px;

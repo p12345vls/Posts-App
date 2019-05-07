@@ -3,7 +3,7 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
     <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
                                                                        style="height: 40px;width: 45px;"></a>
-        <h3 class="title-mobile letter-spacing mt-2 text-black "><%= post.name %> </h3>
+        <h3 class="title-mobile letter-spacing mt-2 text-black "><%=    %> </h3>
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
             <span class="sr-only ">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
@@ -24,12 +24,12 @@
                         </a>
                     </div>
                 </div>
-                <h3 class="title-desktop letter-spacing mt-2 text-black "><%= post.name %> </h3>
+                <h3 class="title-desktop letter-spacing mt-2 text-black "><%=    %> </h3>
             <% } else { %>
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item m-2">
                         <a href="/logout">
-                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary">
                                 <i class="fa fa-sign-out fa-lg"></i>Log out
                             </button>
                         </a>
@@ -88,35 +88,35 @@
                 </h3>
             <% } %>
 
-                <!--the top part of the card --------------------------------------------------->
-                <h6 class="card-subtitle row ">
-                    <% users.forEach(function(user){ %>
-                        <% if(post.author.id == user.id){ %>
-                            <% userComment = user %>
-                            <% userImage = user.avatar %>
-                        <% } %>
-                    <% }); %>
+            <!--the top part of the card --------------------------------------------------->
+            <h6 class="card-subtitle row ">
+                <% users.forEach(function(user){ %>
+                    <% if(post.author.id == user.id){ %>
+                        <% userComment = user %>
+                        <% userImage = user.avatar %>
+                    <% } %>
+                <% }); %>
 
-                    <div class="col-1 ">
-                        <div class="user-post-img rounded-circle border border-primary "
-                             style="background-image:url('<%= userImage %>');"></div>
+                <div class="col-1 ">
+                    <div class="user-post-img rounded-circle border border-primary "
+                         style="background-image:url('<%= userImage %>');"></div>
+                </div>
+                <div class="col-1 col-space"></div>
+                <div class="col-8">
+                    <div>
+                        <strong>
+                            <em class="col">
+                                posted by
+                                <a href="/users/<%= post.author.id %>"> <%= post.author.username %></a>
+                                <div class="col">
+                                    <small><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
+                                </div>
+                            </em>
+                        </strong>
                     </div>
-                    <div class="col-1 col-space"></div>
-                    <div class="col-8">
-                        <div>
-                            <strong>
-                                <em class="col">
-                                    posted by
-                                    <a href="/users/<%= post.author.id %>"> <%= post.author.username %></a>
-                                    <div class="col">
-                                        <small><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
-                                    </div>
-                                </em>
-                            </strong>
-                        </div>
-                    </div>
-                </h6>
-                <!--end top part of the card --------------------------------------------------->
+                </div>
+            </h6>
+            <!--end top part of the card --------------------------------------------------->
         </div>
 
         <% if(post.image != undefined){ %>
@@ -130,24 +130,20 @@
                         Your browser does not support HTML5 video.
                     </video>
                 </div>
-
             <% } else { %>
                 <!--it is an image-->
-                <div class="all-posts-img container-fluid rounded "
-                     style=" background-image: url('<%= post.image %>');"></div>
+                <div class=" rounded ">
+                    <img class=" img-fluid " src="<%= post.image %> " alt="">
+                </div>
             <% } %>
-            </a>
         <% } %>
 
-        <!--<img class="container img-fluid " src="<%= post.image %> " alt="">-->
+
         <div class="card-body">
-
-
             <strong><em><p class="card-text">Description</p></em></strong>
 
+            <!--seaech results from the search box are displayed here-->
             <% if(descriptionSearch) { %>
-
-
                 <div class="mt-2 bg-white pilled " id="name">
                     <p class="d-inline text-muted "><%= post.description %> </p>
                 </div>
@@ -213,14 +209,11 @@
     <script>
         $(document).ready(function () {
 
-
             if ($("#<%= nameSearch %>")) {
-
                 setTimeout(function () {
                     $("#name").addClass('borderHighlight');
                 }, 1000);
             }
-
 //------------------------------------------
             if ($("#<%= descriptionSearch %>")) {
 
@@ -229,21 +222,17 @@
                 }, 1000);
             }
 //-------------------------------------------
-
 //-------------------------------------------
             if ($("#<%= commentSearch %>")) {
 
                 $('html, body').animate({
                     scrollTop: $("#<%= commentSearch %>").offset().top - 100
                 }, 1000);
-
-
                 setTimeout(function () {
                     $("#<%= commentSearch %>").addClass('borderHighlight');
                 }, 1000);
             }
 //-----------------------------------------
-
         });
     </script>
 
