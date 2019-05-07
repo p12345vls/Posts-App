@@ -1,43 +1,92 @@
-<% include ../partials/header %>
+<% include ../partials/headInfoShare %>
 
-
-<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
-    <input id="tags" class="awesomplete form-control mr-sm-2 "
-           name="search" type="text" placeholder="Search"
-           data-list="">
-    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
-</form>
-
-</div>
-
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
+    <div class="container">
+        <a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
+                                                    style="height: 40px;width: 45px;"></a>
+        <!--<h3 class="title-mobile letter-spacing mt-2 text-black ">ADD POST</h3>-->
+        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <% if(!currentUser){ %>
+                <div class="options d-flex justify-content-between align-items-center mr-auto">
+                    <div class="btn-group">
+                        <a href="/login">
+                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
+                                <i class="fa fa-sign-in fa-lg"></i>Log In
+                            </button>
+                        </a>
+                        <a href="/register">
+                            <button type="button" class="  btn btn-sm btn-outline-primary">
+                                <i class="fas fa-user-plus"></i>Sign Up
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <h3 class="title-desktop letter-spacing mt-2 text-black ">ALL POSTS</h3>
+            <% } else { %>
+                <ul class="nav navbar-nav -auto">
+                    <li class="nav-item m-2">
+                        <a href="/logout">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                                <i class="fa fa-sign-out fa-lg"></i>Log out
+                            </button>
+                        </a>
+                    </li>
+                    <div class="options d-flex  justify-content-between align-items-center mr-auto">
+                        <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
+                             style="background-image:url('<%= currentUser.avatar %>');"></div>
+                        <div class="btn-group">
+                            <a href="/posts">
+                                <button type="button" class="small-font btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-home fa-lg"></i>Home
+                                </button>
+                            </a>
+                            <a href="/userPosts">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
+                                </button>
+                            </a>
+                            <a href="/userPosts/comments">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments
+                                </button>
+                            </a>
+                            <a href="/users/<%= currentUser.id %>">
+                                <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </ul>
+            <% } %>
+        </div>
+    </div>
 </nav>
+
 
 <%  include ../partials/flsh %>
 
 
-<div class="container-form bg-white p-0  mx-auto">
-    <table class="table table-borderless">
+<div class="container-form bg-white p-0  mx-auto hover shadow-sm p-2">
+    <table class="table table-borderless ">
         <tr>
-            <tbody class="p-0">
+            <tbody class="">
     <form id="edit" class="" action="/posts/ <%= post._id %> /comments/<%= comment._id %>?_method=PUT "
           method="POST">
         <h2 class="text-center p-3">Edit Comment </h2>
 
         <div class="row ">
             <div class="col-md-10 mx-auto ">
-
-
                 <div class="hover form-group ">
-                    <textarea type="text" id="new_comment" class="form-control" name="comment[text]" cols="100" rows="3"
+                    <textarea type="text" id="new_comment" class="form-control " name="comment[text]" cols="100" rows="3"
                               required><%= comment.text %></textarea>
                     <label class="form-control-placeholder " for="new_comment"></label>
                 </div>
-
                 <div class="form-group row">
                     <div class="text-center col-1 ">
                         <button id="sbmt" class=" btn btn-primary">submit</button>
                     </div>
-
                     <div class="d-inline text-center ml-5 col-sm">
                         <div id="loading" class="d-inline ml-5 "></div>
                     </div>
@@ -58,7 +107,11 @@
     </table>
 </div>
 
-
+<footer class="hide-in-mobile page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
+    <div class="footer-copyright">
+        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+    </div>
+</footer>
 
 <% include ../partials/footer %>
 

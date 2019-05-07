@@ -1,78 +1,159 @@
-<% include ../partials/header %>
+<% include ../partials/headInfoShare %>
 
-<form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
-    <input id="tags" class="awesomplete form-control mr-sm-2 "
-           name="search" type="text" placeholder="Search"
-           data-list="<%= availableTags %>">
-    <button class="btn btn-primary my-2 my-sm-0" value="Search" type="submit"><i class="fas fa-search "></i></button>
-</form>
-</div>
-
-</nav>
-<%  include ../partials/flsh %>
-
-<div class="container-form bg-white p-0  mx-auto">
-    <table class="table table-borderless">
-        <tr>
-            <tbody class="p-0">
-            <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
-                <div class="text-center mb-3 text-secondary">
-                    <h2 class="d-inline"> Edit <%= post.name %></h2>
-                </div>
-
-                <div class="row  text-muted  ">
-                    <div class="col-md-10 mx-auto">
-
-
-                        <div class="input-group mb-3 input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">name&nbsp;</span>
-                            </div>
-                            <input type="text" name="post[name]" value=" <%= post.name %>"
-                                   class="form-control">
-                        </div>
-                        <div class=" form-group">
-                            <i class="fa fa-2x fa-image text-right text-primary"><small> </small>
-                                <small class=" pr-5 form-control-placeholder" style="font-family: 'Helvetica Neue',serif; font-size: .5em; color:black">
-                                    <input type="file"  class="" name="image" accept="image/*" >
-                                </small>
-                            </i>
-
-                        </div>
-
-                        <div class="form-group">
-                    <textarea class="form-control" name="post[description]" id="description" cols="100" rows="3"
-                              value="<%= post.description %>"><%= post.description %></textarea>
-                        </div>
-
-
-                        <div class="form-group row">
-
-                            <div class="text-center col-1 ">
-                                <button id="sbmt" class=" btn btn-primary">submit</button>
-                            </div>
-
-                            <div class="d-inline text-center ml-5 col-sm">
-                                <div id="loading" class="d-inline ml-5 "></div>
-                            </div>
-                            <div class="col-sm"></div>
-                        </div>
-
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
+    <div class="container">
+        <a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
+                                                    style="height: 40px;width: 45px;"></a>
+        <!--<h3 class="title-mobile letter-spacing mt-2 text-black ">ADD POST</h3>-->
+        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <% if(!currentUser){ %>
+                <div class="options d-flex justify-content-between align-items-center mr-auto">
+                    <div class="btn-group">
+                        <a href="/login">
+                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
+                                <i class="fa fa-sign-in fa-lg"></i>Log In
+                            </button>
+                        </a>
+                        <a href="/register">
+                            <button type="button" class="  btn btn-sm btn-outline-primary">
+                                <i class="fas fa-user-plus"></i>Sign Up
+                            </button>
+                        </a>
                     </div>
-
                 </div>
+                <h3 class="title-desktop letter-spacing mt-2 text-black ">ALL POSTS</h3>
+            <% } else { %>
+                <ul class="nav navbar-nav -auto">
+                    <li class="nav-item m-2">
+                        <a href="/logout">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                                <i class="fa fa-sign-out fa-lg"></i>Log out
+                            </button>
+                        </a>
+                    </li>
+                    <div class="options d-flex  justify-content-between align-items-center mr-auto">
+                        <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
+                             style="background-image:url('<%= currentUser.avatar %>');"></div>
+                        <div class="btn-group">
+                            <a href="/posts">
+                                <button type="button" class="small-font btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-home fa-lg"></i>Home
+                                </button>
+                            </a>
+                            <a href="/userPosts">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
+                                </button>
+                            </a>
+                            <a href="/userPosts/comments">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments
+                                </button>
+                            </a>
+                            <a href="/users/<%= currentUser.id %>">
+                                <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</nav>
+
+
+<main class="page mt-n5 ">
+
+    <% if (typeof message != "undefined"){ %>
+        <div class="container-message text-center flash" style="z-index: 2">
+            <div id="warning-alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+                <%= message %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    <% } %>
+
+    <section class="clean-block clean-form dark ">
+        <div class="container">
+            <div class="block-heading">
+                <h2 id="header-form" class="text-info">Edit <%= post.name %></h2>
+            </div>
+            <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST"
+                  enctype="multipart/form-data">
+                <h3 id="loading-message" class="text-center text-warning"></h3>
+                <!--Edit title-->
+                <div class="form-group">
+                    <input type="text" id="title-for-post" value=" <%= post.name %>" class="form-control hover"
+                           name="post[name]" maxlength="30" placeholder="title" required></div>
+                <!--select image or video-->
+                <div class=" form-group ">
+                    <label for="files" class="btn btn-outline-secondary btn-sm">
+                        New Image or Video<em>
+                            <small> (up to 10MB)</small>
+                        </em>
+                    </label>
+                    <small><span id="url" class="ml-2"></span></small>
+                    <input id='files' type="file" class="d-none" name="image" accept="image/*;video/*" required>
+                </div>
+                <!--text area for description-->
+
+                <div class="hover form-group ">
+                             <textarea class="form-control" name="post[description]" id="desc" cols="100" rows="3"
+                                       value="<%= post.description %>"><%= post.description %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button id='btn' class="btn btn-primary btn-block" type="submit">Submit</button>
+                </div>
+                <!--gif loading-->
+                <div id="loading" class="text-center "></div>
             </form>
-            </tr>
-            <tr class="bg-light ">
-                <div class="back-grey text-decoration-none ">
+        </div>
+    </section>
+</main>
+<!--do not display it in mobile formats-->
 
-                </div>
-            </tr>
+<footer class="hide-in-mobile page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
+    <div class="footer-copyright">
+        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+    </div>
+</footer>
 
-            </tbody>
-    </table>
-</div>
+<script>
+    // show to the user that the image or video is required
+    document.querySelector('#btn').addEventListener('click', (event) => {
+        if (document.querySelector('#desc').value !== '' &&
+            document.querySelector('#title-for-post').value !== '') {
 
-<script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
+            if (document.querySelector('#files').value === '') {
+                alert('please enter an image or a video')
+            } else {
+                document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
+                    '</i><br><p>please be patient this may take up to 45 seconds</p>';
+            }
+        }
 
+    });
+    // add the text of the selected file next to 'select image'
+    document.querySelector('#files').addEventListener('change', (event) => {
+        let url = document.querySelector('#files').value;
+        document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\') + 1);
+    });
+</script>
+
+<script>
+    document.querySelector('title').innerText = "Edit Post"
+</script>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="assets/js/smoothproducts.min.js"></script>
+<script src="assets/js/theme.js"></script>
 <% include ../partials/footer %>
+</body>
+</html>

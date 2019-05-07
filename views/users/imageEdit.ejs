@@ -1,4 +1,72 @@
-<% include ../partials/header %>
+<% include ../partials/headInfoShare %>
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
+    <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
+                                                                       style="height: 40px;width: 45px;"></a>
+        <h3 class="title-mobile letter-spacing mt-2 text-black ">MY PROFILE</h3>
+        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
+            <span class="sr-only ">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <% if(!currentUser){ %>
+                <div class="options d-flex justify-content-between align-items-center mr-auto">
+                    <div class="btn-group">
+                        <a href="/login">
+                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
+                                <i class="fa fa-sign-in fa-lg"></i>Log In
+                            </button>
+                        </a>
+                        <a href="/register">
+                            <button type="button" class="  btn btn-sm btn-outline-primary">
+                                <i class="fas fa-user-plus"></i>Sign Up
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <h3 class="title-desktop letter-spacing mt-2 text-black ">MY PROFILE</h3>
+            <% } else { %>
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item m-2">
+                        <a href="/logout">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                                <i class="fa fa-sign-out fa-lg"></i>Log out
+                            </button>
+                        </a>
+                    </li>
+                    <div class="options d-flex justify-content-between align-items-center mr-auto mt-1">
+                        <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
+                             style="background-image:url('<%= currentUser.avatar %>');"></div>
+                        <div class="btn-group">
+                            <a href="/posts">
+                                <button type="button" class="small-font btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-home fa-lg"></i>Home
+                                </button>
+                            </a>
+                            <a href="/posts/new">
+                                <button type="button" class="small-font btn btn-sm btn-outline-success">New Post
+                                </button>
+                            </a>
+                            <a href="/userPosts">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
+                                </button>
+                            </a>
+                            <a href="/userPosts/comments">
+                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments
+                                </button>
+                            </a>
+                            <a href="/users/<%= currentUser.id %>">
+                                <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </ul>
+            <% } %>
+        </div>
+    </div>
+</nav>
+<% include ../partials/flsh %>
 
 <form action="/posts" method="GET" class="form-inline my-2 my-lg-0">
     <input id="tags" class="awesomplete form-control mr-sm-2 "
