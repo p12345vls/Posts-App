@@ -30,7 +30,7 @@
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item m-2">
                         <a href="/logout">
-                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-warning">
+                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary">
                                 <i class="fa fa-sign-out fa-lg"></i>Log out
                             </button>
                         </a>
@@ -130,7 +130,8 @@
 <% } else { %>
 
     <div class="container-body  p-0 top-position ">
-        <h3 class="text-center">My Comments</h3>
+        <h4 class="title-desktop-second text-center text-secondary">My Comments</h4>
+
 
         <div id="start"></div>
         <% var userImage; %>
@@ -175,14 +176,14 @@
                         <!--end top part of the card --------------------------------------------------->
                     </div>
 
-                    <a href="/posts/<%= post._id %>">
+                    <a href="posts/<%= post._id %>">
+
                         <% if(post.image != undefined){ %>
                             <!--if it is a video-->
                             <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
                                     || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
                                 <!--play video-->
-                                <div class="text-center bg-light "
-                                     style=" background-image: url('/assets/img/qsKIY.png')">
+                                <div class="text-center bg-light " style=" background-image: url('/assets/img/qsKIY.png')">
                                     <video id="myVideo" class=" img-fluid rounded" style="" controls>
                                         <source type="video/mp4" src="<%= post.image %>" preload="metadata"/>
                                         Your browser does not support HTML5 video.
@@ -190,9 +191,11 @@
                                 </div>
                             <% } else { %>
                                 <!--it is an image-->
-                                <div class="all-posts-img container-fluid rounded "
-                                     style=" background-image: url('<%= post.image %>');"></div>
+                                <div class=" rounded ">
+                                    <img class=" img-fluid " src="<%= post.image %> " alt="">
+                                </div>
                             <% } %>
+
                     </a>
                     <% } %>
 

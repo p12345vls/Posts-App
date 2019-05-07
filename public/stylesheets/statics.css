@@ -24,8 +24,10 @@
 @media only screen and (max-width: 800px) {
     .title-mobile{
         display: block;
+        font-size: 20px;
     }
-    .title-desktop{
+
+    .title-desktop, .title-desktop-second{
         display: none;
     }
 }
@@ -36,6 +38,17 @@
     }
     .title-desktop{
         display: block;
+
+    }
+    .title-desktop-second{
+        max-width: 700px;
+        margin:auto;
+        z-index: 2222;
+
+        position: fixed;
+        top: 52px;
+        left: 500px;
+        right: 0px;
     }
 }
 @media only screen and (max-width: 1185px) {
