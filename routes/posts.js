@@ -197,55 +197,53 @@ router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
 
     //and owns the post
     Posts.findById(req.params.id, (err, foundPost) => {
-
         if (err) {
-
             res.redirect('/posts');
         } else {
-
             res.render("posts/edit", {post: foundPost, availableTags: tags});
         }
     });
 });
 
+
 //update
 router.put('/:id', middleware.checkPostOwnership, upload.single('image'), function (req, res) {
 
-    // Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-    //     console.log("req.body " + updatedPost);
-    //     if (err) {
-    //         res.redirect("/posts");
-    //     } else {
-    //         //redirect somewhere(show page)
-    //         res.redirect("/posts/" + req.params.id);
-    //     }
-    // });
-
-    // in case empty image
-    if (req.file === undefined) {
-        res.redirect('back')
+    if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
+        req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png' ||
+        req.file.path.substring(req.file.path.length - 3) === 'png') {
+        updateWithImage(req, res);
     } else {
+        updateWithVideo(req, res);
 
-
-        cloudinary.uploader.upload(req.file.path, function (result) {
-            // add cloudinary url for the image to the post object under image property
-            req.body.post.image = result.secure_url;
-            // add author to post
-            req.body.post.author = {
-                id: req.user._id,
-                username: req.user.username
-            };
-            Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-                console.log("req.body " + updatedPost);
-                if (err) {
-                    res.redirect("/posts");
-                } else {
-                    //redirect somewhere(show page)
-                    res.redirect("/posts/" + req.params.id);
-                }
-            });
-        });
     }
+
+    // // in case empty image
+    // if (req.file === undefined) {
+    //     res.redirect('back')
+    // } else {
+    //
+    //
+    //     cloudinary.uploader.upload(req.file.path, function (result) {
+    //         // add cloudinary url for the image to the post object under image property
+    //         req.body.post.image = result.secure_url;
+    //         // add author to post
+    //         req.body.post.author = {
+    //             id: req.user._id,
+    //             username: req.user.username
+    //         };
+    //         Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+    //             console.log("req.body " + updatedPost);
+    //             if (err) {
+    //                 res.redirect("/posts");
+    //             } else {
+    //                 //redirect somewhere(show page)
+    //                 res.redirect("/posts/" + req.params.id);
+    //             }
+    //         });
+    //     });
+    // }
 });
 
 router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
@@ -291,6 +289,49 @@ function uploadVideo(req, res) {
                 createPost(req, res);
             }
         });
+}
+
+function updatePost(req, res) {
+    Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+        console.log("req.body " + updatedPost);
+        if (err) {
+            res.redirect("/posts");
+        } else {
+            //redirect somewhere(show page)
+            res.redirect("/posts/" + req.params.id);
+        }
+    });
+}
+function updateWithVideo(req, res) {
+    cloudinary.v2.uploader.upload_large(req.file.path, {resource_type: "video"},
+        function (error, result) {
+            console.log(result, error);
+            if (error) {
+                req.flash('error', error.message + "\nMaximum file size limit is 110MB");
+                res.redirect('back')
+            } else {
+                // eval(locus)
+                req.body.post.image = result.secure_url;
+                // add author to post
+                req.body.post.author = {
+                    id: req.user._id,
+                    username: req.user.username
+                };
+                updatePost(req, res);
+            }
+        });
+}
+function updateWithImage(req, res) {
+    cloudinary.uploader.upload(req.file.path, function (result) {
+        // add cloudinary url for the image to the post object under image property
+        req.body.post.image = result.secure_url;
+        // add author to post
+        req.body.post.author = {
+            id: req.user._id,
+            username: req.user.username
+        };
+        updatePost(req, res);
+    });
 }
 
 function escapeRegex(text) {

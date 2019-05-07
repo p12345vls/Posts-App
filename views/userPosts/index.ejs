@@ -1,7 +1,7 @@
 <% include ../partials/headInfoShare %>
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
-    <div class="container"><a class="navbar-brand logo " href="/"><img src="assets/img/logo-hp.png"
+    <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
                                                                        style="height: 40px;width: 45px;"></a>
         <h3 class="title-mobile letter-spacing mt-2 text-black ">MY POSTS</h3>
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
@@ -124,6 +124,10 @@
 <% } else { %>
 
     <div class="container-body  p-0 top-position ">
+
+        <h3 class="text-center">My Posts</h3>
+
+
         <div id="start"></div>
         <% var userImage; %>
         <% var userComment; %>
@@ -131,7 +135,7 @@
             <% if(post.author.id == (currentUser.id)){ %>
                 <div class="card shadow-sm p-1 mb-1 bg-light rounded hover">
                     <div class="card-body body-post">
-                        <a class="text-decoration-none" href="posts/<%= post._id %>">
+                        <a class="text-decoration-none" href="/posts/<%= post._id %>">
                             <h3 class="card-title post-title  text-left col p-1 ">
                                 <%= post.name %>
                             </h3>
@@ -144,7 +148,7 @@
                                    data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
                                 <div class="dropdown-menu text-center" id="">
-                                    <a href="posts/<%= post._id %>/edit" class="dropdown-item">
+                                    <a href="/posts/<%= post._id %>/edit" class="dropdown-item">
                                         <button class="btn btn-outline-primary ">
                                             <i class="  fas  fa-edit"> </i> edit post
                                         </button>
@@ -181,7 +185,7 @@
                                     <strong>
                                         <em class="col">
                                             posted by
-                                            <a href="users/<%= post.author.id %>"> <%= post.author.username %></a>
+                                            <a href="/users/<%= post.author.id %>"> <%= post.author.username %></a>
                                             <div class="col">
                                                 <small><em class=""><%= moment(post.createdAt).fromNow() %></em></small>
                                             </div>
@@ -193,7 +197,7 @@
                         <!--end top part of the card --------------------------------------------------->
                     </div>
 
-                    <a href="posts/<%= post._id %>">
+                    <a href="/posts/<%= post._id %>">
 
                         <% if(post.image != undefined){ %>
                             <!--if it is a video-->
