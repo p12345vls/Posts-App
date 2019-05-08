@@ -138,7 +138,6 @@
 
                 <% if(post.image != undefined){ %>
                     <!--if it is a video-->
-                    <%= post.image%>
                     <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
                             || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov'){ %>
                         <!--play video-->
