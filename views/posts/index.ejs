@@ -134,16 +134,18 @@
                 <!--end top part of the card --------------------------------------------------->
             </div>
 
+
             <a href="posts/<%= post._id %>">
 
                 <% if(post.image != undefined){ %>
                     <!--if it is a video-->
                     <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
-                            || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov') { %>
+                            || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov'){ %>
                         <!--play video-->
                         <div class="text-center bg-light " style=" background-image: url('/assets/img/qsKIY.png')">
                             <video id="myVideo" class=" img-fluid rounded" style="" controls>
-                                <source type="video/mp4" src="<%= post.image %>" preload="metadata"/>
+                                <source  src="<%= post.image %>" type="video/mp4" preload="metadata"/>
+                                <source  src="<%= post.image %>" type="video/ogg" preload="metadata"/>
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
