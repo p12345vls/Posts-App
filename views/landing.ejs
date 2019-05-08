@@ -1,18 +1,19 @@
 <% include ./partials/headStatics %>
 
 
-<main class="page">
+<main class="page" >
     <section>
         <div class="jumbotron">
             <h1 class="text-center"></h1>
-            <p class="space "style="height: 50px;"></p>
+            <p class="space " style="height: 50px;"></p>
             <div class="container" style="width: 1000px;">
-                <h1 class="text-left"><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong></h1>
+                <h1 class=""><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong>
+                </h1>
 
-                <h1 class="text-left"><strong class="heading">Hellenic American Hippocratic Society</strong></h1>
+                <h1 class=""><strong class="heading">Hellenic American Hippocratic Society</strong></h1>
                 <!--modal button ---------------------------------------------------------------------------------------------------------------------->
 
-                <p class="text-left">
+                <p class="">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                         Be a Member
                     </button>
@@ -68,68 +69,78 @@
         <div></div>
     </section>
 
-    <!-- Modal -------------------------------------------------------------------------------------------------------------------------->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content page registration-page">
+    <section class="">
+        <!-- Modal -------------------------------------------------------------------------------------------------------------------------->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" style='max-width:480px;'>
+                <div class="modal-content page registration-page">
 
-                <!--membership form-------------------------------------------------------------------------------------------------->
+                    <!--membership form-------------------------------------------------------------------------------------------------->
 
-                <section class="clean-block clean-form dark">
-                    <div class="">
-                        <button type="button" class="close mt-5 mr-2" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <section class="clean-block clean-form dark">
+                        <div class="">
+                            <button type="button" class="close mt-5 mr-2" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
 
-                        <div class="block-heading mt-n5">
-                            <h2 class="text-info heading-modal">Membership Application</h2>
-                            <p class="modal-heading-parag">Members of the society can register using this form.</p>
-                        </div>
-
-                        <form class="">
-                            <div class="mt-n4">
-                                <div class="form-group input-group-sm">
-                                    <input class="form-control item  hover" type="text" id="name" placeholder="full name"></div>
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item hover" type="email" id="email" placeholder="email">
-                                </div>
-
-                                <div class="form-group input-group-sm mt-n3">    <!--<label for="street"><small> Street Address</small></label>-->
-                                    <input class="form-control item  hover" type="text" id="street" placeholder="street"></div>
-
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item  hover" type="text" id="city" placeholder="city"></div>
-
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item  hover" type="text" id="state" placeholder="state"></div>
-
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item  hover" type="text" id="country" placeholder="country"></div>
-
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item  hover" type="text" id="zip" placeholder="zip code"></div>
-
-                                <div class="form-group input-group-sm mt-n3">
-                                    <input class="form-control item  hover" type="text" id="phone" placeholder="phone"></div>
+                            <div class="block-heading mt-n5">
+                                <h2 class="text-info heading-modal">Membership Application</h2>
+                                <p class="modal-heading-parag">Members of the society can register using this form.</p>
                             </div>
 
-                            <button class="btn btn-primary btn-block" type="submit">Submit $100.00</button>
-                        </form>
-                    </div>
-                </section>
-                <!--end membership form-------------------------------------------------------------------------------------------------->
+                            <form class="">
+                                <div class="mt-n4">
+                                    <div class="form-group input-group-sm">
+                                        <input class="form-control item  hover" type="text" id="name"
+                                               placeholder="full name"></div>
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item hover" type="email" id="email"
+                                               placeholder="email">
+                                    </div>
 
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <!--<label for="street"><small> Street Address</small></label>-->
+                                        <input class="form-control item  hover" type="text" id="street"
+                                               placeholder="street"></div>
+
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item  hover" type="text" id="city"
+                                               placeholder="city"></div>
+
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item  hover" type="text" id="state"
+                                               placeholder="state"></div>
+
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item  hover" type="text" id="country"
+                                               placeholder="country"></div>
+
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item  hover" type="text" id="zip"
+                                               placeholder="zip code"></div>
+
+                                    <div class="form-group input-group-sm mt-n3">
+                                        <input class="form-control item  hover" type="text" id="phone"
+                                               placeholder="phone"></div>
+                                </div>
+
+                                <button class="btn btn-primary btn-block" type="submit">Submit $100.00</button>
+                            </form>
+                        </div>
+                    </section>
+                    <!--end membership form-------------------------------------------------------------------------------------------------->
+
+                </div>
             </div>
         </div>
-    </div>
-    <!--end Modal ----------------------------------------------------------------------------------------------------------------------->
-
+        <!--end Modal ----------------------------------------------------------------------------------------------------------------------->
+    </section>
 </main>
 
 <script>document.querySelector('.home-link').style.color = "black"</script>
 <script>document.querySelector('title').innerText = "Home"</script>
-<% include ./partials/footerStatics%>
+<% include ./partials/footerStatics %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
