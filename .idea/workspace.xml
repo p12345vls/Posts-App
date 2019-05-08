@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/views/posts/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/index.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -21,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/posts/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="139" column="43" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="43" />
+            <state relative-caret-position="397">
+              <caret line="142" column="16" selection-start-line="142" selection-start-column="16" selection-end-line="142" selection-end-column="16" />
               <folding>
                 <element signature="n#nav#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
@@ -466,7 +464,7 @@
       <workItem from="1557083689434" duration="15007000" />
       <workItem from="1557102499903" duration="11625000" />
       <workItem from="1557189564525" duration="15677000" />
-      <workItem from="1557283485231" duration="4293000" />
+      <workItem from="1557283485231" duration="4499000" />
     </task>
     <task id="LOCAL-00001" summary="added edit">
       <created>1556500177097</created>
@@ -787,7 +785,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="724127000" />
+    <option name="totallyTimeSpent" value="724333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1281" y="-106" width="1499" height="949" extended-state="0" />
@@ -1487,8 +1485,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/posts/index.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="139" column="43" selection-start-line="139" selection-start-column="43" selection-end-line="139" selection-end-column="43" />
+        <state relative-caret-position="397">
+          <caret line="142" column="16" selection-start-line="142" selection-start-column="16" selection-end-line="142" selection-end-column="16" />
           <folding>
             <element signature="n#nav#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
