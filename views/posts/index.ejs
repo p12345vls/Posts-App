@@ -134,6 +134,7 @@
                 <!--end top part of the card --------------------------------------------------->
             </div>
 
+
             <a href="posts/<%= post._id %>">
 
                 <% if(post.image != undefined){ %>
@@ -144,6 +145,7 @@
                         <div class="text-center bg-light " style=" background-image: url('/assets/img/qsKIY.png')">
                             <video id="myVideo" class=" img-fluid rounded" style="" controls>
                                 <source  src="<%= post.image %>" type="video/mp4" preload="metadata"/>
+                                <source  src="<%= post.image %>" type="video/ogg" preload="metadata"/>
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
