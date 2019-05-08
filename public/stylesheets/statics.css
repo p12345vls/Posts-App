@@ -120,7 +120,7 @@
 
 @media only screen and (max-width: 380px) {
     .heading-mobile{
-        font-size: 29px;
+        font-size: 25px;
     }
     .heading{
         display: none;

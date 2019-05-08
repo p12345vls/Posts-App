@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/landing.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/landing.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/headStatics.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/headStatics.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/posts/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/index.ejs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -153,8 +150,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/landing.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="68" column="40" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
+            <state relative-caret-position="320">
+              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -184,7 +181,6 @@
                 <element signature="n#input#0;n#div#6;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#7;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#input#0;n#div#7;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#h1#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
@@ -350,7 +346,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="1281" />
     <option name="y" value="-106" />
-    <option name="width" value="1499" />
+    <option name="width" value="1174" />
     <option name="height" value="949" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -516,7 +512,7 @@
       <workItem from="1557083689434" duration="15007000" />
       <workItem from="1557102499903" duration="11625000" />
       <workItem from="1557189564525" duration="15677000" />
-      <workItem from="1557283485231" duration="6797000" />
+      <workItem from="1557283485231" duration="7039000" />
     </task>
     <task id="LOCAL-00001" summary="added edit">
       <created>1556500177097</created>
@@ -837,13 +833,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="726631000" />
+    <option name="totallyTimeSpent" value="726873000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1281" y="-106" width="1499" height="949" extended-state="0" />
+    <frame x="1281" y="-106" width="1174" height="949" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931413" visible="true" weight="0.20568335" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49931413" visible="true" weight="0.26366" />
       <window_info id="Structure" order="1" sideWeight="0.5006859" side_tool="true" weight="0.29956427" />
       <window_info id="Favorites" order="2" sideWeight="0.5006859" side_tool="true" weight="0.29956427" />
       <window_info id="npm" order="3" sideWeight="0.5006859" side_tool="true" weight="0.29956427" />
@@ -1600,8 +1596,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/landing.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="68" column="40" selection-start-line="68" selection-start-column="40" selection-end-line="68" selection-end-column="40" />
+        <state relative-caret-position="320">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#section#0;n#main#0;n#!!top" expanded="true" />
@@ -1631,7 +1627,6 @@
             <element signature="n#input#0;n#div#6;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#7;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#input#0;n#div#7;n#div#0;n#form#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#section#0;n#main#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
             <element signature="n#h1#0;n#div#0;n#div#0;n#section#1;n#main#0;n#!!top" expanded="true" />
