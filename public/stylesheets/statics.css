@@ -103,7 +103,7 @@
 
 @media only screen and (max-width: 540px) {
     .heading-mobile{
-        font-size: 30px;
+        font-size: 29px;
     }
     .heading{
         display: none;
@@ -120,7 +120,7 @@
 
 @media only screen and (max-width: 380px) {
     .heading-mobile{
-        font-size: 25px;
+        font-size: 24px;
     }
     .heading{
         display: none;
