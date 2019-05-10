@@ -3,7 +3,7 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
     <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
                                                                        style="height: 40px;width: 45px;"></a>
-        <h3 class="title-mobile letter-spacing mt-2 text-black ">MY PROFILE</h3>
+        <h3 class="title-mobile letter-spacing mt-2 text-black ">USER PROFILE</h3>
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
             <span class="sr-only ">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                         </a>
                     </div>
                 </div>
-                <h3 class="title-desktop letter-spacing mt-2 text-black ">MY PROFILE</h3>
+                <h3 class="title-desktop letter-spacing mt-2 text-black ">USER PROFILE</h3>
             <% } else { %>
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item m-2">
@@ -66,7 +66,7 @@
 <!--end nav ----------------------------------------------------------------------------------------------------------->
 
 
-<h4 class="title-desktop-second text-center text-secondary">My Profile</h4>
+<h4 class="title-desktop-second text-center text-secondary">User Profile</h4>
 <div class="wrapper-profile hover2 text-center p-1" style="margin-top: 100px">
     <% if(currentUser && (currentUser.id == user.id)){ %>
         <div class="float-right">
@@ -96,5 +96,5 @@
 
 
 
-<script>document.querySelector('title').innerText = "My Profile"</script>
+<script>document.querySelector('title').innerText = "User Profile"</script>
 <% include ../partials/footer %>

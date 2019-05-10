@@ -7,7 +7,7 @@ var locus = require('locus');
 // login admin for members in Hellenic American Hippocratic
 var isAdmin = false;
 router.get('/', (req, res) => {
-    res.render('adminLogin', {isAdmin: isAdmin, message: ""})
+    res.render('admin1Login', {isAdmin: isAdmin, message: ""})
 });
 
 router.post('/', (req, res) => {
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
     } else {
         isAdmin = false;
         message = 'wrong password please try again';
-        res.render('adminLogin', {isAdmin: false, message: message})
+        res.render('admin1Login', {isAdmin: false, message: message})
     }
 });
 
@@ -42,7 +42,7 @@ router.get('/members', (req, res) => {
     } else {
         isAdmin = false;
         message = 'wrong password please try again';
-        res.render('adminLogin', {isAdmin: false, message: message})
+        res.render('admin1Login', {isAdmin: false, message: message})
     }
 });
 
@@ -67,7 +67,7 @@ router.get("/new", (req, res) => {
         res.render("members/new");
     } else {
         isAdmin = false;
-        res.render('adminLogin', {isAdmin: false, message: ''})
+        res.render('admin1Login', {isAdmin: false, message: ''})
     }
 });
 
@@ -86,7 +86,7 @@ router.get('/:id/edit', (req, res) => {
         });
     } else {
         isAdmin = false;
-        res.render('adminLogin', {isAdmin: false, message: ''})
+        res.render('admin1Login', {isAdmin: false, message: ''})
     }
 });
 
@@ -124,7 +124,7 @@ router.delete('/:id', (req, res) => {
 
 router.get('/logoutAdmin', (req, res) => {
     isAdmin = false;
-    res.render('adminLogin', {isAdmin: false, message: "logged out"});
+    res.render('admin1Login', {isAdmin: false, message: "logged out"});
 });
 
 module.exports = router;

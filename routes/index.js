@@ -49,8 +49,7 @@ router.get("/register", function (req, res) {
 });
 //handle sign up logic
 router.post("/register", upload.single('image'), function (req, res) {
-
-
+   // eval(locus)
     var avatarImg = req.body.image;
     var newUser;
     cloudinary.uploader.upload(req.file.path, function (result) {

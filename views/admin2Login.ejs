@@ -1,0 +1,36 @@
+<% include ./partials/head-admin %>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+    <strong><a class="navbar-brand" href="#">Administrator Info Share</a></strong>
+</nav>
+
+<main class="page contact-us-page">
+
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 id="header-form" class="text-info">Login to Info Share</h2>
+            </div>
+            <form id="login_form" class="" action="/login " method="POST">
+                <div class="form-group d-none">
+                    <input class="form-control" id="username" name="username" type="text" placeholder="username" value="admin"></div>
+                <div class="form-group">
+                    <input class="form-control" id="pass" name="password" type="password" placeholder="password" required></div>
+
+                <div class="form-group">
+                    <button id='btn' class="btn btn-primary btn-block" type="submit">Log In</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+<% include ./partials/footerStatics %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+<script src="assets/js/script.min.js"></script>
+
+</html>

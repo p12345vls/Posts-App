@@ -142,7 +142,7 @@
         <div class="card-body">
             <strong><em><p class="card-text">Description</p></em></strong>
 
-            <!--seaech results from the search box are displayed here-->
+            <!--search results from the search box are displayed here-->
             <% if(descriptionSearch) { %>
                 <div class="mt-2 bg-white pilled " id="name">
                     <p class="d-inline text-muted "><%= post.description %> </p>
@@ -200,9 +200,7 @@
                 <a href="/posts" class="card-link">back to posts</a>
 
             </div>
-
         </div>
-
     </div>
 
     <script>document.querySelector('title').innerText = "<%= post.name %>"</script>

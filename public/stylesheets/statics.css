@@ -135,6 +135,26 @@
     }
 }
 
+@media only screen and (max-width: 350px) {
+    .heading-mobile{
+        font-size: 20px;
+    }
+    .container{
+        max-width: 350px;
+    }
+    .heading{
+        display: none;
+    }
+    .heading-modal{
+        font-size: 20px;
+
+        margin-left: 10px;
+    }
+    .modal-heading-parag{
+        font-size:12px;
+    }
+}
+
 
 @media only screen and (min-width: 540px) {
     .heading-mobile{
