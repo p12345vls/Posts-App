@@ -1,3 +1,25 @@
+
+<% if(currentUser && currentUser.isAdmin2){%>
+    <% include ../partials/headInfoShare %>
+    <% include ../partials/head-admin %>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm ">
+    <strong><a class="navbar-brand" href="#">Administrator Info Share</a></strong>
+
+    <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item m-2">
+            <a href="/logout">
+                <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary mt-1">
+                    <i class="fa fa-sign-out fa-lg"></i>Log out
+                </button>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<% } else { %>
+
 <% include ../partials/headInfoShare %>
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
@@ -68,9 +90,11 @@
         </div>
     </div>
 </nav>
+<h4 class="title-desktop-second text-center text-secondary">All Posts</h4>
+
 <% include ../partials/flsh %>
 <!--end nav ----------------------------------------------------------------------------------------------------------->
-
+<%} %>
 
 <!-- - - - - - -  ------      ---------------------  body -----------------------------------------      - - - - - - -->
 <!--declare variables for searching, and expanding comments and description  -->
@@ -89,7 +113,9 @@
 
 <div class="container-body  p-0 top-position ">
 
-    <h4 class="title-desktop-second text-center text-secondary">All Posts</h4>
+
+
+
 
     <div id="start"></div>
     <% var userImage; %>
@@ -102,6 +128,33 @@
                         <%= post.name %>
                     </h3>
                 </a>
+
+                <% if(currentUser && currentUser.isAdmin2){%>
+                <!--edit or delete the post if it is admin-->
+                <div class="float-right">
+                    <div class="dropdown dropleft">
+                        <i class="fas fa-cog btn btn-block text-black fa-lg" id="dropdownMenuButton"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
+                        <div class="dropdown-menu text-center" id="">
+                            <a href="/posts/<%= post._id %>/edit" class="dropdown-item">
+                                <button class="btn btn-outline-primary ">
+                                    <i class="  fas  fa-edit"> </i> edit post
+                                </button>
+                            </a>
+                            <hr>
+                            <form id="delete" class="dropdown-item btn btn-block"
+                                  action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-outline-danger ">
+                                    <i class=" mr-1 ml-1 fas fa-trash-alt"></i> delete post
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+                <!--===================================  -->
+
 
                 <!--the top part of the card --------------------------------------------------->
                 <h6 class="card-subtitle row ">
@@ -135,8 +188,6 @@
             </div>
 
 
-
-
             <a href="posts/<%= post._id %>">
 
                 <% if(post.image != undefined){ %>
@@ -144,10 +195,10 @@
                     <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
                             || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov'){ %>
                         <!--play video-->
-                        <div class="text-center bg-light " style=" background-image: url('/assets/img/qsKIY.png')">
-                            <video id="myVideo" class=" img-fluid rounded" style="" controls>
-                                <source  src="<%= post.image %>" type="video/mp4" preload="metadata"/>
-                                <source  src="<%= post.image %>" type="video/ogg" preload="metadata"/>
+                        <div class="text-center" bg-light " style=" background-image: url('/assets/img/qsKIY.png')">
+                            <video id="myVideo" class=" img-fluid rounded" height="200" style="" controls>
+                                <source src="<%= post.image %>" type="video/mp4" preload="metadata"/>
+                                <source src="<%= post.image %>" type="video/ogg" preload="metadata"/>
                                 Your browser does not support HTML5 video.
                             </video>
                         </div>
@@ -157,7 +208,6 @@
                             <img class=" img-fluid " src="<%= post.image %> " alt="">
                         </div>
                     <% } %>
-
             </a>
             <% } %>
 
@@ -203,7 +253,37 @@
                                             </div>
                                         <% } %>
                                     <% }); %>
-                                    <strong><%= comment.author.username %></strong>
+
+
+                                        <!--edit or delete the comment if it is admin -------- -->
+                                        <% if(currentUser && currentUser.isAdmin2){%>
+                                            <div class="float-right">
+                                                <div class="dropdown dropleft">
+                                                    <i class="fas fa-cog btn btn-block text-black fa-lg" id="dropdownMenuButton"
+                                                       data-toggle="dropdown"
+                                                       aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
+                                                    <div class="dropdown-menu text-center" id="">
+                                                        <a href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit" class="dropdown-item">
+                                                            <button class="btn btn-outline-primary ">
+                                                                <i class="  fas  fa-edit"> </i> edit comment
+                                                            </button>
+                                                        </a>
+                                                        <hr>
+                                                        <form id="delete" class="dropdown-item btn btn-block"
+                                                              action="/posts/<%= post._id %>/comments/<%= comment._id %>/?_method=DELETE"
+                                                              method="POST">
+                                                            <button class="btn btn-outline-danger ">
+                                                                <i class=" mr-1 ml-1 fas fa-trash-alt"></i> delete comment
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% }; %>
+                                        <!--===================================  -->
+
+
+                                        <strong><%= comment.author.username %></strong>
                                     <small class="ml-5">
                                         <em class="ml-n5 pl-1"><%= moment(comment.createdAt).fromNow() %></em>
                                     </small>

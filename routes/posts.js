@@ -219,31 +219,6 @@ router.put('/:id', middleware.checkPostOwnership, upload.single('image'), functi
 
     }
 
-    // // in case empty image
-    // if (req.file === undefined) {
-    //     res.redirect('back')
-    // } else {
-    //
-    //
-    //     cloudinary.uploader.upload(req.file.path, function (result) {
-    //         // add cloudinary url for the image to the post object under image property
-    //         req.body.post.image = result.secure_url;
-    //         // add author to post
-    //         req.body.post.author = {
-    //             id: req.user._id,
-    //             username: req.user.username
-    //         };
-    //         Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-    //             console.log("req.body " + updatedPost);
-    //             if (err) {
-    //                 res.redirect("/posts");
-    //             } else {
-    //                 //redirect somewhere(show page)
-    //                 res.redirect("/posts/" + req.params.id);
-    //             }
-    //         });
-    //     });
-    // }
 });
 
 router.delete('/:id', middleware.checkPostOwnership, (req, res) => {

@@ -77,6 +77,9 @@ app.get('/about',(req,res)=>{
 app.get('/case',(req,res)=>{
     res.render('orthopedic-case');
 });
+app.get('/admin2',(req,res)=>{
+    res.render('admin2Login');
+});
 // end static pages routes -------------------------------
 
 app.use("/", indexRoutes);
