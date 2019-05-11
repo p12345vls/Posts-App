@@ -202,56 +202,83 @@ router.get('/forgot', function(req, res) {
 
 router.post('/forgot', function(req, res, next) {
 
-    async.waterfall([
-        function(done) {
-            crypto.randomBytes(20, function(err, buf) {
-                var token = buf.toString('hex');
-                done(err, token);
-            });
-        },
-        function(token, done) {
-            User.findOne({ email: req.body.email }, function(err, user) {
-                if (!user) {
-                    req.flash('error', 'No account with that email address exists.');
-                    return res.redirect('/forgot');
-                }
 
-                user.resetPasswordToken = token;
-                user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-
-                user.save(function(err) {
-                    done(err, token, user);
-                });
-            });
-        },
-
-        function(token, user, done) {
-            var smtpTransport = nodemailer.createTransport({
-                service: 'Gmail',
-                auth: {
-                    user: 'p12345vls@gmail.com',
-                    pass: process.env.GMAILPW
-                }
-            });
-            var mailOptions = {
-                to: user.email,
-                from: 'p12345vls@gmail.com',
-                subject: 'Password Reset Info Share',
-                text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-                    'https://' + req.headers.host + '/reset/' + token + '\n\n' +
-                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-            };
-            smtpTransport.sendMail(mailOptions, function(err) {
-                console.log('mail sent');
-                req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
-                done(err, 'done');
-            });
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'p12345vls@gmail.com',
+            pass: 'Zolcevita3'
         }
-    ], function(err) {
-        if (err) return next(err);
-        res.redirect('/forgot');
     });
+
+    var mailOptions = {
+        from: 'youremail@gmail.com',
+        to: 'p.pp256@yahoo.com, pavlospapadonikolakis@yahoo.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!',
+        html: '<h1>Welcome</h1><p>That was easy!</p>'
+    }
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+    // async.waterfall([
+    //     function(done) {
+    //         crypto.randomBytes(20, function(err, buf) {
+    //             var token = buf.toString('hex');
+    //             done(err, token);
+    //         });
+    //     },
+    //     function(token, done) {
+    //         User.findOne({ email: req.body.email }, function(err, user) {
+    //             if (!user) {
+    //                 req.flash('error', 'No account with that email address exists.');
+    //                 return res.redirect('/forgot');
+    //             }
+    //
+    //             user.resetPasswordToken = token;
+    //             user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+    //
+    //             user.save(function(err) {
+    //                 done(err, token, user);
+    //             });
+    //         });
+    //     },
+    //
+    //     function(token, user, done) {
+    //         var smtpTransport = nodemailer.createTransport({
+    //             service: 'Gmail',
+    //             auth: {
+    //                 user: 'p12345vls@gmail.com',
+    //                 pass: process.env.GMAILPW
+    //             }
+    //         });
+    //         var mailOptions = {
+    //             to: user.email,
+    //             from: 'p12345vls@gmail.com',
+    //             subject: 'Password Reset Info Share',
+    //             text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+    //                 'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+    //                 'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+    //                 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+    //         };
+    //         smtpTransport.sendMail(mailOptions, function(err) {
+    //             console.log('mail sent');
+    //             req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+    //             done(err, 'done');
+    //         });
+    //     }
+    // ], function(err) {
+    //     if (err) return next(err);
+    //     res.redirect('/forgot');
+    // });
+    req.flash('success', 'An e-mail has been sent with further instructions.');
+
+    res.redirect('/forgot');
 });
 
 
