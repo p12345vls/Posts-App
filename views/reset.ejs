@@ -1,7 +1,7 @@
 <% include ./partials/headInfoShare %>
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
-    <div class="container"><a class="navbar-brand logo " href="/"><img src="assets/img/logo-hp.png"
+    <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
                                                                        style="height: 40px;width: 45px;"></a>
         <h3 class="title-mobile letter-spacing mt-2 text-black ">Reset Password</h3>
         <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
@@ -29,25 +29,25 @@
 
 <% include ./partials/flsh %>
 
+
 <main class="page contact-us-page">
     <section class="clean-block clean-form dark">
         <div class="container">
             <div class="block-heading mt-1">
                 <h2 class="text-info title-desktop">Reset Password</h2>
-                <p class="m-auto" style="max-width: 500px;">To change your password please enter your email </p>
+                <p class="m-auto" style="max-width: 500px;">Please enter your new password</p>
             </div>
-            <form action="/forgot" method="POST">
-                <div class="form-group"><label>Email</label>
-                    <input class="form-control" name="email" type="email"></div>
+            <form action="/reset/<%= token %>" method="POST">
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary btn-block" value="Reset Password">
+                    <input type="password" name="password" required minlength="6" placeholder="New password" autofocus="autofocus" class="form-control"/></div>
+                <div class="form-group">
+                    <input type="password" name="confirm" required placeholder="Confirm password" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Update Password</button>
                 </div>
             </form>
         </div>
     </section>
 </main>
-
-<script>document.querySelector('title').innerText = "Forgot  Password"</script>
-
 <% include ./partials/footerStatics %>
-

@@ -5,7 +5,11 @@ var router = express.Router({mergeParams: true}),
     User = require("../models/user"),
     post = require('../models/post'),
     middleware = require('../middleware/index'),
+    async = require('async'),
+    nodemailer = require('nodemailer'),
+    crypto = require('crypto'),
     locus = require('locus');
+
 
 
 //============= image upload ===========================
@@ -197,6 +201,9 @@ router.get('/forgot', function(req, res) {
 });
 
 router.post('/forgot', function(req, res, next) {
+
+
+
     async.waterfall([
         function(done) {
             crypto.randomBytes(20, function(err, buf) {
@@ -219,6 +226,7 @@ router.post('/forgot', function(req, res, next) {
                 });
             });
         },
+
         function(token, user, done) {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
@@ -229,7 +237,7 @@ router.post('/forgot', function(req, res, next) {
             });
             var mailOptions = {
                 to: user.email,
-                from: 'learntocodeinfo@gmail.com',
+                from: 'p12345vls@gmail.com',
                 subject: 'Node.js Password Reset',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -247,5 +255,68 @@ router.post('/forgot', function(req, res, next) {
         res.redirect('/forgot');
     });
 });
+
+
+//reset password
+router.get('/reset/:token', function(req, res) {
+    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+            req.flash('error', 'Password reset token is invalid or has expired.');
+            return res.redirect('/forgot');
+        }
+        res.render('reset', {token: req.params.token});
+    });
+});
+
+router.post('/reset/:token', function(req, res) {
+    async.waterfall([
+        function(done) {
+            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+                if (!user) {
+                    req.flash('error', 'Password reset token is invalid or has expired.');
+                    return res.redirect('back');
+                }
+                if(req.body.password === req.body.confirm) {
+                    user.setPassword(req.body.password, function(err) {
+                        user.resetPasswordToken = undefined;
+                        user.resetPasswordExpires = undefined;
+
+                        user.save(function(err) {
+                            req.logIn(user, function(err) {
+                                done(err, user);
+                            });
+                        });
+                    })
+                } else {
+                    req.flash("error", "Passwords do not match.");
+                    return res.redirect('back');
+                }
+            });
+        },
+        function(user, done) {
+            var smtpTransport = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'p12345vls@gmail.com',
+                    pass: process.env.GMAILPW
+                }
+            });
+            var mailOptions = {
+                to: user.email,
+                from: 'learntocodeinfo@mail.com',
+                subject: 'Your password has been changed',
+                text: 'Hello,\n\n' +
+                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+            };
+            smtpTransport.sendMail(mailOptions, function(err) {
+                req.flash('success', 'Success! Your password has been changed.');
+                done(err);
+            });
+        }
+    ], function(err) {
+        res.redirect('/posts');
+    });
+});
+
 
 module.exports = router;
