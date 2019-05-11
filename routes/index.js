@@ -210,7 +210,6 @@ router.post('/forgot', function(req, res, next) {
                 var token = buf.toString('hex');
                 done(err, token);
             });
-            eval(locus)
         },
         function(token, done) {
             User.findOne({ email: req.body.email }, function(err, user) {
