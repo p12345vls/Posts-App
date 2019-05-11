@@ -8,7 +8,11 @@ var express = require("express"),
     Post = require("./models/post"),
     Comment = require("./models/comment"),
     User = require("./models/user"),
-    Member = require('./models/member');
+    Member = require('./models/member'),
+    async = require('async'),
+    nodemailer = require('nodemailer'),
+    crypto = require('crypto');
+
 
 require('dotenv').config();//to hide the cloudinary values
 
