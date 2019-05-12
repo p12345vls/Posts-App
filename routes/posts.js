@@ -9,6 +9,11 @@ var locus = require('locus');
 var request = require('request');
 var multer = require('multer');
 
+var async = require('async'),
+    nodemailer = require('nodemailer'),
+    crypto = require('crypto');
+
+
 var storage = multer.diskStorage({
     filename: function (req, file, callback) {
         callback(null, Date.now() + file.originalname);
@@ -148,8 +153,8 @@ function createPost(req, res) {
 
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
-    // eval(locus)
-
+    sentEmails(req,res);
+    eval(locus)
     if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
         req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
         req.file.path.substring(req.file.path.length - 3) === 'png' ||
@@ -160,6 +165,45 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
     }
 
 });
+
+function sentEmails(req,res) {
+
+    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu']
+    // User.find({}, 'email', function (err, docs) {
+    //
+    //
+    //     docs.forEach(function (user) {
+    //         console.log(user.email)
+    //     })
+    // });
+    // req.headers.host
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'hellenicamericanhippocratic@gmail.com',
+            pass: process.env.GMAILPW
+        }
+    });
+
+
+    var mailOptions = {
+        from: 'hellenicamericanhippocratic@gmail.com',
+        to: allMail,
+        bcc:allMail,
+        subject: 'Message from the H. A. Hippocratic Society',
+        text: 'Message from the H. A. Hippocratic Society',
+        html: '<h1>Welcome</h1><p>That was easy!</p>'
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 
 //NEW - show form to create new post
 router.get("/new", middleware.isLoggedIn, function (req, res) {
@@ -277,6 +321,7 @@ function updatePost(req, res) {
         }
     });
 }
+
 function updateWithVideo(req, res) {
     cloudinary.v2.uploader.upload_large(req.file.path, {resource_type: "video"},
         function (error, result) {
@@ -296,6 +341,7 @@ function updateWithVideo(req, res) {
             }
         });
 }
+
 function updateWithImage(req, res) {
     cloudinary.uploader.upload(req.file.path, function (result) {
         // add cloudinary url for the image to the post object under image property
