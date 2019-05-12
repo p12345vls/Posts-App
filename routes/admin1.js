@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
 router.get('/members', (req, res) => {
     var message = "";
     if (isAdmin) {
-        Member.find({}, (err, members) => {
+        Member.find({}, null, {sort: {lastname: 1}}, (err, members) => {
             if (err) {
                 console.log(err);
             } else {

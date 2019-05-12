@@ -6,21 +6,23 @@
         <h1 class="img-fluid text-center"><img  class="img-fluid shadow-lg" src="assets/img/vegas-meeting.png"></h1>
         </div>
         <div class="col-md-12 search-table-col m-auto" style="max-width: 1000px;">
-            <h3 class="text-center p-3">Active Members  </h3><p class="float-left text-muted mt-n4"><small><i>sorted by first name</i></small></p>
+            <h3 class="text-center p-3">Active Members  </h3><p class="float-left text-muted mt-n4"><small><i>sorted by last name</i></small></p>
             <div class="table-responsive table-bordered table table-hover table-bordered results border-left-0 border-right-0 border-primary">
                 <table class="table table-bordered table-hover">
                     <thead class="bill-header cs">
                     <tr>
-                        <th id="trs-hd" class="col-2">Name</th>
+                        <th id="trs-hd" class="col-2">First Name</th>
+                        <th id="trs-hd" class="col-2">Last Name</th>
                         <th id="trs-hd" class="col-3">Role</th>
                         <th id="trs-hd" class="col-3">Address</th>
                     </tr>
                     </thead>
                     <% members.forEach(function(member){ %>
                         <tbody>
-                        <tr>
+                        <tr >
                             <td><%= member.name %></td>
-                            <td><%= member.role %></td>
+                            <td><%= member.lastname %></td>
+                            <td ><%= member.role %></td>
                             <td><%= member.address %></td>
                         </tr>
                         </tbody>
