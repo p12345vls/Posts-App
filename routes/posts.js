@@ -154,7 +154,7 @@ function createPost(req, res) {
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
     sentEmails(req,res);
-    eval(locus)
+    // eval(locus)
     if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
         req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
         req.file.path.substring(req.file.path.length - 3) === 'png' ||
