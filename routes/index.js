@@ -206,16 +206,17 @@ router.post('/forgot', function(req, res, next) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'p12345vls@gmail.com',
-            pass: 'Zolcevita3'
+            user: 'hellenicamericanhippocratic@gmail.com',
+            pass: process.env.GMAILPW
         }
     });
 
+
     var mailOptions = {
-        from: 'youremail@gmail.com',
+        from: 'hellenicamericanhippocratic@gmail.com',
         to: 'p.pp256@yahoo.com, pavlospapadonikolakis@yahoo.com',
         subject: 'Sending Email using Node.js',
-        text: 'That was easy!',
+        text: 'Message from the H. A. Hippocratic Society',
         html: '<h1>Welcome</h1><p>That was easy!</p>'
     }
 
