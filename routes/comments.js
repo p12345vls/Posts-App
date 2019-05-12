@@ -1,13 +1,13 @@
 var express = require("express");
 var router = express.Router({mergeParams: true});
-var Campground = require("../models/post");
+var Post = require("../models/post");
 var Comment = require("../models/comment");
 var middleware = require('../middleware/index');
 
 //Comments New
 router.get("/new",middleware.isLoggedIn, function (req, res) {
 
-    Campground.findById(req.params.id, function (err, post) {
+    Post.findById(req.params.id, function (err, post) {
         if (err) {
             console.log(err);
         } else {
@@ -19,7 +19,7 @@ router.get("/new",middleware.isLoggedIn, function (req, res) {
 //Comments Create
 router.post("/", middleware.isLoggedIn, function (req, res) {
     //lookup post using ID
-    Campground.findById(req.params.id, function (err, post) {
+    Post.findById(req.params.id, function (err, post) {
         if (err) {
             console.log(err);
             res.redirect("/posts");

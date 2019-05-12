@@ -145,6 +145,7 @@ function createPost(req, res) {
             req.flash('error', err.message);
             return res.redirect('back');
         }
+        sentEmails(req,res,post);
         req.flash('success', 'New Post Created');
         res.redirect('/posts');
     });
@@ -153,8 +154,8 @@ function createPost(req, res) {
 
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
-    sentEmails(req,res);
-    // eval(locus)
+    // sentEmails(req,res);
+
     if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
         req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
         req.file.path.substring(req.file.path.length - 3) === 'png' ||
@@ -166,7 +167,7 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
 
 });
 
-function sentEmails(req,res) {
+function sentEmails(req,res,post) {
 
     var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu']
     // User.find({}, 'email', function (err, docs) {
@@ -192,8 +193,10 @@ function sentEmails(req,res) {
         to: allMail,
         bcc:allMail,
         subject: 'Message from the H. A. Hippocratic Society',
-        text: 'Message from the H. A. Hippocratic Society',
-        html: '<h1>Welcome</h1><p>That was easy!</p>'
+        // html: '<h3>A new post has been created by </h3>',
+        text: 'A new post has been created by the user: '+req.user.username+'\nPlease click on the following link '+
+            'http://' + req.headers.host + '/posts/'+post._id + ' to see the post in context\n\n'
+
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
