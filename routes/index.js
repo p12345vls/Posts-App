@@ -202,37 +202,6 @@ router.get('/forgot', function(req, res) {
 
 router.post('/forgot', function(req, res, next) {
 
-
-    // var transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: 'hellenicamericanhippocratic@gmail.com',
-    //         pass: process.env.GMAILPW
-    //     }
-    // });
-    //
-    //
-    // var mailOptions = {
-    //     from: 'hellenicamericanhippocratic@gmail.com',
-    //     to: 'p.pp256@yahoo.com, pavlospapadonikolakis@yahoo.com',
-    //     subject: 'Sending Email using Node.js',
-    //     text: 'Message from the H. A. Hippocratic Society',
-    //     html: '<h1>Welcome</h1><p>That was easy!</p>'
-    // }
-    //
-    // transporter.sendMail(mailOptions, function(error, info){
-    //     if (error) {
-    //         console.log(error);
-    //     } else {
-    //         console.log('Email sent: ' + info.response);
-    //     }
-    // });
-    //
-    // req.flash('success', 'An e-mail has been sent with further instructions.');
-    //
-    // res.redirect('/forgot');
-
-    //==========================================================
     async.waterfall([
         function(done) {
             crypto.randomBytes(20, function(err, buf) {

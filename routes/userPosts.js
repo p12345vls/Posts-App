@@ -31,12 +31,10 @@ router.get('/', middleware.isLoggedIn, (req, res) => {
                     availableTags: tags,
                     uiid: require('uniqid')
 
-
                 });
             }
         });
     });
-
 });
 
 
@@ -80,8 +78,6 @@ router.get('/comments', middleware.isLoggedIn, (req, res) => {
                     });
                 }
             });
-
-
         }
     });
 });
