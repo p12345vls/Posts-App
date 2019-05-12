@@ -4,7 +4,7 @@ var ob={};
 
 ob.test = function test(test){
     console.log(test);
-}
+};
 
 
 /**
