@@ -202,6 +202,37 @@ router.get('/forgot', function(req, res) {
 
 router.post('/forgot', function(req, res, next) {
 
+
+    // var transporter = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: 'hellenicamericanhippocratic@gmail.com',
+    //         pass: process.env.GMAILPW
+    //     }
+    // });
+    //
+    //
+    // var mailOptions = {
+    //     from: 'hellenicamericanhippocratic@gmail.com',
+    //     to: 'p.pp256@yahoo.com, pavlospapadonikolakis@yahoo.com',
+    //     subject: 'Sending Email using Node.js',
+    //     text: 'Message from the H. A. Hippocratic Society',
+    //     html: '<h1>Welcome</h1><p>That was easy!</p>'
+    // }
+    //
+    // transporter.sendMail(mailOptions, function(error, info){
+    //     if (error) {
+    //         console.log(error);
+    //     } else {
+    //         console.log('Email sent: ' + info.response);
+    //     }
+    // });
+    //
+    // req.flash('success', 'An e-mail has been sent with further instructions.');
+    //
+    // res.redirect('/forgot');
+
+    //==========================================================
     async.waterfall([
         function(done) {
             crypto.randomBytes(20, function(err, buf) {
@@ -229,14 +260,14 @@ router.post('/forgot', function(req, res, next) {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'p12345vls@gmail.com',
+                    user: 'hellenicamericanhippocratic@gmail.com',
                     pass: process.env.GMAILPW
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'p12345vls@gmail.com',
-                subject: 'Node.js Password Reset',
+                from: 'hellenicamericanhippocratic@gmail.com',
+                subject: 'Password Reset Info Share',
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
                     'http://' + req.headers.host + '/reset/' + token + '\n\n' +
@@ -252,6 +283,7 @@ router.post('/forgot', function(req, res, next) {
         if (err) return next(err);
         res.redirect('/forgot');
     });
+
 });
 
 
@@ -295,13 +327,13 @@ router.post('/reset/:token', function(req, res) {
             var smtpTransport = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
-                    user: 'p12345vls@gmail.com',
+                    user: 'hellenicamericanhippocratic@gmail.com',
                     pass: process.env.GMAILPW
                 }
             });
             var mailOptions = {
                 to: user.email,
-                from: 'learntocodeinfo@mail.com',
+                from: 'hellenicamericanhippocratic@gmail.com',
                 subject: 'Your password has been changed',
                 text: 'Hello,\n\n' +
                     'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
