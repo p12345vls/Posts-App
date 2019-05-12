@@ -19,5 +19,17 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+
+    Member.create(req.body.member, function (err, member) {
+        if (err) {
+            req.flash('error', err.message);
+            return res.redirect('back');
+        } else {
+            res.render('landing', {message: 'Welcome to Hellenic American Hippocratic Society ' + req.body.member.name + '!'})
+        }
+    });
+});
+
 
 module.exports = router;

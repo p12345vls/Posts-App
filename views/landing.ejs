@@ -1,7 +1,5 @@
 <% include ./partials/headStatics %>
-
-
-<main class="page">
+<main class="page" id="page">
 
     <section style="max-width: 500px">
         <!-- Modal -------------------------------------------------------------------------------------------------------------------------->
@@ -9,9 +7,6 @@
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-
-                    <!--membership form-------------------------------------------------------------------------------------------------->
-
                     <section class="clean-block clean-form dark">
                         <div class="">
                             <button type="button" class="close mt-5 mr-2" data-dismiss="modal" aria-label="Close">
@@ -21,40 +16,50 @@
                                 <h2 class="text-info heading-modal">Membership Application</h2>
                                 <p class="modal-heading-parag">Members of the society can register using this form.</p>
                             </div>
-                            <form class="">
+                            <!--membership form------------------------------------------------------------------------>
+                            <form id="membership-form" action="/members" method="post">
                                 <div class="mt-n4">
                                     <div class="form-group input-group-sm">
-                                        <input class="form-control item  hover" type="text" id="name"
-                                               placeholder="full name"></div>
+                                        <input class="form-control item  hover" type="text" id="firstname"
+                                               placeholder="first name" name="member[name]" required></div>
+                                    <div class="form-group input-group-sm">
+                                        <input class="form-control item  hover" type="text" id="lastname"
+                                               placeholder="last name" name="member[lastname]" required></div>
+                                    <div class="form-group input-group-sm">
+                                        <input class="form-control item  hover" type="text" id="role"
+                                               placeholder="current position " name="member[role]" required></div>
+                                    <p title="E.g.'professor'"
+                                       style="position: absolute; margin-top: -44px;margin-left: -17px;">
+                                        <i class="fas fa-question-circle"></i>
+                                    </p>
                                     <div class="form-group input-group-sm mt-n3">
                                         <input class="form-control item hover" type="email" id="email"
-                                               placeholder="email">
-                                    </div>
+                                               placeholder="email" name="member[email]" required></div>
                                     <div class="form-group input-group-sm mt-n3">
-                                        <!--<label for="street"><small> Street Address</small></label>-->
-                                        <input class="form-control item  hover" type="text" id="street"
-                                               placeholder="street"></div>
-                                    <div class="form-group input-group-sm mt-n3">
-                                        <input class="form-control item  hover" type="text" id="city"
-                                               placeholder="city"></div>
-                                    <div class="form-group input-group-sm mt-n3">
-                                        <input class="form-control item  hover" type="text" id="state"
-                                               placeholder="state"></div>
-                                    <div class="form-group input-group-sm mt-n3">
-                                        <input class="form-control item  hover" type="text" id="country"
-                                               placeholder="country"></div>
-                                    <div class="form-group input-group-sm mt-n3">
-                                        <input class="form-control item  hover" type="text" id="zip"
-                                               placeholder="zip code"></div>
+                                        <input class="form-control item  hover" type="text" id="fullAddress"
+                                               placeholder="full Address" name="member[address]" required></div>
                                     <div class="form-group input-group-sm mt-n3">
                                         <input class="form-control item  hover" type="text" id="phone"
-                                               placeholder="phone"></div>
+                                               placeholder="phone" name="member[phone]"></div>
+                                    <button class="btn btn-block hover shadow-sm" style="background-color: #ffc439;">
+                                        <img class="float-left" src="assets/img/paypal.png" width="100" height="">
+                                        <strong class="float-left mt-1 ml-2">Submit $100.00</strong>
+                                    </button>
                                 </div>
-                                <button class="btn btn-primary btn-block" type="submit">Submit $100.00</button>
                             </form>
+                            <!--end membership form------------------------------------------------>
+
+                            <!-- paypal form submitted after the membership form- - - - - - - - - - - - -  - - - - - -->
+                            <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post"
+                                  target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="9RCELQHS9DKWN">
+                                <!-- paypal - - - - - - - - - - - - - - - - - - - - - - - - -->
+                            </form>
+
+
                         </div>
                     </section>
-                    <!--end membership form-------------------------------------------------------------------------------------------------->
 
                 </div>
             </div>
@@ -64,8 +69,6 @@
 
     <section>
         <div class="jumbotron">
-            <!--<h1 class="text-center"></h1>-->
-            <!--<p class="space " style="height: 50px;"></p>-->
             <div class="container-fluid m-auto " style="max-width: 1000px;">
                 <h1 class=""><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong>
                 </h1>
@@ -129,9 +132,23 @@
         </div>
         <div></div>
     </section>
-
-
 </main>
+<!--if member created redirect to paypal to pay-->
+<% if (typeof message != "undefined"){ %>
+    <script>document.getElementById('page').style.opacity = '0.2';</script>
+    <div class="text-center bg-primary text-white" style="top: 80px; position: absolute; left:0;right:0; z-index: 22222;">
+        <h4 ><%= message %></h4>
+        <p>You will be redirected to paypal page to complete the membership payment</p>
+    </div>
+    <script>
+        setInterval(paypal, 6000);
+        function paypal() {
+            document.getElementById("paypal-form").submit()
+        }
+    </script>
+<% } %>
+<!--end pay-->
+
 
 <script>document.querySelector('.home-link').style.color = "black"</script>
 <script>document.querySelector('title').innerText = "Home"</script>

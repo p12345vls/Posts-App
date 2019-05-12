@@ -4,7 +4,9 @@ var MemberSchema = new mongoose.Schema({
     name: String,
     lastname:String,
     role: String,
-    address:String
+    address:String,
+    email:{type:String, unique:true},
+    phone:String
 });
 
 
