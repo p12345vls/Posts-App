@@ -55,7 +55,6 @@ router.get('/:comment_id/edit',middleware.checkCommentOwnership, (req, res) => {
 
         if (err) {
             console.log(err);
-
         } else {
             res.render('userPosts/edit', {post: req.params.id, comment: foundComment});
         }
