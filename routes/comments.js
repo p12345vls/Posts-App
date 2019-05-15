@@ -90,7 +90,7 @@ router.delete('/:comment_id', middleware.checkCommentOwnership,( req, res) => {
 
 function sentEmails(req,res,post) {
 
-    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu'];
+    var allMail = ['p12345vls@gmail.com'];
     // User.find({}, 'email', function (err, docs) {
     //     docs.forEach(function (user) {
     //         console.log(user.email)
