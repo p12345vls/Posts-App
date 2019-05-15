@@ -169,7 +169,7 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
 
 function sentEmails(req,res,post) {
 
-    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu']
+    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu'];
     // User.find({}, 'email', function (err, docs) {
     //
     //
@@ -182,6 +182,8 @@ function sentEmails(req,res,post) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
+            port: 465,
+            secure: true,
             user: 'hellenicamericanhippocratic@gmail.com',
             pass: process.env.GMAILPW
         }
