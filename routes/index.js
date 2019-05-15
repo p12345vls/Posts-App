@@ -13,7 +13,6 @@ var router = express.Router({mergeParams: true}),
 
 
 //============= image upload ===========================
-
 var multer = require('multer');
 
 
@@ -38,8 +37,7 @@ cloudinary.config({
     api_key: '159668526228246',
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
-
-//======================================================
+//======end image upload===============================
 
 //  ===========
 // AUTH ROUTES
@@ -102,7 +100,7 @@ router.post("/login", passport.authenticate("local",
     }), function (req, res) {
 });
 
-// logic route
+// logout route
 router.get("/logout", function (req, res) {
     req.logout();
     req.flash('success', 'Logged You Out');
@@ -134,7 +132,6 @@ router.get('/users/:id/edit', (req, res) => {
 
 //update user fields except image
 router.put('/users/:id', (req, res) => {
-
 
     User.findByIdAndUpdate(req.params.id, req.body.user, function (err, updatedUser) {
 
@@ -314,6 +311,34 @@ router.post('/reset/:token', function(req, res) {
         }
     ], function(err) {
         res.redirect('/posts');
+    });
+});
+
+//contact form
+router.post('/contact', function (req, res) {
+    let mailOpts, smtpTrans;
+    smtpTrans = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'hellenicamericanhippocratic@gmail.com',
+            pass: process.env.GMAILPW
+        }
+    });
+    mailOpts = {
+        from: req.body.name + ' &lt;' + req.body.email + '&gt;',
+        to: 'hellenicamericanhippocratic@gmail.com',
+        subject: `${req.body.subject} `,
+        text: `${req.body.name} (${req.body.email}) says: ${req.body.message}`
+    };
+    smtpTrans.sendMail(mailOpts, function (error, response) {
+        if (error) {
+            res.render('contact-failure');
+        }
+        else {
+            res.render('contact-success');
+        }
     });
 });
 

@@ -4,6 +4,10 @@ var Post = require("../models/post");
 var Comment = require("../models/comment");
 var middleware = require('../middleware/index');
 
+var async = require('async'),
+    nodemailer = require('nodemailer'),
+    crypto = require('crypto');
+
 //Comments New
 router.get("/new",middleware.isLoggedIn, function (req, res) {
 
@@ -35,6 +39,7 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     comment.save();
                     post.comments.push(comment);
                     post.save();
+                    sentEmails(req,res,post);
                     req.flash('success','Comment Added ' );
                     res.redirect('/posts/' + post._id);
                 }
@@ -82,6 +87,44 @@ router.delete('/:comment_id', middleware.checkCommentOwnership,( req, res) => {
         }
     });
 });
+
+function sentEmails(req,res,post) {
+
+    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu'];
+    // User.find({}, 'email', function (err, docs) {
+    //     docs.forEach(function (user) {
+    //         console.log(user.email)
+    //     })
+    // });
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'hellenicamericanhippocratic@gmail.com',
+            pass: process.env.GMAILPW
+        }
+    });
+
+
+    var mailOptions = {
+        from: 'hellenicamericanhippocratic@gmail.com',
+        to: allMail,
+        bcc:allMail,
+        subject: 'Message from the H. A. Hippocratic Society',
+        // html: '<h3>A new post has been created by </h3>',
+        text: 'A new comment has been created by the user: '+req.user.username+'\nPlease click on the following link '+
+            'http://' + req.headers.host + '/posts/'+post._id + ' to see the post in context\n\n'
+
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+}
 
 
 
