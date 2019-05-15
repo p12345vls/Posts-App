@@ -337,10 +337,10 @@ router.post('/contact', function (req, res) {
     smtpTrans.sendMail(mailOpts, function (error, response) {
         if (error) {
             req.flash('error', response);
-            res.render('contact-failure');
+            return res.redirect('back');
         } else {
             req.flash('success',response);
-            res.render('contact-success');
+            res.redirect('/landing');
         }
     });
 });
