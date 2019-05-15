@@ -336,11 +336,11 @@ router.post('/contact', function (req, res) {
     };
     smtpTrans.sendMail(mailOpts, function (error, response) {
         if (error) {
-            req.flash('error', response);
-            return res.redirect('back');
+
+            res.render('contact-failure');
         } else {
-            req.flash('success',response);
-            res.redirect('/landing');
+
+            res.render('contact-success');
         }
     });
 });

@@ -182,6 +182,8 @@ function sentEmails(req,res,post) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
+            port: 465,
+            secure: true,
             user: 'hellenicamericanhippocratic@gmail.com',
             pass: process.env.GMAILPW
         }
