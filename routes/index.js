@@ -54,7 +54,14 @@ router.post("/register", upload.single('image'), function (req, res) {
     var avatarImg = req.body.image;
     var newUser;
     cloudinary.uploader.upload(req.file.path, function (result) {
-        avatarImg = result.secure_url;
+        // avatarImg = result.secure_url;
+        //transform the image in order to not rotate when uploading
+        avatarImg = cloudinary.image(`${result.public_id}.${result.format}`, {
+            secure: true,
+            angle: "exif",
+            quality: "auto:low"
+        }).split(/'/)[1];
+
         newUser = new User({
             username: req.body.username,
             password: req.body.password,
@@ -66,7 +73,6 @@ router.post("/register", upload.single('image'), function (req, res) {
         });
 
         //eval(locus);
-
 
         User.register(newUser, req.body.password, function (err, user) {
             if (err) {
@@ -156,7 +162,12 @@ router.post('/users/:id/imageEdit', upload.single('image'), (req, res) => {
     var avatarImg;
 
     cloudinary.uploader.upload(req.file.path, function (result) {
-        avatarImg = result.secure_url;
+        // avatarImg = result.secure_url;
+        avatarImg = cloudinary.image(`${result.public_id}.${result.format}`, {
+            secure: true,
+            angle: "exif",
+            quality: "auto:low"
+        }).split(/'/)[1];
 
 
         User.findByIdAndUpdate(req.params.id, {$set: {avatar: avatarImg}}, {new: true}, function (err, updatedUser) {
@@ -168,10 +179,7 @@ router.post('/users/:id/imageEdit', upload.single('image'), (req, res) => {
                 res.redirect("/users/" + req.params.id);
             }
         });
-
-
     });
-
 });
 
 //================================================================
@@ -248,7 +256,6 @@ router.post('/forgot', function (req, res, next) {
         if (err) return next(err);
         res.redirect('/forgot');
     });
-
 });
 
 
@@ -304,7 +311,9 @@ router.post('/reset/:token', function (req, res) {
                 from: 'hellenicamericanhippocratic@gmail.com',
                 subject: 'Your password has been changed',
                 text: 'Hello,\n\n' +
-                    'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+                    'This is a confirmation that the password for your account '
+                    + user.email +
+                    ' has just been changed.\n'
             };
             smtpTransport.sendMail(mailOptions, function (err) {
                 req.flash('success', 'Success! Your password has been changed.');
