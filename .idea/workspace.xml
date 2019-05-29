@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/headStatics.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/headStatics.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/posts/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/posts/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/new.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
-    </list>
+    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -115,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="309" column="10" lean-forward="true" selection-start-line="309" selection-start-column="10" selection-end-line="309" selection-end-column="10" />
+            <state relative-caret-position="363">
+              <caret line="299" column="84" lean-forward="true" selection-start-line="299" selection-start-column="84" selection-end-line="299" selection-end-column="84" />
               <folding>
                 <element signature="n#!!block;n#sentEmails#0" />
                 <element signature="e#6568#7215#0" />
@@ -494,7 +485,7 @@
       <workItem from="1558677759926" duration="930000" />
       <workItem from="1558765071312" duration="6767000" />
       <workItem from="1558844857655" duration="1422000" />
-      <workItem from="1558852736270" duration="106336000" />
+      <workItem from="1558852736270" duration="106672000" />
     </task>
     <task id="LOCAL-00014" summary="phone video upload test">
       <created>1556854372526</created>
@@ -843,7 +834,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="912495000" />
+    <option name="totallyTimeSpent" value="912831000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-106" width="1321" height="1005" extended-state="0" />
@@ -1991,8 +1982,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="309" column="10" lean-forward="true" selection-start-line="309" selection-start-column="10" selection-end-line="309" selection-end-column="10" />
+        <state relative-caret-position="363">
+          <caret line="299" column="84" lean-forward="true" selection-start-line="299" selection-start-column="84" selection-end-line="299" selection-end-column="84" />
           <folding>
             <element signature="n#!!block;n#sentEmails#0" />
             <element signature="e#6568#7215#0" />

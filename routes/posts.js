@@ -298,7 +298,7 @@ function uploadImage(req, res) {
     // cloudinary.uploader.upload(req.file.path, function (result) {
         // add cloudinary url for the image to the post object under image property
     // req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"}).split(/'/)[1];
-    req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"});
+    req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"}).split(/'/)[1];
          //result.secure_url;
 
          // console.log(result)
