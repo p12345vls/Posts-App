@@ -1,71 +1,69 @@
-<% include ../partials/headInfoShare%>
+<% include ../partials/headInfoShare %>
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
-    <div class="container">
-        <a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
-                                                                       style="height: 40px;width: 45px;"></a>
-        <!--<h3 class="title-mobile letter-spacing mt-2 text-black ">ADD POST</h3>-->
-        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
-            <span class="sr-only ">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <% if(!currentUser){ %>
-                <div class="options d-flex justify-content-between align-items-center mr-auto">
-                    <div class="btn-group">
-                        <a href="/login">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
-                                <i class="fa fa-sign-in fa-lg"></i>Log In
-                            </button>
-                        </a>
-                        <a href="/register">
-                            <button type="button" class="  btn btn-sm btn-outline-primary">
-                                <i class="fas fa-user-plus"></i>Sign Up
-                            </button>
-                        </a>
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-sm navbar-light bg-white fixed-top">
+    <div class="container d-flex ">
+        <a class="navbar-brand" href="/"><img src="/assets/img/greek-pillar.png"></a>
+        <div>
+            <% if(currentUser){ %>
+                <a href="/users/<%= currentUser.id %>">
+                    <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary rounded-circle z-depth-1-half"
+                         style="background-image:url('<%= currentUser.avatar %>');">
                     </div>
-                </div>
-                <h3 class="title-desktop letter-spacing mt-2 text-black ">ALL POSTS</h3>
-            <% } else { %>
-                <ul class="nav navbar-nav -auto">
-                    <li class="nav-item m-2">
-                        <a href="/logout">
-                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary">
-                                <i class="fa fa-sign-out fa-lg"></i>Log out
-                            </button>
-                        </a>
-                    </li>
-                    <div class="options d-flex  justify-content-between align-items-center mr-auto">
-                        <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
-                             style="background-image:url('<%= currentUser.avatar %>');"></div>
-                        <div class="btn-group">
-                            <a href="/posts">
-                                <button type="button" class="small-font btn btn-sm btn-outline-secondary">
-                                    <i class="fa fa-home fa-lg"></i>Home
-                                </button>
-                            </a>
-                            <a href="/userPosts">
-                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
-                                </button>
-                            </a>
-                            <a href="/userPosts/comments">
-                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments
-                                </button>
-                            </a>
-                            <a href="/users/<%= currentUser.id %>">
-                                <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </ul>
+                </a>
             <% } %>
+            <button class="navbar-toggler first-button" type="button" data-toggle="collapse"
+                    data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <div class="animated-icon1 "><span></span><span></span><span></span></div>
+            </button>
         </div>
+
+        <div class="collapse navbar-collapse bg-light" id="collapseEx12">
+            <% if(!currentUser){ %>
+
+        </div>
+        <% } else { %>
+
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/posts" role="button">
+                    <span class=" d-lg-inline-block mr-1">home</span>
+                    <i class="fas fa-home "></i>
+                </a>
+
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/posts/new" role="button">
+                    <span class=" d-lg-inline-block mr-1">new post</span>
+                    <i class="fas fa-plus "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/userPosts" role="button">
+                    <span class=" d-lg-inline-block mr-1">my posts</span>
+                    <i class="fas fa-file "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/userPosts/comments" role="button">
+                    <span class=" d-lg-inline-block mr-1">my comments</span>
+                    <i class="fas fa-comments "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/users/<%= currentUser.id %>" role="button">
+                    <span class=" d-lg-inline-block mr-1">my profile</span>
+                    <i class="fas fa-user "></i>
+                </a>
+
+
+                <a id="" class="btn btn-outline-deep-orange  btn-sm " href="/logout">
+                    <span class="d-lg-inline-block ">Log out</span>
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
     </div>
+    <% } %>
+
 </nav>
+<!--end nav ----------------------------------------------------------------------------------------------------------->
 
 
-<main class="page mt-n5 ">
+<main class="page top-position ">
 
     <% if (typeof message != "undefined"){ %>
         <div class="container-message text-center flash" style="z-index: 2">
@@ -78,42 +76,43 @@
         </div>
     <% } %>
 
-
-
-    <section class="clean-block clean-form dark ">
-        <div class="container">
-            <div class="block-heading">
-                <h2 id="header-form" class="text-info">Add a New Post</h2>
-                Use the form below to add a new post
+    <div class="container-form m-auto shadow p-2">
+        <div class="block-heading">
+            <h2 id="header-form" class="text-info">Add a New Post</h2>
+            Use the form below to add a new post
+        </div>
+        <form id="post_form" class="" action="/posts " method="POST" enctype="multipart/form-data">
+            <h3 id="loading-message" class="text-center text-warning"></h3>
+            <!--add a title-->
+            <div class="form-group">
+                <input type="text" id="title-for-post" class="form-control hover" name="post[name]" maxlength="30"
+                       placeholder="title" required></div>
+            <!--select image or video-->
+            <div class=" form-group ">
+                <label for="files" class="btn btn-outline-secondary btn-sm">
+                    Image or Video<em>
+                        <small> (up to 10MB)</small>
+                    </em>
+                </label>
+                <small><span id="url" class="ml-2"></span></small>
+                <input id='files' type="file" class="d-none" name="image" accept="image/*;video/*" required>
             </div>
-            <form id="post_form" class="" action="/posts " method="POST" enctype="multipart/form-data">
-                <h3 id="loading-message" class="text-center text-warning"></h3>
-                <!--add a title-->
-                <div class="form-group">
-                    <input type="text" id="title-for-post" class="form-control hover" name="post[name]" maxlength="30" placeholder="title" required></div>
-                <!--select image or video-->
-                <div class=" form-group ">
-                    <label for="files" class="btn btn-outline-secondary btn-sm">
-                        Image or Video<em><small> (up to 10MB)</small></em>
-                    </label><small><span id="url" class="ml-2"></span></small>
-                    <input id='files' type="file"  class="d-none" name="image" accept="image/*;video/*" required >
-                </div>
-                <!--text area for description-->
-                <div class="hover form-group ">
+            <!--text area for description-->
+            <div class="hover form-group ">
                             <textarea type="text" id="desc" class="form-control" name="post[description]"
                                       cols="100"
                                       rows="3" required></textarea>
-                    <label class="form-control-placeholder"  for="description">description</label>
-                </div>
+                <label class="form-control-placeholder" for="description">description</label>
+            </div>
 
-                <div class="form-group">
-                    <button id='btn' class="btn btn-primary btn-block" type="submit">Submit </button>
-                </div>
-                <!--gif loading-->
-                    <div id="loading" class="text-center "></div>
-            </form>
-        </div>
-    </section>
+            <div class="form-group">
+                <button id='btn' class="btn btn-primary btn-block" type="submit">Submit</button>
+            </div>
+            <!--gif loading-->
+            <div id="loading" class="text-center "></div>
+        </form>
+    </div>
+
 </main>
 <!--do not display it in mobile formats-->
 
@@ -126,13 +125,13 @@
 <script>
     // show to the user that the image or video is required
     document.querySelector('#btn').addEventListener('click', (event) => {
-        if(document.querySelector('#desc').value!==''&&
-            document.querySelector('#title-for-post').value!==''){
+        if (document.querySelector('#desc').value !== '' &&
+            document.querySelector('#title-for-post').value !== '') {
 
-            if(document.querySelector('#files').value===''){
+            if (document.querySelector('#files').value === '') {
                 alert('please enter an image or a video')
             } else {
-                document.querySelector('#loading').innerHTML= '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
+                document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
                     '</i><br><p>please be patient this may take up to 45 seconds</p>';
             }
         }
@@ -141,18 +140,18 @@
     // add the text of the selected file next to 'select image'
     document.querySelector('#files').addEventListener('change', (event) => {
         let url = document.querySelector('#files').value;
-        document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
+        document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\') + 1);
     });
 </script>
 
 <script>
     document.querySelector('title').innerText = "Add Post"
 </script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="assets/js/smoothproducts.min.js"></script>
-<script src="assets/js/theme.js"></script>
+<!--<script src="assets/js/jquery.min.js"></script>-->
+<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>-->
+<!--<script src="assets/js/smoothproducts.min.js"></script>-->
+<!--<script src="assets/js/theme.js"></script>-->
 <% include ../partials/footer %>
 </body>
 </html>

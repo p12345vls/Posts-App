@@ -1,87 +1,82 @@
-<% include head %>
+<!--<% include head %>-->
 
-<nav  class=" top mb-3 bg-white hover  navbar navbar-expand-md navbar-dark  sticky-top main-menu   ">
+<!--<nav  class=" top mb-3 bg-white hover  navbar navbar-expand-md navbar-dark  sticky-top main-menu   ">-->
 
-    <ul class="navbar-nav mr-auto  ">
-    <li class="nav-item ">
-       <a href="/"><img src="/assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a></div>
-    </li>
+<!--    <ul class="navbar-nav mr-auto  ">-->
+<!--    <li class="nav-item ">-->
+<!--       <a href="/"><img src="/assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a></div>-->
+<!--    </li>-->
 
-    </ul>
-    <button class="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon bg-primary rounded"></span>
-    </button>
-
-
-    <div class="collapse navbar-collapse " id="collapsibleNavId">
-        <ul class="navbar-nav mr-auto  ">
-
-            <% if(!currentUser){ %>
-
-                <li class="nav-item ">
-                    <a class="nav-link text-dark" href="/login" id="nav1" aria-haspopup="true"
-                       aria-expanded="false">Login
-                        <i class="fas fa-sign-in-alt text-dark"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item ">
-                    <a class="nav-link text-dark" href="/register" id="nav2" aria-expanded="false">Sigh Up <i
-                                class="fas fa-user-plus text-dark"></i></a>
-                </li>
-
-            <% } else { %>
-                <li class="nav-item ">
-                    <a class=" nav-link text-dark " href="/logout" id="nav3" aria-haspopup="true"
-                       aria-expanded="false">
-                        Log Out <i class="fas fa-sign-out-alt text-dark"></i>
-                    </a>
-
-                </li>
-
-                <div class="dropDown1 pt-2" style="font-family: 'Helvetica Neue';">
-                    <strong><a href="" class="d-inline m-2 text-decoration-none text-dark">Logged in
-                            as <%= currentUser.username %></a></strong>
+<!--    </ul>-->
+<!--    <button class="navbar-toggler d-lg-none " type="button" data-toggle="collapse" data-target="#collapsibleNavId"-->
+<!--            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon bg-primary rounded"></span>-->
+<!--    </button>-->
 
 
-                    <i class="fas fa-angle-down dropbtn" id=""></i>
-                    <div class="dropDown1-content">
+<!--    <div class="collapse navbar-collapse " id="collapsibleNavId">-->
+<!--        <ul class="navbar-nav mr-auto  ">-->
 
-                        <a href="/posts/new" class="text-decoration-none text-dark">
+<!--            <% if(!currentUser){ %>-->
 
-                            <i class="  fas  fa-plus"> <span class="span-drop text-black-50 ml-1"> new post</span></i>
-                        </a>
+<!--                <li class="nav-item ">-->
+<!--                    <a class="nav-link text-dark" href="/login" id="nav1" aria-haspopup="true"-->
+<!--                       aria-expanded="false">Login-->
+<!--                        <i class="fas fa-sign-in-alt text-dark"></i>-->
+<!--                    </a>-->
+<!--                </li>-->
 
-                        <a href="/userPosts" class="text-decoration-none text-dark ">
-                            <i class="fas fa-pen-square"> <span class="span-drop text-black-50">my posts</span></i>
-                        </a>
-                        <a href="/userPosts/comments" class="text-decoration-none text-dark">
-                            <i class="fas fa-comment"> <span class="span-drop text-black-50">my comments</span></i>
-                        </a>
+<!--                <li class="nav-item ">-->
+<!--                    <a class="nav-link text-dark" href="/register" id="nav2" aria-expanded="false">Sigh Up <i-->
+<!--                                class="fas fa-user-plus text-dark"></i></a>-->
+<!--                </li>-->
 
-                        <a href="/users/<%= currentUser.id %>" class="text-decoration-none text-dark">
+<!--            <% } else { %>-->
+<!--                <li class="nav-item ">-->
+<!--                    <a class=" nav-link text-dark " href="/logout" id="nav3" aria-haspopup="true"-->
+<!--                       aria-expanded="false">-->
+<!--                        Log Out <i class="fas fa-sign-out-alt text-dark"></i>-->
+<!--                    </a>-->
 
-                            <i class="fas fa-user-alt"> <span class="span-drop text-black-50">my profile</span></i>
-                        </a>
+<!--                </li>-->
 
-
-                    </div>
-
-
-                </div>
-                    <li class="nav-item m-1">
-
-                        <div class="user-comment-img avatar-top rounded-circle border border-primary " style="background-image:url('<%= currentUser.avatar %>');"></div>
-                        <span class="dot1"></span>
-                        <span class="dot2"></span>
-                    </li>
-
-            <% } %>
-
-        </ul>
+<!--                <div class="dropDown1 pt-2" style="font-family: 'Helvetica Neue';">-->
+<!--                    <strong><a href="" class="d-inline m-2 text-decoration-none text-dark">Logged in-->
+<!--                            as <%= currentUser.username %></a></strong>-->
 
 
+<!--                    <i class="fas fa-angle-down dropbtn" id=""></i>-->
+<!--                    <div class="dropDown1-content">-->
+
+<!--                        <a href="/posts/new" class="text-decoration-none text-dark">-->
+
+<!--                            <i class="  fas  fa-plus"> <span class="span-drop text-black-50 ml-1"> new post</span></i>-->
+<!--                        </a>-->
+
+<!--                        <a href="/userPosts" class="text-decoration-none text-dark ">-->
+<!--                            <i class="fas fa-pen-square"> <span class="span-drop text-black-50">my posts</span></i>-->
+<!--                        </a>-->
+<!--                        <a href="/userPosts/comments" class="text-decoration-none text-dark">-->
+<!--                            <i class="fas fa-comment"> <span class="span-drop text-black-50">my comments</span></i>-->
+<!--                        </a>-->
+
+<!--                        <a href="/users/<%= currentUser.id %>" class="text-decoration-none text-dark">-->
+
+<!--                            <i class="fas fa-user-alt"> <span class="span-drop text-black-50">my profile</span></i>-->
+<!--                        </a>-->
 
 
+<!--                    </div>-->
 
+
+<!--                </div>-->
+<!--                    <li class="nav-item m-1">-->
+
+<!--                        <div class="user-comment-img avatar-top rounded-circle border border-primary " style="background-image:url('<%= currentUser.avatar %>');"></div>-->
+<!--                        <span class="dot1"></span>-->
+<!--                        <span class="dot2"></span>-->
+<!--                    </li>-->
+
+<!--            <% } %>-->
+
+<!--        </ul>-->

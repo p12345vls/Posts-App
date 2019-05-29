@@ -1,72 +1,82 @@
 <% include ../partials/headInfoShare %>
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
-    <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
-                                                                       style="height: 40px;width: 45px;"></a>
-        <h3 class="title-mobile letter-spacing mt-2 text-black "><%=    %> </h3>
-        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
-            <span class="sr-only ">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <% if(!currentUser){ %>
-                <div class="options d-flex justify-content-between align-items-center mr-auto">
-                    <div class="btn-group">
-                        <a href="/login">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
-                                <i class="fa fa-sign-in fa-lg"></i>Log In
-                            </button>
-                        </a>
-                        <a href="/register">
-                            <button type="button" class="  btn btn-sm btn-outline-primary">
-                                <i class="fas fa-user-plus"></i>Sign Up
-                            </button>
-                        </a>
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-sm navbar-light bg-white fixed-top">
+    <div class="container d-flex ">
+        <a class="navbar-brand" href="/"><img src="/assets/img/greek-pillar.png"></a>
+
+        <div class=""><h3 class="heading-top " style="color:#4f2da8">POST</h3></div>
+        <div>
+            <% if(currentUser){ %>
+                <a href="/users/<%= currentUser.id %>">
+                    <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary rounded-circle z-depth-1-half"
+                         style="background-image:url('<%= currentUser.avatar %>');">
                     </div>
-                </div>
-                <h3 class="title-desktop letter-spacing mt-2 text-black "><%=    %> </h3>
-            <% } else { %>
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item m-2">
-                        <a href="/logout">
-                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary">
-                                <i class="fa fa-sign-out fa-lg"></i>Log out
-                            </button>
-                        </a>
-                    </li>
-                    <div class="options d-flex justify-content-between align-items-center mr-auto mt-1">
-                        <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
-                             style="background-image:url('<%= currentUser.avatar %>');"></div>
-                        <div class="btn-group">
-                            <a href="/posts">
-                                <button type="button" class="small-font btn btn-sm btn-outline-secondary">
-                                    <i class="fa fa-home fa-lg"></i>Home
-                                </button>
-                            </a>
-                            <a href="/posts/new">
-                                <button type="button" class="small-font btn btn-sm btn-outline-success">New Post
-                                </button>
-                            </a>
-                            <a href="/userPosts">
-                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
-                                </button>
-                            </a>
-                            <a href="/userPosts/comments">
-                                <button type="button" class="small-font  btn btn-sm btn-outline-primary">My comments
-                                </button>
-                            </a>
-                            <a href="/users/<%= currentUser.id %>">
-                                <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </ul>
+                </a>
             <% } %>
+            <button class="navbar-toggler first-button" type="button" data-toggle="collapse"
+                    data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <div class="animated-icon1 "><span></span><span></span><span></span></div>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse bg-light" id="collapseEx12">
+            <% if(!currentUser){ %>
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                    <a id="login" class="btn btn-outline-default btn-sm waves-effect waves-light"
+                       href="/login">
+                        <span class="d-lg-inline-block mr-1">Log In</span>
+                        <i class="fas fa-sign-in-alt ml-2"></i>
+                    </a>
+                    <a id="sign-up" class="btn btn-outline-deep-orange btn-sm waves-effect waves-light"
+                       href="/register"
+                       role="button">
+                        <span class=" d-lg-inline-block mr-1">sign up</span>
+                        <i class="fas fa-user-plus "></i>
+                    </a>
+                </div>
 
         </div>
+        <% } else { %>
+
+
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/posts" role="button">
+                    <span class=" d-lg-inline-block mr-1">home</span>
+                    <i class="fas fa-home "></i>
+                </a>
+
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/posts/new" role="button">
+                    <span class=" d-lg-inline-block mr-1">new post</span>
+                    <i class="fas fa-plus "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/userPosts" role="button">
+                    <span class=" d-lg-inline-block mr-1">my posts</span>
+                    <i class="fas fa-file "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/userPosts/comments" role="button">
+                    <span class=" d-lg-inline-block mr-1">my comments</span>
+                    <i class="fas fa-comments "></i>
+                </a>
+                <a id="" class="btn btn-outline-cyan btn-sm " href="/users/<%= currentUser.id %>" role="button">
+                    <span class=" d-lg-inline-block mr-1">my profile</span>
+                    <i class="fas fa-user "></i>
+                </a>
+
+
+                <a id="" class="btn btn-outline-deep-orange  btn-sm " href="/logout">
+                    <span class="d-lg-inline-block ">Log out</span>
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </div>
+
     </div>
+    <% } %>
+
 </nav>
+<!--end nav ----------------------------------------------------------------------------------------------------------->
+
 <% include ../partials/flsh %>
 <% var userImage; %>
 <% var userComment; %>

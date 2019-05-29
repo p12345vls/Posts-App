@@ -1,26 +1,32 @@
 <% include ./partials/headInfoShare %>
-<style></style>
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-    <div class="container"><a class="navbar-brand logo" href="/"><img src="assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a>
 
-        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
-            <span class="sr-only ">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav m-auto">
-                <li class="nav-item " role="presentation">
-                    <a class="nav-link  home-link" href="/posts"><strong class="text-link "><i class="fas fa-home "> </i> All Posts</strong></a></li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/register">
-                        <strong class="text-link about-link">I don't have an account > <span class="text-primary">Sign Up</span></strong><br></a></li>
-            </ul>
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-sm navbar-light bg-white fixed-top">
+    <div class="container d-flex ">
+        <a class="navbar-brand" href="/"><img src="/assets/img/greek-pillar.png"></a>
+        <div>
+            <button class="navbar-toggler first-button" type="button" data-toggle="collapse"
+                    data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <div class="animated-icon1 "><span></span><span></span><span></span></div>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse bg-light" id="collapseEx12">
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                    <a id="sign-up" class="btn btn-outline-deep-orange btn-sm waves-effect waves-light"
+                       href="/register"
+                       role="button">
+                        <span class=" d-lg-inline-block mr-1">sign up</span>
+                        <i class="fas fa-user-plus "></i>
+                    </a>
+                </div>
         </div>
     </div>
 </nav>
 
 
-<main class="page login-page">
+<main class="page login-page ">
 
     <% if (typeof message != "undefined"){ %>
         <div class="container-message text-center flash" style="z-index: 2;">
@@ -34,42 +40,65 @@
     <% } %>
 
 
-    <section class="clean-block clean-form dark">
-        <div class="container">
-            <div class="block-heading">
-                <h2 id="header-form" class="text-info">Login to Info Share</h2>
-            </div>
-            <form id="login_form" class="" action="/login " method="POST">
-                <div class="form-group">
-                    <input class="form-control" id="username" name="username" type="text" placeholder="username" required></div>
-                <div class="form-group">
-                    <input class="form-control" id="pass" name="password" type="password" placeholder="password" required></div>
 
-                <div class="form-group">
-                    <button id='btn' class="btn btn-primary btn-block" type="submit">Log In</button>
-                </div>
-                <div class="form-group">
-                    <a href="/forgot">forgot your password?</a>
-                </div>
-
-            </form>
+    <div class="container-form m-auto p-2">
+        <div class="block-heading">
+            <p id="" class="text-black-50 text-center">Login to Add Posts and Comments</p>
         </div>
-    </section>
+        <form class="shadow" action="/login" method="post" role="form">
 
+            <!--Header-->
+            <div class="modal-header btn-cyan darken-3 white-text shadow">
+                <h4 class="title"><i class="fas fa-pencil-alt"></i> Login form</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body mb-0">
+                <div class="md-form form-sm">
+                    <i class="fas fa-user prefix "></i>
+                    <input type="text" id="form8" class="form-control" name="username" required>
+                    <label for="form8" class="active">Your Username</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fas fa-lock prefix "></i>
+                    <input type="password" id="form9" class="form-control" name="password" required>
+                    <label for="form9" class="active">Your password</label>
+                </div>
+
+
+                <div class="text-center mt-1-half">
+                    <button class="btn btn-block mb-2 waves-effect waves-light deep-purple darken-3 white-text">Submit <i class="fas fa-send ml-1"></i>
+                    </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                    Not a member? <a href="/register" class="text-dark">
+                        <strong class=" "> <span class="text-primary ">Sign Up</span>
+                        </strong>
+                    </a>
+                    </div>
+
+                    <div class="col-6">
+
+                        <a href="/forgot"> Forgot your password?</a>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--/.Content-->
+        </form>
+    </div>
 </main>
 
-<footer class="page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
+<footer class="page-footer black position-fixed text-center" style="bottom:0; left: 0;right:0;">
     <div class="footer-copyright">
-        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+        <p>© <%=new Date().getFullYear() %> by the Hellenic American Hippocratic Orthopaedic Society</p>
     </div>
 </footer>
 
 
 <script>document.querySelector('title').innerText = "Login to Info Share"</script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="assets/js/smoothproducts.min.js"></script>
-<script src="assets/js/theme.js"></script>
 </body>
 </html>
