@@ -3,13 +3,23 @@
 
     $(document).ready(function () {
 //-----------------------------------------------------------
+        $('.first-button').on('click', function () {
+
+            $('.animated-icon1').toggleClass('open');
+        });
+        $('.nav-item').on("mouseenter", function () {
+            $($(this)).css("background-color", "#f4f4f4");
+        });
+        $('.nav-item').on("mouseleave", function () {
+            $($(this)).css("background-color", "white");
+        });
 
 
 //-----------------------------------------------------------
-        //for closing the flash message
-        // setTimeout(function () {
-        //     $(".alert").alert('close');
-        // }, 3000);
+//         for closing the flash message
+        setTimeout(function () {
+            $(".alert").alert('close');
+        }, 3000);
 //-----------------------------------------------------------
 
 

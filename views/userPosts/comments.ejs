@@ -1,113 +1,99 @@
 <% include ../partials/headInfoShare %>
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-light clean-navbar ">
-    <div class="container"><a class="navbar-brand logo " href="/"><img src="/assets/img/logo-hp.png"
-                                                                       style="height: 40px;width: 45px;"></a>
-        <h3 class="title-mobile letter-spacing mt-2 text-black ">MY COMMENTS</h3>
-        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
-            <span class="sr-only ">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <% if(!currentUser){ %>
-                <div class="options d-flex justify-content-between align-items-center mr-auto">
-                    <div class="btn-group">
-                        <a href="/login">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2">
-                                <i class="fa fa-sign-in fa-lg"></i>Log In
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-sm navbar-light bg-white fixed-top">
+    <div class="container d-flex ">
+        <a class="navbar-brand" href="/"><img src="/assets/img/greek-pillar.png"></a>
+
+        <div class=""><h3 class="heading-top " style="color:#4f2da8">My COMMENTS</h3></div>
+        <div>
+            <% if(currentUser){ %>
+                <a href="/users/<%= currentUser.id %>">
+                    <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary rounded-circle z-depth-1-half"
+                         style="background-image:url('<%= currentUser.avatar %>');">
+                    </div>
+                </a>
+            <% } %>
+            <button class="navbar-toggler first-button" type="button" data-toggle="collapse"
+                    data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <div class="animated-icon1 "><span></span><span></span><span></span></div>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse bg-light" id="collapseEx12">
+
+            <% var firstComment = true; %>
+            <% posts.forEach(function(post){ %>
+                <% if(post.comments != false){ %>
+                    <% post.comments.forEach(function(comment){ %>
+                        <% if(comment.author.id.equals(currentUser.id)){ %>
+                            <% firstComment = false; %>
+                        <% } %>
+                    <% }); %>
+                <% } %>
+            <% }); %>
+
+
+            <% if(firstComment) { %>
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                    <div class=" ml-2">
+                        <a href="/posts">
+                            <button type="button" class="small-font btn btn-sm btn-outline-secondary">
+                                <i class="fa fa-home fa-lg"></i>Home
                             </button>
                         </a>
-                        <a href="/register">
-                            <button type="button" class="  btn btn-sm btn-outline-primary">
-                                <i class="fas fa-user-plus"></i>Sign Up
+                        <br>
+                        <a href="/posts">
+                            <button type="button" class="small-font btn btn-sm btn-outline-success">create your
+                                comment !
                             </button>
                         </a>
                     </div>
                 </div>
-                <h3 class="title-desktop letter-spacing mt-2 text-black ">MY COMMENTS</h3>
-
             <% } else { %>
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item m-2">
-                        <a href="/logout">
-                            <button type="button" class="small-font mt-1 btn btn-sm btn-outline-secondary">
-                                <i class="fa fa-sign-out fa-lg"></i>Log out
-                            </button>
-                        </a>
-                    </li>
-
-                    <% var firstComment = true; %>
-                    <% posts.forEach(function(post){ %>
-                        <% if(post.comments != false){ %>
-                            <% post.comments.forEach(function(comment){ %>
-                                <% if(comment.author.id.equals(currentUser.id)){ %>
-                                    <% firstComment = false; %>
-                                <% } %>
-                            <% }); %>
-                        <% } %>
-                    <% }); %>
-
-                    <% if(firstComment) { %>
-                        <div class="options d-flex justify-content-between align-items-center mr-auto mt-1">
-                            <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
-                                 style="background-image:url('<%= currentUser.avatar %>');"></div>
-                            <div class="btn-group ml-2">
-                                <a href="/posts">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-secondary">
-                                        <i class="fa fa-home fa-lg"></i>Home
-                                    </button>
-                                </a>
-                                <a href="/userPosts">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-success">My Posts
-                                    </button>
-                                </a>
-                                <a href="/users/<%= currentUser.id %>">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                    <% } else { %>
-
-                        <div class="options d-flex justify-content-between align-items-center mr-auto mt-1">
-                            <div class="hover btn-group user-comment-img avatar-top rounded-circle border border-primary mr-2 "
-                                 style="background-image:url('<%= currentUser.avatar %>');"></div>
-                            <div class="btn-group">
-                                <a href="/posts">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-secondary">
-                                        <i class="fa fa-home fa-lg"></i>Home
-                                    </button>
-                                </a>
-                                <a href="/posts/new">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-success">New Post
-                                    </button>
-                                </a>
-                                <a href="/userPosts/">
-                                    <button type="button" class="small-font  btn btn-sm btn-outline-primary">My Posts
-                                    </button>
-                                </a>
-                                <a href="/users/<%= currentUser.id %>">
-                                    <button type="button" class="small-font btn btn-sm btn-outline-primary">My Profile
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-
-                </ul>
 
 
-                <% } %>
-                <form action="/posts" method="GET" class="form-inline ml-auto mt-1" >
+
+
+                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                    <a id="" class="btn btn-outline-cyan btn-sm " href="/posts" role="button">
+                        <span class=" d-lg-inline-block mr-1">home</span>
+                        <i class="fas fa-home "></i>
+                    </a>
+                    <a id="" class="btn btn-outline-cyan btn-sm " href="/posts/new" role="button">
+                        <span class=" d-lg-inline-block mr-1">new post</span>
+                        <i class="far fa-plus-square"></i>
+                    </a>
+                    <a id="" class="btn btn-outline-cyan btn-sm " href="/userPosts" role="button">
+                        <span class=" d-lg-inline-block mr-1">my posts</span>
+                        <i class="fas fa-file"></i>
+                    </a>
+                    <a id="" class="btn btn-outline-cyan btn-sm " href="/users/<%= currentUser.id %>" role="button">
+                        <span class=" d-lg-inline-block mr-1">my profile</span>
+                        <i class="fas fa-id-badge"></i>
+                    </a>
+
+
+                    <a id="" class="btn btn-outline-deep-orange  btn-sm " href="/logout">
+                        <span class="d-lg-inline-block ">Log out</span>
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                </div>
+
+                <form action="/posts" method="GET" class="form-inline ml-2 mt-1 float-left">
                     <input id="tags" class="awesomplete form-control mr-1 "
                            name="search" type="text" placeholder="search here"
                            data-list="<%= availableTags %>">
-                    <button class="btn btn-outline-primary my-1 my-sm-0" value="Search" type="submit"><i
-                                class="fas fa-search "></i></button>
                 </form>
         </div>
-
-        <% } %>
     </div>
+
+</nav>
+<% } %>
+
 </nav>
 <% include ../partials/flsh %>
 <!--end nav ----------------------------------------------------------------------------------------------------------->
@@ -130,7 +116,6 @@
 <% } else { %>
 
     <div class="container-body  p-0 top-position ">
-        <h4 class="title-desktop-second text-center text-secondary">My Comments</h4>
 
 
         <div id="start"></div>
@@ -252,18 +237,16 @@
                                                            data-toggle="dropdown"
                                                            aria-haspopup="true" aria-expanded="false" aria-hidden="true"></i>
                                                         <div class="dropdown-menu text-center" id="">
-                                                            <a href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit" class="dropdown-item">
-                                                                <button class="btn btn-outline-primary ">
-                                                                    <i class="  fas  fa-edit"> </i> edit comment
-                                                                </button>
+                                                            <a href="/posts/<%= post._id %>/comments/<%= comment._id %>/edit"
+                                                               class="dropdown-item"
+                                                               class="">
+                                                                <i class="btn btn-sm btn-outline-primary mr-1 ml-1 fas fa-edit"></i>
                                                             </a>
                                                             <hr>
                                                             <form id="delete" class="dropdown-item btn btn-block"
                                                                   action="/posts/<%= post._id %>/comments/<%= comment._id %>/?_method=DELETE"
                                                                   method="POST">
-                                                                <button class="btn btn-outline-danger ">
-                                                                    <i class=" mr-1 ml-1 fas fa-trash-alt"></i> delete comment
-                                                                </button>
+                                                                <button><i class="btn btn-outline-danger btn-sm mr-1 ml-1 fas fa-trash-alt"></i></button>
                                                             </form>
                                                         </div>
                                                     </div>

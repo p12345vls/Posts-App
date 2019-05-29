@@ -24,7 +24,7 @@
 .awesomplete > ul {
     position: absolute;
     left: 0;
-    z-index: 1;
+    z-index: 222222;
     min-width: 100%;
     box-sizing: border-box;
     list-style: none;
@@ -113,7 +113,7 @@
 /*sets the height of the search results */
 #awesomplete_list_1{
     overflow: auto;
-    max-height: 800px;
+    max-height: 150px;
 
 
     -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */

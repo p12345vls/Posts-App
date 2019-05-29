@@ -1,4 +1,29 @@
 <% include ./partials/headStatics %>
+
+<div id="wrapper">
+
+<section class="jumbotron jumbotron-fluid bg-light" style="margin-top: 90px;">
+    <div class="  ">
+        <div class="container-fluid m-auto text-center" style="">
+            <h1 class=""><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong>
+            </h1>
+            <h1 ><strong class="font-weight-light heading" id="title-landing">Hellenic American Hippocratic Society</strong>
+
+            </h1>
+
+            <div class="btn-area">
+                <p class=" text-sm-left pl-3"><strong>A private non-profit society of physicians and scientists </strong></p>
+                <!--modal button ------------------------------------------------------------------------------------------------------------------>
+                <button type="button" class="btn btn-deep-purple  mobile-btn " data-toggle="modal" data-target="#exampleModalCenter">
+                    <i class="fa fa-graduation-cap text-danger" aria-hidden="true"></i> Be a Member
+                </button>
+            </div>
+            <!--modal button ---------------------------------------------------------------------------------------------------------------------->
+        </div>
+
+    </div>
+</section>
+
 <main class="page" id="page">
 
     <section style="max-width: 500px">
@@ -21,29 +46,35 @@
                                 <div class="mt-n4">
                                     <div class="form-group input-group-sm">
                                         <input class="form-control item  hover" type="text" id="firstname"
-                                               placeholder="first name" name="member[name]" required></div>
+                                               placeholder="first name" name="member[name]" required>
+                                    </div>
                                     <div class="form-group input-group-sm">
                                         <input class="form-control item  hover" type="text" id="lastname"
-                                               placeholder="last name" name="member[lastname]" required></div>
+                                               placeholder="last name" name="member[lastname]" required>
+                                    </div>
                                     <div class="form-group input-group-sm">
                                         <input class="form-control item  hover" type="text" id="role"
-                                               placeholder="current position " name="member[role]" required></div>
+                                               placeholder="current position " name="member[role]" required>
+                                    </div>
                                     <p title="E.g.'professor'"
                                        style="position: absolute; margin-top: -44px;margin-left: -17px;">
                                         <i class="fas fa-question-circle"></i>
                                     </p>
-                                    <div class="form-group input-group-sm mt-n3">
+                                    <div class="form-group input-group-sm ">
                                         <input class="form-control item hover" type="email" id="email"
-                                               placeholder="email" name="member[email]" required></div>
-                                    <div class="form-group input-group-sm mt-n3">
+                                               placeholder="email" name="member[email]" required>
+                                    </div>
+                                    <div class="form-group input-group-sm ">
                                         <input class="form-control item  hover" type="text" id="fullAddress"
-                                               placeholder="full Address" name="member[address]" required></div>
-                                    <div class="form-group input-group-sm mt-n3">
+                                               placeholder="full Address" name="member[address]" required>
+                                    </div>
+                                    <div class="form-group input-group-sm ">
                                         <input class="form-control item  hover" type="text" id="phone"
-                                               placeholder="phone" name="member[phone]"></div>
-                                    <button class="btn btn-block hover shadow-sm" style="background-color: #ffc439;">
+                                               placeholder="phone" name="member[phone]">
+                                    </div>
+                                    <button class="btn btn-block hover shadow-sm mt-3" style="background-color: #ffc439;">
                                         <img class="float-left" src="assets/img/paypal.png" width="100" height="">
-                                        <strong class="float-left mt-1 ml-2">Submit $100.00</strong>
+                                        <strong class="float-left mt-2 ml-2">Submit $100.00</strong>
                                     </button>
                                 </div>
                             </form>
@@ -56,8 +87,6 @@
                                 <input type="hidden" name="hosted_button_id" value="9RCELQHS9DKWN">
                                 <!-- paypal - - - - - - - - - - - - - - - - - - - - - - - - -->
                             </form>
-
-
                         </div>
                     </section>
 
@@ -67,28 +96,9 @@
         <!--end Modal ----------------------------------------------------------------------------------------------------------------------->
     </section>
 
-    <section>
-        <div class="jumbotron">
-            <div class="container-fluid m-auto " style="max-width: 1000px;">
-                <h1 class=""><strong class="heading-mobile">Hellenic American <br>Hippocratic Society</strong>
-                </h1>
-
-                <h1 class=""><strong class="heading">Hellenic American Hippocratic Society</strong></h1>
-                <!--modal button ---------------------------------------------------------------------------------------------------------------------->
-                <p class="">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        Be a Member
-                    </button>
-                </p>
-                <!--modal button ---------------------------------------------------------------------------------------------------------------------->
-
-            </div>
-        </div>
-    </section>
-
-    <div class="container" style="max-width: 700px;">
-        <hr style="color: #000000;background-color: #ffffff;">
-        <p class="text-left d-table-row" style="font-size: 14px;">The Hellenic&nbsp;American Hippocratic Society is a
+    <div class="container" style="max-width: 700px; margin-top: -30px!important;">
+<!--        <hr style="color: #000000;background-color: #ffffff;">-->
+        <p class="text-left d-table-row" style="font-size: 16px!important;"><strong>The Hellenic&nbsp;American Hippocratic Society is a
             private, non-profit society of physicians and scientists whose main interest is the study of the
             musculoskeletal system. Members of the society are United States or Canada or Greek citizens
             or permanent residents. The members of the society work together to promote the exchange of ideas,
@@ -98,17 +108,18 @@
             the society to promote scientific or professional interactions in the forms of scientific meetings,
             observership programs or any
             other forms of professional activity that strengthen the understanding and treatment of the orthopaedic
-            diseases as well as the professional achievements of the&nbsp;members.</p>
+            diseases as well as the professional achievements of the&nbsp;members.</strong></p>
         <hr>
     </div>
     <section class="text-center clean-block features" data-aos="zoom-in" data-aos-delay="350" data-aos-once="true">
         <div class="container">
-            <h3 class="text-center text-primary" style="color: rgb(77,140,204);"><span class="fa-stack"><i
-                            class="fa fa-circle fa-stack-2x text-muted"></i><i
-                            class="fas fa-award fa-stack-1x fa-inverse"></i></span>Recognition
-                Levels</h3>
+            <h3 class="text-center text-black "><span class="fa-stack"><i
+                            class="fa fa-circle fa-stack-2x text-muted "></i><i
+                            class="fas fa-award fa-stack-1x fa-inverse "></i></span>
+                <strong>Recognition Levels</strong>
+            </h3>
         </div>
-        <div class="container" style="width: 350px;background-color: #f6f6f6;">
+        <div class="container" style="width: 350px;background-color: #f4f4f4;">
             <section>
                 <div class="container">
                     <div class="row">
@@ -119,7 +130,7 @@
                             <p>Friend<br>$500-$1000</p>
 
                           <a href="mailto:apapado@wakehealth.edu">
-                              <button class="btn btn-primary btn-block btn-sm mb-2"
+                              <button class="btn btn-deep-purple btn-block btn-sm  mb-2"
                                     data-aos="zoom-in" data-aos-duration="150"
                                     type="submit" style="background-color: rgba(0,123,255,0.74);">
                                 Join NOW
@@ -133,22 +144,22 @@
         <div></div>
     </section>
 </main>
+</div>
 <!--if member created redirect to paypal to pay-->
 <% if (typeof message != "undefined"){ %>
-    <script>document.getElementById('page').style.opacity = '0.2';</script>
+    <script>document.getElementById('wrapper').style.opacity = '0.2';</script>
     <div class="text-center bg-primary text-white" style="top: 80px; position: absolute; left:0;right:0; z-index: 22222;">
         <h4 ><%= message %></h4>
         <p>You will be redirected to paypal page to complete the membership payment</p>
     </div>
     <script>
-        setInterval(paypal, 6000);
+        setInterval(paypal, 7000);
         function paypal() {
             document.getElementById("paypal-form").submit()
         }
     </script>
 <% } %>
 <!--end pay-->
-
 
 <script>document.querySelector('.home-link').style.color = "black"</script>
 <script>document.querySelector('title').innerText = "Home"</script>

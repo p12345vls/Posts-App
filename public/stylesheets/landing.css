@@ -1,0 +1,55 @@
+@media only screen and (min-width: 790px) {
+    .mobile-btn {
+        display: flex;
+    }
+}
+
+
+#title-landing{
+    font-size: 50px;
+}
+
+@media only screen and (max-width: 920px) {
+    #title-landing{
+        font-size: 40px;
+    }
+}
+@media only screen and (max-width: 755px) {
+    #title-landing{
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 590px) {
+    #title-landing{
+        font-size: 22px;
+        font-weight: bold!important;
+    }
+}
+
+.btn-area {
+    max-width: 685px !important;
+    margin: auto;
+}
+
+.home-icon{
+    position:absolute;
+    margin-left:-22px;
+    margin-top: -3px!important;
+
+}
+.about-icon{
+    position:absolute;
+    margin-left:-22px;
+}
+.members-icon{
+    position:absolute;
+    margin-left:-22px;
+    margin-top: -2px!important;
+}
+.hover:hover {
+    box-shadow: 0 0 10px rgba(33, 33, 33, .2) !important;
+}
+
+/*.page{*/
+/*    margin-top: 25px;*/
+/*}*/

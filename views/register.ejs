@@ -1,26 +1,31 @@
 <% include ./partials/headInfoShare %>
 
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-    <div class="container"><a class="navbar-brand logo" href="/"><img src="assets/img/logo-hp.png" style="height: 40px;width: 45px;"></a>
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-sm navbar-light bg-white fixed-top">
+    <div class="container d-flex ">
+        <a class="navbar-brand" href="/"><img src="/assets/img/greek-pillar.png"></a>
+        <div>
+            <button class="navbar-toggler first-button" type="button" data-toggle="collapse"
+                    data-target="#collapseEx12" aria-controls="collapseEx2" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <div class="animated-icon1 "><span></span><span></span><span></span></div>
+            </button>
+        </div>
 
-        <button data-toggle="collapse" class="navbar-toggler " data-target="#navcol-1">
-            <span class="sr-only ">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav m-auto">
-                <li class="nav-item " role="presentation">
-                    <a class="nav-link  home-link" href="/posts"><strong class="text-link "><i class="fas fa-home "> </i> All Posts</strong></a></li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="/login">
-                        <strong class="text-link about-link">Already a User ? <span class="text-primary">Login</span></strong><br></a></li>
-            </ul>
+        <div class="collapse navbar-collapse bg-light" id="collapseEx12">
+            <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <a id="login" class="btn btn-outline-default btn-sm waves-effect waves-light"
+                   href="/login">
+                    <span class="d-lg-inline-block mr-1">Log In</span>
+                    <i class="fas fa-sign-in-alt ml-2"></i>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
 
 
-<main class="page register-page">
+<main class="register-page">
 
     <% if (typeof message != "undefined"){ %>
         <div class="container-message text-center flash" style="z-index: 2">
@@ -34,36 +39,67 @@
     <% } %>
 
 
-    <section class="clean-block clean-form dark">
-        <div class="container">
+
+        <div class="container-form container-fluid m-auto p-2">
             <div class="block-heading">
-                <h2 id="header-form" class="text-info">Register to Info Share</h2>
+                <p id="" class="text-black-50 text-center">Use the form  bellow to sign up</p>
             </div>
-            <form id="signUp" class="" action="/register " method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input class="form-control" id="username" name="username" type="text" placeholder="username" required></div>
-                <div class="form-group">
-                    <input class="form-control" id="pass" name="password" type="password" placeholder="password" required minlength="6"></div>
-                <div class="form-group">
-                    <input class="form-control" id="email" name="email" type="email" placeholder="email" required></div>
+            <form id="signUp" class="shadow" action="/register " method="POST" enctype="multipart/form-data">
 
-                <div class=" form-group ">
-                    <label for="files" class="btn btn-outline-secondary btn-sm">Select Image Avatar</label><small><span id="url" class="ml-2"></span></small>
-                          <input id='files' type="file"  class="d-none" name="image" accept="image/*" required ></div>
 
-                <div class="form-group">
-                    <button id='btn' class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            <!--Header-->
+                <div class="modal-header btn-cyan darken-3 white-text shadow">
+                    <h4 class="title"><i class="fas fa-pencil-alt"></i> Register form</h4>
                 </div>
+                <!--Body-->
+                <div class="modal-body mb-0">
+                    <div class="md-form form-sm">
+                        <i class="fas fa-user prefix "></i>
+                        <input class="form-control" id="username" name="username" type="text" required>
+                        <label for="username" class="active">username</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                        <i class="fas fa-envelope prefix"></i>
+                        <input class="form-control" id="email" name="email" type="email" required>
+                        <label for="email" class="active">Your email</label>
+                    </div>
+
+                    <div class="md-form form-sm">
+                        <i class="fas fa-lock prefix "></i>
+                        <input class="form-control" id="pass" name="password" type="password" required minlength="6">
+                        <label for="pass" class="active">Your password</label>
+                    </div>
+
+                    <div class=" form-group ">
+                        <label for="files" class="btn btn-outline-secondary btn-sm"><i class="far fa-image mr-2"></i> Select Image Avatar</label><small><span id="url" class="ml-2"></span></small>
+                        <input id='files' type="file"  class="d-none" name="image" accept="image/*" required >
+                    </div>
+
+
+                    <div class="text-center mt-1-half">
+                        <button id='btn' class="btn btn-block mb-2 waves-effect waves-light deep-purple darken-3 white-text">Submit <i class="fas fa-send ml-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            Already user? <a href="/login" class="text-dark">
+                                <strong class=" "> <span class="text-primary ">Log in</span>
+                                </strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!--/.Content-->
             </form>
         </div>
-    </section>
 </main>
 
-<footer class="hide-in-mobile page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
-    <div class="footer-copyright">
-        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
-    </div>
-</footer>
+
+<div style="padding-top: 100px;"></div>
+
+
 
 
 <script>
@@ -85,13 +121,14 @@
 
     });
 
-
 </script>
+
+<footer class="page-footer black position-fixed text-center" style="bottom:0; left: 0;right:0;">
+    <div class="footer-copyright">
+        <p>© <%=new Date().getFullYear() %> by the Hellenic American Hippocratic Orthopaedic Society</p>
+    </div>
+</footer>
 <script>document.querySelector('title').innerText = "Sign Up Info Share"</script>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="assets/js/smoothproducts.min.js"></script>
-<script src="assets/js/theme.js"></script>
+
 </body>
 </html>

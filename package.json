@@ -29,6 +29,7 @@
     "express-session": "^1.15.6",
     "fuzzysearch-highlight": "^1.0.3",
     "locus": "^2.0.1",
+    "mdbootstrap": "^4.8.1",
     "method-override": "^3.0.0",
     "moment": "^2.24.0",
     "mongoose": "^5.4.4",

@@ -1,23 +1,58 @@
 <% include ./partials/headStatics %>
 
-<main class="page contact-us-page mt-n4">
-    <section class="clean-block clean-form dark ">
+<main class="page  ">
+    <section class="clean-block  clean-form">
         <div class=" text-center">
-            <h2 class="text-info">Contact Us</h2>
-            <p class="m-auto" style="max-width: 500px;">For general questions regarding the society and services please use the form below: </p>
+            <h2 ><strong>Contact Us</strong></h2>
+            <p class="m-auto" style="max-width: 500px;">For general questions regarding the society and services please
+                use the form below: </p>
         </div>
         <!--apapado@wakehealth.edu-->
-        <form class="hover" action="/contact" method="post" role="form">
-            <div class="form-group "><input class="form-control hover " type="text" placeholder="Name" name="name" required></div>
-            <div class="form-group"><input class="form-control hover" type="text" placeholder="Subject" name="subject" required></div>
-            <div class="form-group"><input class="form-control hover" type="email" placeholder="email" required name="email"></div>
-            <div class="form-group"><label>Message</label><textarea class="form-control hover" name="message" required></textarea></div>
-            <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Send</button>
-            </div>
-        </form>
 
+
+        <form class="shadow" action="/contact" method="post" role="form">
+
+            <!--Header-->
+            <div class="modal-header btn-cyan darken-3 white-text shadow">
+                <h4 class="title"><i class="fas fa-pencil-alt"></i> Contact form</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body mb-0">
+                <div class="md-form form-sm">
+                    <i class="fas fa-user prefix "></i>
+                    <input type="text" id="form8" class="form-control" name="name" required>
+                    <label for="form8" class="active">Your name</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fas fa-envelope prefix"></i>
+                    <input type="email" id="form9" class="form-control"  name="email" required>
+                    <label for="form9" class="active">Your email</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fas fa-tag prefix"></i>
+                    <input type="text" id="form-autocomplete-2" class="form-control" name="subject" required>
+                    <label for="form-autocomplete-2" class="active">Subject</label>
+                </div>
+
+                <div class="md-form form-sm">
+                    <i class="fas fa-pencil-alt prefix "></i>
+                    <textarea type="text" id="form67" class="md-textarea mb-0" name="message" required></textarea>
+                    <label for="form67" class="active">Your message</label>
+                </div>
+
+                <div class="text-center mt-1-half">
+                    <button class="btn btn-block mb-2 waves-effect waves-light deep-purple darken-3 white-text">Send <i class="fas fa-send ml-1"></i>
+                    </button>
+                </div>
+
+            </div>
+            </div>
+            <!--/.Content-->
+        </form>
         <br> <br>
+
         <div class=" shadow container" style="max-width: 500px; margin:auto">
             <br>
             <div class="text-center">
@@ -31,14 +66,13 @@
             </div>
             <hr>
             <div class="text-center">
-                <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.1512728417874!2d-80.27075368445293!3d36.08980031506293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8853ae2eeafa2e9d%3A0xf9db1333705c425a!2sWake+Forest+Baptist+Health!5e0!3m2!1sen!2sus!4v1556310753615!5m2!1sen!2sus"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.1512728417874!2d-80.27075368445293!3d36.08980031506293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8853ae2eeafa2e9d%3A0xf9db1333705c425a!2sWake+Forest+Baptist+Health!5e0!3m2!1sen!2sus!4v1556310753615!5m2!1sen!2sus"
                         frameborder="0" style="border:0" allowfullscreen>
                 </iframe>
             </div>
         </div>
     </section>
 </main>
-
 
 
 <script>document.querySelector('.contact-link').style.color = "black"</script>
