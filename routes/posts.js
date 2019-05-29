@@ -8,6 +8,10 @@ var func = require('../js/functions');
 var locus = require('locus');
 var request = require('request');
 var multer = require('multer');
+const jo = require('jpeg-autorotate');
+
+var fs = require('fs')
+    , gm = require('gm');
 
 var async = require('async'),
     nodemailer = require('nodemailer'),
@@ -19,6 +23,9 @@ var storage = multer.diskStorage({
         callback(null, Date.now() + file.originalname);
     }
 });
+
+
+
 var imageFilter = function (req, file, cb) {
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif|mp4|mov)$/i)) {
         return cb(new Error('Only image files are allowed or videos (mp4, mov'), false);
@@ -145,7 +152,7 @@ function createPost(req, res) {
             req.flash('error', err.message);
             return res.redirect('back');
         }
-        sentEmails(req,res,post);
+        sentEmails(req, res, post);
         req.flash('success', 'New Post Created');
         res.redirect('/posts');
     });
@@ -154,7 +161,7 @@ function createPost(req, res) {
 
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
-    // sentEmails(req,res);
+
 
     if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
         req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
@@ -167,9 +174,9 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
 
 });
 
-function sentEmails(req,res,post) {
+function sentEmails(req, res, post) {
 
-    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com','ppapadonikolakis@csumb.edu'];
+    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com', 'ppapadonikolakis@csumb.edu'];
     // User.find({}, 'email', function (err, docs) {
     //
     //
@@ -193,11 +200,11 @@ function sentEmails(req,res,post) {
     var mailOptions = {
         from: 'hellenicamericanhippocratic@gmail.com',
         to: allMail,
-        bcc:allMail,
+        bcc: allMail,
         subject: 'Message from the H. A. Hippocratic Society',
         // html: '<h3>A new post has been created by </h3>',
-        text: 'A new post has been created by the user: '+req.user.username+'\nPlease click on the following link '+
-            'http://' + req.headers.host + '/posts/'+post._id + ' to see the post in context\n\n'
+        text: 'A new post has been created by the user: ' + req.user.username + '\nPlease click on the following link ' +
+            'http://' + req.headers.host + '/posts/' + post._id + ' to see the post in context\n\n'
 
     };
 
@@ -282,16 +289,27 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
 });
 
 function uploadImage(req, res) {
-    cloudinary.uploader.upload(req.file.path, function (result) {
+
+
+   // var i = cloudinary.image("kslnpbjzznfwnsnsugpp.jpg", {angle: "ignore"}).split(/'/)[1];
+
+    // console.log(req.file.originalname)
+
+    // cloudinary.uploader.upload(req.file.path, function (result) {
         // add cloudinary url for the image to the post object under image property
-        req.body.post.image = result.secure_url;
+    // req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"}).split(/'/)[1];
+    req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"});
+         //result.secure_url;
+
+         // console.log(result)
+
         // add author to post
         req.body.post.author = {
             id: req.user._id,
             username: req.user.username
         };
         createPost(req, res);
-    });
+    // });
 }
 
 
