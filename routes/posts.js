@@ -295,13 +295,15 @@ function uploadImage(req, res) {
 
     // console.log(req.file.originalname)
 
-    // cloudinary.uploader.upload(req.file.path, function (result) {
+     cloudinary.uploader.upload(req.file.path, function (result) {
         // add cloudinary url for the image to the post object under image property
-    // req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"}).split(/'/)[1];
-    req.body.post.image =cloudinary.image(req.file.originalname, {angle: "exif"}).split(/'/)[1];
+    req.body.post.image =cloudinary.image(`${result.public_id}.${result.format}`, {secure:true, angle: "exif"}).split(/'/)[1];
          //result.secure_url;
-
-         // console.log(result)
+         //
+         // http://res.cloudinary.com/djagznbnb/image/upload/a_exif/v1/1559164523/1559164520464kslnpbjzznfwnsnsugpp.jpg
+         // http://res.cloudinary.com/djagznbnb/image/upload/v1559164523/oj0dchyb7tci63315syb.jpg
+         console.log(req.body.post.image)
+         console.log(result)
 
         // add author to post
         req.body.post.author = {
@@ -309,7 +311,7 @@ function uploadImage(req, res) {
             username: req.user.username
         };
         createPost(req, res);
-    // });
+     });
 }
 
 
