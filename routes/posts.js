@@ -8,10 +8,6 @@ var func = require('../js/functions');
 var locus = require('locus');
 var request = require('request');
 var multer = require('multer');
-const jo = require('jpeg-autorotate');
-
-var fs = require('fs')
-    , gm = require('gm');
 
 var async = require('async'),
     nodemailer = require('nodemailer'),
@@ -23,7 +19,6 @@ var storage = multer.diskStorage({
         callback(null, Date.now() + file.originalname);
     }
 });
-
 
 
 var imageFilter = function (req, file, cb) {
@@ -176,14 +171,14 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
 
 function sentEmails(req, res, post) {
 
-    var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com', 'ppapadonikolakis@csumb.edu'];
-    // User.find({}, 'email', function (err, docs) {
-    //
-    //
-    //     docs.forEach(function (user) {
-    //         console.log(user.email)
-    //     })
-    // });
+    // var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com', 'ppapadonikolakis@csumb.edu'];
+    var allMail=[];
+    User.find({}, 'email', function (err, docs) {
+
+        docs.forEach(function (user) {
+            allMail.push(user.email)
+        })
+    });
     // req.headers.host
 
     var transporter = nodemailer.createTransport({
@@ -290,20 +285,18 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
 
 function uploadImage(req, res) {
 
+    // var i = cloudinary.image("kslnpbjzznfwnsnsugpp.jpg", {angle: "ignore"}).split(/'/)[1];
 
-   // var i = cloudinary.image("kslnpbjzznfwnsnsugpp.jpg", {angle: "ignore"}).split(/'/)[1];
+    cloudinary.uploader.upload(req.file.path, function (result) {
+        //transform the image in order to not rotate when uploading
+        req.body.post.image = cloudinary.image(`${result.public_id}.${result.format}`, {
+            secure: true,
+            angle: "exif",
+            quality: "auto:low"
+        }).split(/'/)[1];
 
-    // console.log(req.file.originalname)
-
-     cloudinary.uploader.upload(req.file.path, function (result) {
-        // add cloudinary url for the image to the post object under image property
-    req.body.post.image =cloudinary.image(`${result.public_id}.${result.format}`, {secure:true, angle: "exif"}).split(/'/)[1];
-         //result.secure_url;
-         //
-         // http://res.cloudinary.com/djagznbnb/image/upload/a_exif/v1/1559164523/1559164520464kslnpbjzznfwnsnsugpp.jpg
-         // http://res.cloudinary.com/djagznbnb/image/upload/v1559164523/oj0dchyb7tci63315syb.jpg
-         console.log(req.body.post.image)
-         console.log(result)
+        // console.log(req.body.post.image)
+        // console.log(result)
 
         // add author to post
         req.body.post.author = {
@@ -311,7 +304,7 @@ function uploadImage(req, res) {
             username: req.user.username
         };
         createPost(req, res);
-     });
+    });
 }
 
 

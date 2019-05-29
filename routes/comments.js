@@ -3,6 +3,7 @@ var router = express.Router({mergeParams: true});
 var Post = require("../models/post");
 var Comment = require("../models/comment");
 var middleware = require('../middleware/index');
+var User = require('../models/user');
 
 var async = require('async'),
     nodemailer = require('nodemailer'),
@@ -89,12 +90,12 @@ router.delete('/:comment_id', middleware.checkCommentOwnership,( req, res) => {
 
 function sentEmails(req,res,post) {
 
-    var allMail = ['p12345vls@gmail.com'];
-    // User.find({}, 'email', function (err, docs) {
-    //     docs.forEach(function (user) {
-    //         console.log(user.email)
-    //     })
-    // });
+    var allMail = [];
+    User.find({}, 'email', function (err, docs) {
+        docs.forEach(function (user) {
+            allMail.push(user.email)
+        })
+    });
 
     var transporter = nodemailer.createTransport({
         service: 'gmail',

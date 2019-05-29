@@ -27,7 +27,6 @@
             <% posts.forEach(function(post){ %>
                 <% if(post.author.id == (currentUser.id)){ %>
                     <% firstTime = false; %>
-
                 <% } %>
             <% }); %>
 
@@ -49,10 +48,7 @@
                     </div>
                 </div>
             <% } else { %>
-
-
-
-
+            
                 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
 
                     <a id="" class="btn btn-outline-cyan btn-sm " href="/posts" role="button">

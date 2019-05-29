@@ -15,7 +15,7 @@ var express = require("express"),
 
 
 require('dotenv').config();//to hide the cloudinary values
-
+mongoose.set('useFindAndModify', false); // for deprecated warnings
 const PORT = process.env.PORT || 5000;//for heroku
 
 mongoose.set('useNewUrlParser', true);
