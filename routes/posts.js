@@ -147,7 +147,7 @@ function createPost(req, res) {
             req.flash('error', err.message);
             return res.redirect('back');
         }
-        sentEmails(req, res, post);
+    //    sentEmails(req, res, post); =====================================================
         req.flash('success', 'New Post Created');
         res.redirect('/posts');
     });
