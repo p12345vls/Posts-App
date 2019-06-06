@@ -63,12 +63,9 @@ router.get("/", function (req, res) {
 
             allPosts.forEach(function (post) {
                 if (post.name.toString().replace(/,/g, '').trim() === search) {
-
                     campId = post.id;
                     name = post.name;
-
                 }
-
 
                 if (post.description.toString().replace(/,/g, '').trim() === search) {
                     campId = post.id;
@@ -80,7 +77,6 @@ router.get("/", function (req, res) {
                         campId = post.id;
                         comnt = comment.id;
                         //   console.log(comment.text)
-
                     }
                 });
             });
@@ -116,9 +112,6 @@ router.get("/", function (req, res) {
 
         else {
 
-
-            // console.log(allPosts[6].comments[0].text)
-
             User.find({}, (err, foundUsers) => {
 
                 if (err) {
@@ -147,7 +140,8 @@ function createPost(req, res) {
             req.flash('error', err.message);
             return res.redirect('back');
         }
-        sentEmails(req, res, post);
+        // TODO uncomment
+        // sentEmails(req, res, post); =====================================================
         req.flash('success', 'New Post Created');
         res.redirect('/posts');
     });
@@ -157,8 +151,17 @@ function createPost(req, res) {
 //CREATE - add new post to DB
 router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
 
+    // if there is no image selected create a post with no media
+    if (req.file === undefined) {
+        //add the author also
+        req.body.post.author = {
+            id: req.user._id,
+            username: req.user.username
+        };
+        createPost(req, res);
 
-    if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
+        //if there is image selected check if it is an image or a video
+    }else if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
         req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
         req.file.path.substring(req.file.path.length - 3) === 'png' ||
         req.file.path.substring(req.file.path.length - 3) === 'png') {
@@ -172,7 +175,7 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, r
 function sentEmails(req, res, post) {
 
     // var allMail = ['pavlospapadonikolakis@yahoo.com', 'p.pp256@yahoo.com', 'ppapadonikolakis@csumb.edu'];
-    var allMail=[];
+    var allMail = [];
     User.find({}, 'email', function (err, docs) {
 
         docs.forEach(function (user) {
@@ -241,11 +244,9 @@ router.get("/:id", function (req, res) {
     });
 });
 
-
 //edit
 router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
     //is the user logged in
-
     //and owns the post
     Posts.findById(req.params.id, (err, foundPost) => {
         if (err) {

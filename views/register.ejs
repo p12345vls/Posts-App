@@ -38,8 +38,6 @@
         </div>
     <% } %>
 
-
-
         <div class="container-form container-fluid m-auto p-2">
             <div class="block-heading">
                 <p id="" class="text-black-50 text-center">Use the form  bellow to sign up</p>
@@ -72,8 +70,12 @@
                     </div>
 
                     <div class=" form-group ">
-                        <label for="files" class="btn btn-outline-secondary btn-sm"><i class="far fa-image mr-2"></i> Select Image Avatar</label><small><span id="url" class="ml-2"></span></small>
-                        <input id='files' type="file"  class="d-none" name="image" accept="image/*" required >
+                        <label for="files" class="btn btn-outline-secondary btn-sm">
+                            <i class="far fa-image mr-2"></i>
+                            Select Image Avatar
+                        </label>
+                        <small><span id="url" class="ml-2"> No file selected</span></small>
+                        <input id='files' type="file"  class="d-none" name="image" accept="image/*"  >
                     </div>
 
 
@@ -91,7 +93,6 @@
                         </div>
                     </div>
                 </div>
-                <!--/.Content-->
             </form>
         </div>
 </main>
@@ -102,20 +103,26 @@
 
 <script>
    // show to the user that the image is required
-    document.querySelector('#btn').addEventListener('click', (event) => {
-        if(document.querySelector('#username').value!==''&&
-            document.querySelector('#pass').value!==''&&
-            document.querySelector('#email').value!==''){
+   //  document.querySelector('#btn').addEventListener('click', (event) => {
+   //      if(document.querySelector('#username').value!==''&&
+   //          document.querySelector('#pass').value!==''&&
+   //          document.querySelector('#email').value!==''){
+   //
+   //          if(document.querySelector('#files').value===''){
+   //              alert('please enter an image avatar')
+   //          }
+   //      }
+   //  });
 
-            if(document.querySelector('#files').value===''){
-                alert('please enter an image avatar')
-            }
-        }
-    });
-    // add the text of the selected file next to 'select image'
+
+   //  // add the text of the selected file next to 'select image'
     document.querySelector('#files').addEventListener('change', (event) => {
         let url = document.querySelector('#files').value;
-         document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
+        if(url ===""){
+            document.querySelector('#url').innerHTML = "No file selected";
+        }else{
+            document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\')+1);
+        }
 
     });
 

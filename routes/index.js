@@ -48,45 +48,35 @@ var tags;
 router.get("/register", function (req, res) {
     res.render("register", {availableTags: tags});
 });
-//handle sign up logic
+
+
+//handle sign up logic -- register
 router.post("/register", upload.single('image'), function (req, res) {
-    // eval(locus)
-    var avatarImg = req.body.image;
+
     var newUser;
-    cloudinary.uploader.upload(req.file.path, function (result) {
-        // avatarImg = result.secure_url;
-        //transform the image in order to not rotate when uploading
-        avatarImg = cloudinary.image(`${result.public_id}.${result.format}`, {
-            secure: true,
-            angle: "exif",
-            quality: "auto:low"
-        }).split(/'/)[1];
+    var avatarImg;
 
-        newUser = new User({
-            username: req.body.username,
-            password: req.body.password,
-            firstName: '',
-            lastName: '',
-            avatar: avatarImg,
-            city: '',
-            email: req.body.email
+    if (req.file === undefined) {
+        avatarImg = "https://res.cloudinary.com/djagznbnb/image/upload/v1559768884/user-90.jpg";
+        newUser = createUser(newUser, req, avatarImg);
+        registerUser(newUser, req, res);
+
+    } else {
+
+        avatarImg = req.body.image;
+        cloudinary.uploader.upload(req.file.path, function (result) {
+            // avatarImg = result.secure_url;
+            //transform the image in order to not rotate when uploading
+            avatarImg = cloudinary.image(`${result.public_id}.${result.format}`, {
+                secure: true,
+                angle: "exif",
+                quality: "auto:low"
+            }).split(/'/)[1];
+
+            newUser = createUser(newUser, req, avatarImg);
+            registerUser(newUser, req, res);
         });
-
-        //eval(locus);
-
-        User.register(newUser, req.body.password, function (err, user) {
-            if (err) {
-                req.flash('error', err.message);
-                return res.render("register", {message: err.message});
-            }
-
-            passport.authenticate("local")(req, res, function () {
-                req.flash('success', 'Successfully Singed Up');
-                res.redirect("/posts");
-            });
-        });
-    });
-
+    }
 });
 //==============================================================
 
@@ -353,6 +343,33 @@ router.post('/contact', function (req, res) {
         }
     });
 });
+
+function createUser(newUser, req, avatarImg) {
+    newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+        firstName: '',
+        lastName: '',
+        avatar: avatarImg,
+        city: '',
+        email: req.body.email
+    });
+    return newUser;
+}
+
+function registerUser(newUser, req, res) {
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            req.flash('error', err.message);
+            return res.render("register", {message: err.message});
+        }
+
+        passport.authenticate("local")(req, res, function () {
+            req.flash('success', 'Successfully Singed Up');
+            res.redirect("/posts");
+        });
+    });
+}
 
 
 module.exports = router;

@@ -48,7 +48,7 @@
                     </div>
                 </div>
             <% } else { %>
-            
+
                 <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
 
                     <a id="" class="btn btn-outline-cyan btn-sm " href="/posts" role="button">
@@ -327,10 +327,12 @@
                             <% } %>
 
                         </div>
-                        <a href="/posts/<%= post._id %>/comments/new"
-                           class="card-link btn btn-outline-success btn-sm d-inline"><i class="fas fa-plus"></i>add a
-                            comment
-                        </a>
+                        <p>
+                            <a href="/posts/<%= post._id %>/comments/new"
+                               class="card-link btn btn-outline-success btn-sm d-inline"><i class="fas fa-plus"></i> add
+                                a comment
+                            </a>
+                        </p>
                     </div>
                 </div>
             <% }; %>

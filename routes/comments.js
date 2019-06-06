@@ -40,7 +40,8 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
                     comment.save();
                     post.comments.push(comment);
                     post.save();
-                    sentEmails(req,res,post);
+                    // TODO uncomment
+                    // sentEmails(req,res,post); //======================================================================
                     req.flash('success','Comment Added ' );
                     res.redirect('/posts/' + post._id);
                 }
