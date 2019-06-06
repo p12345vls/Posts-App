@@ -95,7 +95,7 @@
                     </em>
                 </label>
                 <small><span id="url" class="ml-2"></span></small>
-                <input id='files' type="file" class="d-none" name="image" accept="image/*;video/*" required>
+                <input id='files' type="file" class="d-none" name="image" accept="image/*;video/*">
             </div>
             <!--text area for description-->
             <div class="hover form-group ">
@@ -110,6 +110,7 @@
             </div>
             <!--gif loading-->
             <div id="loading" class="text-center "></div>
+
         </form>
     </div>
 
@@ -125,16 +126,22 @@
 <script>
     // show to the user that the image or video is required
     document.querySelector('#btn').addEventListener('click', (event) => {
-        if (document.querySelector('#desc').value !== '' &&
-            document.querySelector('#title-for-post').value !== '') {
+        //     if (document.querySelector('#desc').value !== '' &&
+        //         document.querySelector('#title-for-post').value !== '') {
+        //
+        //         if (document.querySelector('#files').value === '') {
+        //             alert('please enter an image or a video')
+        //         } else {
+        //             document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
+        //                 '</i><br><p>please be patient this may take up to 45 seconds</p>';
+        //         }
+        //     }
+        //
 
-            if (document.querySelector('#files').value === '') {
-                alert('please enter an image or a video')
-            } else {
-                document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
-                    '</i><br><p>please be patient this may take up to 45 seconds</p>';
-            }
-        }
+
+        document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
+            '</i><br><p><em>please be patient this may take up to 45 seconds</p>' +
+            '<p><small>depending on the size of the file</small></em></p>';
 
     });
     // add the text of the selected file next to 'select image'
@@ -147,11 +154,7 @@
 <script>
     document.querySelector('title').innerText = "Add Post"
 </script>
-<!--<script src="assets/js/jquery.min.js"></script>-->
-<!--<script src="assets/bootstrap/js/bootstrap.min.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>-->
-<!--<script src="assets/js/smoothproducts.min.js"></script>-->
-<!--<script src="assets/js/theme.js"></script>-->
+
 <% include ../partials/footer %>
 </body>
 </html>
