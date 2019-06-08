@@ -292,7 +292,7 @@ router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
 //update
 router.put('/:id',
     middleware.checkPostOwnership,
-    upload.array("image", 6),
+    upload.array("image", 5),
     (req, res) => {
 
         // if it was a video and only text updated
