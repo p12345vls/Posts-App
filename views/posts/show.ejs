@@ -143,7 +143,11 @@
             <% } else { %>
                 <!--it is an image-->
                 <div class=" rounded ">
-                    <img class=" img-fluid " src="<%= post.image %> " alt="">
+                    <img class=" img-fluid " src="<%= post.image[0] %> " alt="">
+                    <img class=" img-fluid " src="<%= post.image[1] %> " alt="">
+                    <img class=" img-fluid " src="<%= post.image[2] %> " alt="">
+                    <img class=" img-fluid " src="<%= post.image[3] %> " alt="">
+                    <img class=" img-fluid " src="<%= post.image[4] %> " alt="">
                 </div>
             <% } %>
         <% } %>

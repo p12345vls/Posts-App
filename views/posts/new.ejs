@@ -82,27 +82,49 @@
             Use the form below to add a new post
         </div>
         <form id="post_form" class="" action="/posts" method="POST" enctype="multipart/form-data">
+
+
             <h3 id="loading-message" class="text-center text-warning"></h3>
             <!--add a title-->
             <div class="form-group">
-                <input type="text" id="title-for-post" class="form-control hover" name="post[name]" maxlength="30"
+                <input type="text" id="" class="form-control hover" name="post[name]" maxlength="30"
                        placeholder="title" required></div>
-            <!--select image or video-->
-            <div class=" form-group ">
-                <label for="files" class="btn btn-outline-secondary btn-sm">
-                    Image or Video<em>
-                        <small> (up to 10MB)</small>
-                    </em>
-                </label>
-                <small><span id="url" class="ml-2"></span></small>
-                <input id='files' type="file" class="d-none" name="image" accept="image/*;video/*">
+
+            <!--            create dynamically inputs for image or a video-->
+
+            <input class="btn btn-outline-danger btn-sm float-right mt-n1" type="button" value="cancel" id="cancel"/>
+            <input class="btn btn-outline-primary btn-sm" type="button" value="Add pictures " id="addPictures"/>
+            <input class="btn btn-outline-primary btn-sm" type="button" value="Add a Video" id="addVideo"/>
+
+
+            <div class="">
+                <div class="">
+
+
+                    <input class="btn btn-outline-primary btn-sm" type="button"
+                           value="Add up to 5 pictures" id="add"/>
+                    <div id="container1">&nbsp;</div>
+                </div>
+                <div class="">
+                    <input class="btn btn-outline-primary btn-sm" type="button" value="Add a Video" id="add2"/>
+                    <div id="container2">&nbsp;</div>
+                </div>
+
+
             </div>
+
+
             <!--text area for description-->
-            <div class="hover form-group ">
-                            <textarea type="text" id="desc" class="form-control" name="post[description]"
-                                      cols="100"
-                                      rows="3" required></textarea>
-                <label class="form-control-placeholder" for="description">description</label>
+
+            <div class="hover form-group mt-3">
+             <textarea type="text" id="desc" class="form-control" name="post[description]"
+                       cols="100"
+                       rows="3"
+                       required
+                       placeholder="Description"
+             ></textarea>
+
+
             </div>
 
             <div class="form-group">
@@ -111,7 +133,10 @@
             <!--gif loading-->
             <div id="loading" class="text-center "></div>
 
+
         </form>
+
+
     </div>
 
 </main>
@@ -119,36 +144,83 @@
 
 <footer class="hide-in-mobile page-footer dark position-absolute" style="bottom:0; left: 0;right:0;">
     <div class="footer-copyright">
-        <p>© 2019 by the Hellenic American Hippocratic Orthopaedic Society</p>
+        <p>© <%= new Date().getFullYear() %> by the Hellenic American Hippocratic Orthopaedic Society</p>
     </div>
 </footer>
 
+
 <script>
-    // show to the user that the image or video is required
-    document.querySelector('#btn').addEventListener('click', (event) => {
-        //     if (document.querySelector('#desc').value !== '' &&
-        //         document.querySelector('#title-for-post').value !== '') {
-        //
-        //         if (document.querySelector('#files').value === '') {
-        //             alert('please enter an image or a video')
-        //         } else {
-        //             document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
-        //                 '</i><br><p>please be patient this may take up to 45 seconds</p>';
-        //         }
-        //     }
-        //
+
+    var videoBtn = document.getElementById('add2');
+    var imagesBtn = document.getElementById('add');
+    var addPictures = document.getElementById("addPictures");
+    var addVideo = document.getElementById("addVideo");
+    var cancel = document.getElementById("cancel");
+
+    var fivePic = 0;
+    var oneVideo = 0;
+    videoBtn.style.display = "none";
+    imagesBtn.style.display = "none";
+    cancel.style.display = "none";
+
+    addPictures.addEventListener("click", function () {
+        addPictures.style.display = "none";
+        addVideo.style.display = "none";
+        imagesBtn.style.display = "block";
+        cancel.style.display = "block";
+
+        imagesBtn.addEventListener("click", function () {
+
+            if (fivePic < 5) {
+
+                var div = document.createElement("div");
+                // Create a file input
+                var file = document.createElement("input");
+                file.setAttribute("type", "file");
+                file.setAttribute("name", "image");
+                file.setAttribute("accept", "image/*");
+
+                // add the file and text to the div
+                div.appendChild(file);
+
+                //Append the div to the container div
+                document.getElementById("container1").appendChild(div);
+                fivePic++;
+            }
+        });
+
+    })
 
 
-        document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
-            '</i><br><p><em>please be patient this may take up to 45 seconds</p>' +
-            '<p><small>depending on the size of the file</small></em></p>';
+    addVideo.addEventListener("click", function () {
+        addVideo.style.display = 'none'
+        addPictures.style.display = "none";
+        cancel.style.display = "block";
+        videoBtn.style.display = "none";
 
+        if (oneVideo === 0) {
+
+            var p = document.createElement("p");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("accept", "video/*");
+
+            // add the file and text to the div
+            p.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container2").appendChild(p);
+            oneVideo++;
+        }
     });
-    // add the text of the selected file next to 'select image'
-    document.querySelector('#files').addEventListener('change', (event) => {
-        let url = document.querySelector('#files').value;
-        document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\') + 1);
+
+    cancel.addEventListener("click", function () {
+        document.location.reload()
     });
+
+
 </script>
 
 <script>

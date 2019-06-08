@@ -175,10 +175,25 @@
                                     </video>
                                 </div>
                             <% } else { %>
-                                <!--it is an image-->
-                                <div class=" rounded ">
-                                    <img class=" img-fluid " src="<%= post.image %> " alt="">
-                                </div>
+                                <!-- images-->
+                                <% var moreImages = post.image.length > 1 %>
+                                <!--    show main image   -->
+                                <img class="img-fluid " src="<%= post.image[0] %> " alt="" style="">
+
+                                <% if(moreImages){ %>
+                                    <p style="margin-top: 3%; margin-left: 10px;">
+                                        <em><%= `${post.image.length - 1} more images` %></em></p>
+                                    <div class="d-inline-flex">
+                                        <div class="thumbNail"
+                                             style=" background-image: url('<%= post.image[1] %> ');"></div>
+                                        <div class="thumbNail"
+                                             style=" background-image: url('<%= post.image[2] %> ');"></div>
+                                        <div class="thumbNail"
+                                             style=" background-image: url('<%= post.image[3] %> ');"></div>
+                                        <div class="thumbNail"
+                                             style=" background-image: url('<%= post.image[4] %> ');"></div>
+                                    </div>
+                                <% } %>
                             <% } %>
 
                     </a>
@@ -213,7 +228,7 @@
                         <div>
                             <% if(post.comments != false){ %>
                                 <hr class="mb-2">
-                                <strong><em class=""><p class="card-text mb-1">Comments <i class="fas fa-comments"></i>
+                                <strong><em class=""><p class="text-dark mb-1">Comments <i class="fas fa-comments"></i>
                                         </p>
                                     </em></strong>
                                 <% var counter = 0; var counter2 = 0; %>
@@ -271,7 +286,7 @@
                                                 <div class="dialogbox ">
                                                     <div class="body" id='<%= bodyComment %>'>
 
-                                                <span id="<%= commentArrow %>" class="arrow tip-arrowUp btn">
+                                                <span id="<%= commentArrow %>" class="arrow tip-arrowUp">
                                                     <div style="transform: scale(0.5)" class="arrow-down"
                                                          onclick="this.classList.toggle('active')"></div>
                                                 </span>

@@ -94,7 +94,7 @@ body {
 
 .img-fluid {
     padding: 0px !important;
-    border-radius: 8px 8px 0px 0px;
+    /*border-radius: 8px 8px 0px 0px;*/
 
 }
 
@@ -165,7 +165,8 @@ body {
     }
 
 }
-.login-page,.register-page {
+
+.login-page, .register-page {
     margin-top: 80px;
 }
 
@@ -181,11 +182,9 @@ body {
     /*.login-page {*/
     /*    margin-top: 40px;*/
     /*}*/
-
     /*.register-page {*/
     /*    margin-top: 40px;*/
     /*}*/
-
     .container-message {
         max-width: 700px;
         margin: auto;
@@ -231,8 +230,8 @@ body {
     /*background: transparent;*/
     /*border: 8px solid #4567fa;*/
 
-    top: -3px; /* Same as body margin top + border */
-    left: -50px;
+    top: -6px; /* Same as body margin top + border */
+    left: -38px;
 }
 
 .arrow-down {
@@ -335,6 +334,14 @@ body {
 
     background-position: center center;
     background-size: cover;
+}
+
+.thumbNail {
+    width: 90px;
+    height: 100px;
+    background-position: center center;
+    background-size: cover;
+    transition: all .1s;
 }
 
 .user-comment-img {
@@ -483,8 +490,12 @@ body {
     }
 }
 
+#uploadedImages img {
+    display: inline-block;
+    margin: 5px;
+}
 
-/*///=========siderbar========*/
+/*///=========hamburger======== */
 .animated-icon1, .animated-icon2, .animated-icon3 {
     width: 30px;
     height: 20px;
@@ -556,11 +567,13 @@ body {
     -o-transform: rotate(-135deg);
     transform: rotate(-135deg);
 }
+
 .heading-top {
-    margin-top:10px;
+    margin-top: 10px;
     font-size: 30px;
-    color:#0099CC!important;
+    color: #0099CC !important;
 }
+
 @media only screen and (max-width: 500px) {
     .heading-top {
         font-size: 18px;
@@ -601,3 +614,7 @@ body {
 /*        margin-left: -5px;*/
 /*    }*/
 /*}*/
+
+
+
+

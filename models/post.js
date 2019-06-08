@@ -2,7 +2,9 @@ var mongoose = require("mongoose");
 
 var postSchema = new mongoose.Schema({
     name: String,
-    image: String,
+    image: [{
+        type: String
+    }],
     video:String,
     description: String,
     createdAt: { type: Date, default: Date.now},
