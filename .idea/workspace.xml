@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="" />
+    <list default="true" id="a87a24b1-e13f-48cd-b324-974e9ec62f4c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/posts/edit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/posts/edit.ejs" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -37,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/posts/edit.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="477" lean-forward="true" selection-start-line="477" selection-end-line="477" />
+            <state relative-caret-position="179">
+              <caret line="260" column="37" selection-start-line="260" selection-start-column="37" selection-end-line="260" selection-end-column="37" />
               <folding>
                 <element signature="n#nav#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
@@ -60,6 +63,7 @@
                 <element signature="n#a#3;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
                 <element signature="n#a#4;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
                 <element signature="n#a#5;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -112,10 +116,21 @@
                 <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#textarea#0;n#div#2;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
                 <element signature="n#div#3;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
                 <element signature="n#footer#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#footer#0;n#!!top" expanded="true" />
+                <element signature="n#script#0;n#!!top" expanded="true" />
                 <element signature="n#script#1;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="200" column="5" selection-start-line="200" selection-start-column="5" selection-end-line="200" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -483,10 +498,10 @@
         <option value="$PROJECT_DIR$/views/userPosts/index.ejs" />
         <option value="$PROJECT_DIR$/public/stylesheets/main.css" />
         <option value="$PROJECT_DIR$/views/userPosts/comments.ejs" />
-        <option value="$PROJECT_DIR$/views/posts/edit.ejs" />
         <option value="$PROJECT_DIR$/views/posts/new.ejs" />
         <option value="$PROJECT_DIR$/views/posts/index.ejs" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
+        <option value="$PROJECT_DIR$/views/posts/edit.ejs" />
       </list>
     </option>
   </component>
@@ -692,7 +707,7 @@
       <workItem from="1559615655985" duration="595000" />
       <workItem from="1559751260015" duration="135000" />
       <workItem from="1559765843167" duration="10328000" />
-      <workItem from="1559794085691" duration="79906000" />
+      <workItem from="1559794085691" duration="80330000" />
     </task>
     <task id="LOCAL-00014" summary="phone video upload test">
       <created>1556854372526</created>
@@ -1041,7 +1056,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1024212000" />
+    <option name="totallyTimeSpent" value="1024636000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1826,13 +1841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="252" column="21" lean-forward="true" selection-start-line="252" selection-start-column="21" selection-end-line="252" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/userPosts/comments.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -2090,8 +2098,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/posts/edit.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="477" lean-forward="true" selection-start-line="477" selection-end-line="477" />
+        <state relative-caret-position="179">
+          <caret line="260" column="37" selection-start-line="260" selection-start-column="37" selection-end-line="260" selection-end-column="37" />
           <folding>
             <element signature="n#nav#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#nav#0;n#!!top" expanded="true" />
@@ -2110,6 +2118,7 @@
             <element signature="n#a#3;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
             <element signature="n#a#4;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
             <element signature="n#a#5;n#div#2;n#div#0;n#nav#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#div#0;n#main#0;n#!!top" expanded="true" />
@@ -2162,10 +2171,19 @@
             <element signature="n#div#2;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
             <element signature="n#textarea#0;n#div#2;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#form#0;n#div#0;n#section#0;n#div#1;n#main#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#footer#0;n#!!top" expanded="true" />
             <element signature="n#footer#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#footer#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#!!top" expanded="true" />
             <element signature="n#script#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="200" column="5" selection-start-line="200" selection-start-column="5" selection-end-line="200" selection-end-column="5" />
         </state>
       </provider>
     </entry>
