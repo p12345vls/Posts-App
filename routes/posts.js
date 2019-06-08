@@ -41,6 +41,25 @@ cloudinary.config({
 var tags;
 //INDEX - show all posts
 router.get("/", function (req, res) {
+
+    // Posts.find({}).sort([['_id', -1]]).populate("comments").exec(function (err, allPosts) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //
+    //         User.find({}, (err, foundUsers) => {
+    //
+    //             if (err) {
+    //                 console.log(err);
+    //             } else {
+    //
+    //                 res.render('posts/index', ({posts: allPosts,users:foundUsers}))
+    //             }
+    //         })
+    //     }
+    // })
+
+
     // Get all posts from DB
 
     var search;
@@ -148,26 +167,38 @@ function createPost(req, res) {
 }
 
 
+function createPost1(post, req, res) {
+    Posts.create(post, function (err, post) {
+        if (err) {
+            req.flash('error', err.message);
+            return res.redirect('back');
+        }
+        // TODO uncomment
+        // sentEmails(req, res, post); =====================================================
+        req.flash('success', 'New Post Created');
+        res.redirect('/posts');
+    });
+}
+
+
 //CREATE - add new post to DB
-router.post("/", middleware.isLoggedIn, upload.single('image'), function (req, res) {
+router.post("/", middleware.isLoggedIn, upload.array("image", 5), (req, res) => {
 
-    // if there is no image selected create a post with no media
-    if (req.file === undefined) {
-        //add the author also
-        req.body.post.author = {
-            id: req.user._id,
-            username: req.user.username
-        };
-        createPost(req, res);
+    const post = new Posts();
+    post.name = req.body.post.name;
+    post.description = req.body.post.description;
+    post.author = {
+        id: req.user._id,
+        username: req.user.username
+    };
 
-        //if there is image selected check if it is an image or a video
-    }else if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
-        req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
-        req.file.path.substring(req.file.path.length - 3) === 'png' ||
-        req.file.path.substring(req.file.path.length - 3) === 'png') {
-        uploadImage(req, res);
-    } else {
+    if (req.files.length === 0) {
+        createPost1(post, req, res);
+    } else if (req.files[0].path.substring(req.files[0].path.length - 3) === 'mov' ||
+        req.files[0].path.substring(req.files[0].path.length - 3) === 'mp4') {
         uploadVideo(req, res);
+    } else {
+        uploadImages(req, post, res);
     }
 
 });
@@ -259,19 +290,112 @@ router.get('/:id/edit', middleware.checkPostOwnership, (req, res) => {
 
 
 //update
-router.put('/:id', middleware.checkPostOwnership, upload.single('image'), function (req, res) {
+router.put('/:id',
+    middleware.checkPostOwnership,
+    upload.array("image", 6),
+    (req, res) => {
 
-    if (req.file.path.substring(req.file.path.length - 3) === 'jpg' ||
-        req.file.path.substring(req.file.path.length - 4) === 'jpeg' ||
-        req.file.path.substring(req.file.path.length - 3) === 'png' ||
-        req.file.path.substring(req.file.path.length - 3) === 'png') {
-        updateWithImage(req, res);
-    } else {
-        updateWithVideo(req, res);
+        // if it was a video and only text updated
+        if (req.body.videoOriginal !== undefined && req.files[0]===undefined) {
 
-    }
+            req.body.post.image = req.body.videoOriginal;
+            Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+                console.log("updatedPost " + updatedPost);
+                if (err) {
+                    res.redirect("/posts");
+                } else {
+                    //redirect somewhere(show page)
+                    res.redirect("/posts/" + req.params.id);
+                }
+            });
 
-});
+            // if it was a video, and video updated or and text
+        } else if (req.body.videoOriginal !== undefined && (req.files[0].path.substring(req.files[0].path.length - 3) === 'mov' ||
+            req.files[0].path.substring(req.files[0].path.length - 3) === 'mp4')) {
+            updateWithVideo(req, res)
+
+        } else {
+
+            const post = new Posts();
+            post.name = req.body.post.name;
+            post.description = req.body.post.description;
+            post.author = {
+                id: req.user._id,
+                username: req.user.username
+            };
+
+
+            // if no images on initially created post
+            if (req.body.image1 === '') {
+                updatePost(req, res);
+            }
+
+            // if there are no images selected to be updated
+            // put the same images
+
+            if (req.body.image1 !== undefined) {
+                post.image.push(req.body.image1);
+            }
+            if (req.body.image2 !== undefined) {
+                post.image.push(req.body.image2);
+            }
+            if (req.body.image3 !== undefined) {
+                post.image.push(req.body.image3);
+            }
+            if (req.body.image4 !== undefined) {
+                post.image.push(req.body.image4);
+            }
+            if (req.body.image5 !== undefined) {
+                post.image.push(req.body.image5);
+            }
+
+            console.log(req.files.length);
+
+            // if there is a new file uploaded
+            if (req.files.length > 0) {
+
+                var files = 0;
+                for (let i = 0; i < req.files.length; i++) {
+
+                    cloudinary.v2.uploader.upload(req.files[i].path, {
+                            eager: [
+                                {
+                                    secure: true,
+                                    angle: "exif",
+                                    quality: "auto:low"
+                                }],
+                            eager_async: true,
+                        },
+                        (error, result) => {
+                            files++;
+                            console.log(result.eager[0].secure_url)
+                            post.image.push(result.eager[0].secure_url);
+                            if (files === req.files.length) {
+                                updateWithImages(post, req, res);
+                            }
+                        });
+                }
+            } else {
+                updateWithImages(post, req, res);
+            }
+        }
+
+    });
+
+function updateWithImages(post, req, res) {
+    req.body.post.image = post.image;
+
+    Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
+        console.log("updatedPost " + updatedPost);
+        if (err) {
+            res.redirect("/posts");
+        } else {
+            //redirect somewhere(show page)
+            res.redirect("/posts/" + req.params.id);
+        }
+    });
+
+}
 
 router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
     Posts.findByIdAndRemove(req.params.id, (err, post) => {
@@ -286,7 +410,6 @@ router.delete('/:id', middleware.checkPostOwnership, (req, res) => {
 
 function uploadImage(req, res) {
 
-    // var i = cloudinary.image("kslnpbjzznfwnsnsugpp.jpg", {angle: "ignore"}).split(/'/)[1];
 
     cloudinary.uploader.upload(req.file.path, function (result) {
         //transform the image in order to not rotate when uploading
@@ -310,7 +433,7 @@ function uploadImage(req, res) {
 
 
 function uploadVideo(req, res) {
-    cloudinary.v2.uploader.upload_large(req.file.path, {resource_type: "video"},
+    cloudinary.v2.uploader.upload_large(req.files[0].path, {resource_type: "video"},
         function (error, result) {
             console.log(result, error);
             if (error) {
@@ -331,7 +454,7 @@ function uploadVideo(req, res) {
 
 function updatePost(req, res) {
     Posts.findByIdAndUpdate(req.params.id, req.body.post, function (err, updatedPost) {
-        console.log("req.body " + updatedPost);
+        console.log("updatedPost " + updatedPost);
         if (err) {
             res.redirect("/posts");
         } else {
@@ -342,7 +465,7 @@ function updatePost(req, res) {
 }
 
 function updateWithVideo(req, res) {
-    cloudinary.v2.uploader.upload_large(req.file.path, {resource_type: "video"},
+    cloudinary.v2.uploader.upload_large(req.files[0].path, {resource_type: "video"},
         function (error, result) {
             console.log(result, error);
             if (error) {
@@ -372,6 +495,29 @@ function updateWithImage(req, res) {
         };
         updatePost(req, res);
     });
+}
+
+function uploadImages(req, post, res) {
+    var files = 0;
+    for (let i = 0; i < req.files.length; i++) {
+
+        cloudinary.v2.uploader.upload(req.files[i].path, {
+                eager: [
+                    {
+                        secure: true,
+                        angle: "exif",
+                        quality: "auto:low"
+                    }],
+                eager_async: true,
+            },
+            (error, result) => {
+                files++;
+                post.image.push(result.eager[0].secure_url);
+                if (files === req.files.length) {
+                    createPost1(post, req, res);
+                }
+            });
+    }
 }
 
 function escapeRegex(text) {

@@ -76,7 +76,6 @@
 <!--end nav ----------------------------------------------------------------------------------------------------------->
 
 
-
 <main class="page  ">
 
     <% if (typeof message != "undefined"){ %>
@@ -89,82 +88,416 @@
             </div>
         </div>
     <% } %>
-        <div class="container-form m-auto p-2">
-    <section class="clean-block clean-form dark m-auto">
-        <div class="container-form p-3 shadow">
-            <div class="block-heading">
-                <h2 id="header-form" class="text-info">Edit <%= post.name %>
-                    <span class="float-right">
+    <div class="container-form m-auto p-2">
+        <section class="clean-block clean-form dark m-auto">
+            <div class="container-form p-3 shadow">
+                <div class="block-heading">
+                    <h2 id="header-form" class="text-info">Edit <%= post.name %>
+                        <span class="float-right">
                         <small><a href="/userPosts" class="text-dark text-decoration-none">x</a></small>
                     </span>
-                </h2>
+                    </h2>
 
-            </div>
-            <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST"
-                  enctype="multipart/form-data">
-                <h3 id="loading-message" class="text-center text-warning"></h3>
-                <!--Edit title-->
-                <div class="form-group">
-                    <input type="text" id="title-for-post" value=" <%= post.name %>" class="form-control hover"
-                           name="post[name]" maxlength="30" placeholder="title" required></div>
-                <!--select image or video-->
-                <div class=" form-group ">
-                    <label for="files" class="btn btn-outline-secondary btn-sm">
-                        New Image or Video<em>
-                            <small> (up to 10MB)</small>
-                        </em>
-                    </label>
-                    <small><span id="url" class="ml-2"></span></small>
-                    <input id='files' type="file" class="d-none"
-                           name="image" accept="image/*;video/*"
-                           value="<%= post.image %>"
-                           required>
                 </div>
-                <!--text area for description-->
+                <form id="edit_form" class="" action="/posts/<%= post._id %>?_method=PUT" method="POST"
+                      enctype="multipart/form-data">
+                    <h3 id="loading-message" class="text-center text-warning"></h3>
+                    <!--Edit title-->
+                    <div class="form-group">
+                        <input type="text" id="title-for-post" value="<%= post.name %>" class="form-control hover"
+                               name="post[name]" maxlength="30" placeholder="title" required></div>
 
-                <div class="hover form-group ">
+
+                    <!--select image or video-->
+                    <div class=" form-group ">
+                        <!--    -----------------------------    show the media to edit -->
+                        <% if( post.image[0] !== undefined){ %>
+                            <p id="select">Select media to update</p>
+                        <% } %>
+
+                        <% if(encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mp4'
+                                || encodeURIComponent(post.image).substring(encodeURIComponent(post.image).length - 3) === 'mov'){ %>
+
+                            <video id="video-play" autoplay muted id="myVideo" width="" height="100px" class="hover2">
+                                <source src="<%= post.image[0] %>" type="video/mp4">
+                            </video>
+
+                            <!--  store the existing video in case no video selected-->
+                            <input id='video-hidden' type="text" class="d-none" name="videoOriginal"
+                                   value="<%= post.image[0] %>">
+                            <p>&nbsp;<span id="choose">choose video</span>
+                                <br><input id='video' type="file" class="" name="image" accept="video/*"
+                                           class="float-right">
+                            </p>
+
+                            <script> document.getElementById('video').addEventListener('change', function (e) {
+                                    $('#video-play, #select').fadeOut();
+                                })
+                            </script>
+                        <% } else { %>
+                            <div class="d-inline-flex">
+
+                                <!--  ---------------------------------------           images -------------------------------   -->
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+                                <% if( post.image[0] !== undefined){ %>
+
+                                    <label for="file1" id="label1" class="thumbNail hover"
+                                           style=" background-image: url('<%= post.image[0] %> ');"></label>
+                                    <input id='file1' type="text" class="d-none"
+                                           name="image1"
+                                           value="<%= post.image[0] %>">
+                                <% } %>
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+                                <% if( post.image[1] !== undefined){ %>
+
+                                    <label for="file2" id='label2' class="thumbNail hover"
+                                           style=" background-image: url('<%= post.image[1] %> ');"></label>
+
+                                    <input id='file2' type="text" class="d-none"
+                                           name="image2"
+                                           value="<%= post.image[1] %>">
+                                <% } %>
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+
+                                <% if( post.image[2] !== undefined){ %>
+
+                                    <label for="file3" id='label3' class="thumbNail hover pl-2"
+                                           style=" background-image: url('<%= post.image[2] %> ');"></label>
+
+                                    <input id='file3' type="text" class="d-none"
+                                           name="image3"
+                                           value="<%= post.image[2] %>">
+                                <% } %>
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+                                <% if(post.image[3] !== undefined){ %>
+
+                                    <label for="file4" id='label4' class="thumbNail hover"
+                                           style=" background-image: url('<%= post.image[3] %> ');"></label>
+
+                                    <input id='file4' type="text" class="d-none"
+                                           name="image4"
+                                           value="<%= post.image[3] %>">
+                                <% } %>
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+                                <% if(post.image[4] !== undefined){ %>
+
+                                    <label for="file5" id='label5' class="thumbNail hover"
+                                           style=" background-image: url('<%= post.image[4] %> ');"></label>
+
+                                    <input id='file5' type="text" class="d-none"
+                                           name="image5"
+                                           value="<%= post.image[4] %>">
+                                <% } %>
+                                <!--  - - - - - - - - - - - - - - - - - - - - -->
+
+                                <!--  ---------------------------------------    end images --------------------------   -->
+                            </div>
+                            <!--    ----------------------------- end   show the media to edit -->
+                        <% } %>
+
+                        <hr>
+                        <div id="div1"><strong>Update</strong></div>
+
+
+                        <!-- Modal: modalPoll hidden will execute onchange - - - - - - - - - - - - - - - - - -->
+                        <button id="modalBtn" type="button" class="invisible" data-toggle="modal"
+                                data-target="#modalPoll-1">Launch
+                            modal
+                        </button>
+
+
+                        <div class="modal fade " id="modalPoll-1" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true" data-backdrop="false">
+                            <div class="modal-dialog  modal-right modal-notify modal-info" role="document">
+                                <div class="modal-content">
+                                    <!--Header-->
+                                    <div class="modal-header">
+                                        <p class="heading lead">Replace file
+                                        </p>
+
+                                        <button id="closeModal" type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true" class="white-text">×</span>
+                                        </button>
+                                    </div>
+
+                                    <!--Body-->
+                                    <div class="modal-body">
+
+                                        <div id="container1">&nbsp;</div>
+                                        <div id="container2">&nbsp;</div>
+                                        <div id="container3">&nbsp;</div>
+                                        <div id="container4">&nbsp;</div>
+                                        <div id="container5">&nbsp;</div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal: modalPoll -->
+                    </div>
+
+
+                    <!--text area for description-->
+
+                    <div class="hover form-group ">
                              <textarea class="form-control" name="post[description]" id="desc" cols="100" rows="3"
                                        value="<%= post.description %>"><%= post.description %></textarea>
-                </div>
+                    </div>
 
-                <div class="form-group">
-                    <button id='btn' class="btn btn-primary btn-block" type="submit">Submit</button>
-                </div>
-                <!--gif loading-->
-                <div id="loading" class="text-center "></div>
-            </form>
-        </div>
-    </section>
-        </div>
+                    <div class="form-group">
+                        <button id='btn' class="btn btn-primary btn-block" type="submit">Submit</button>
+                    </div>
+                    <!--gif loading-->
+                    <div id="loading" class="text-center "></div>
+                </form>
+            </div>
+        </section>
+    </div>
 </main>
 <!--do not display it in mobile formats-->
 <footer class="page-footer black position-fixed text-center" style="bottom:0; left: 0;right:0;">
     <div class="footer-copyright">
-        <p>© <%=new Date().getFullYear() %> by the Hellenic American Hippocratic Orthopaedic Society</p>
+        <p>© <%= new Date().getFullYear() %> by the Hellenic American Hippocratic Orthopaedic Society</p>
     </div>
 </footer>
 
 
 <script>
-    // show to the user that the image or video is required
-    document.querySelector('#btn').addEventListener('click', (event) => {
-        if (document.querySelector('#desc').value !== '' &&
-            document.querySelector('#title-for-post').value !== '') {
 
-            if (document.querySelector('#files').value === '') {
-                alert('please enter an image or a video')
-            } else {
-                document.querySelector('#loading').innerHTML = '<i  class="fas fa-sync fa-spin text-secondary fa-lg">' +
-                    '</i><br><p>please be patient this may take up to 45 seconds</p>';
-            }
+    $('label').mouseenter(function () {
+        this.style.transform = "scale(1.1)";
+
+    });
+    $('label').mouseleave(function () {
+        this.style.transform = "scale(1)";
+
+    });
+
+
+    document.querySelector('#div1').style.display = 'none'
+
+
+    var pic1 = document.getElementById('file1');
+    var pic2 = document.getElementById('file2');
+    var pic3 = document.getElementById('file3');
+    var pic4 = document.getElementById('file4');
+    var pic5 = document.getElementById('file5');
+
+    //-------------- first picture-------------------------------------------------------------------------
+    var one = true;
+    pic1.addEventListener('click', function (e) {
+        document.getElementById('container1').style.display = 'block';
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('container3').style.display = 'none';
+        document.getElementById('container4').style.display = 'none';
+        document.getElementById('container5').style.display = 'none';
+
+        document.getElementById('modalBtn').click()
+        // remove last created inputs to consider the last only
+        if (one) {
+
+
+            var div = document.createElement("div");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("class", "image");
+            file.setAttribute("accept", "image/*");
+
+            // add the file and text to the div
+            div.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container1").appendChild(div);
+
         }
+        one = false;
+    });
 
+
+    document.querySelector('#container1').addEventListener('change', function (e) {
+        document.getElementById('closeModal').click();
+        $('#label1').fadeOut();
+        document.getElementById('file1').remove();
+        document.querySelector('#div1').style.display = 'block'
+        document.querySelector('#div1').innerHTML += `<br><p>${e.target.files[0].name}</p>`;
+        // alert(e.target.files[0].name)
+    })
+
+    //-------------- end first picture-------------------------------------------------------------------------
+
+    //-------------- second picture----------------------------------------------------------------------------
+
+    var two = true;
+    pic2.addEventListener('click', function (e) {
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'block';
+        document.getElementById('container3').style.display = 'none';
+        document.getElementById('container4').style.display = 'none';
+        document.getElementById('container5').style.display = 'none';
+
+        document.getElementById('modalBtn').click()
+        if (two) {
+
+
+            var div = document.createElement("div");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("class", "image");
+            file.setAttribute("accept", "image/*");
+
+            // add the file and text to the div
+            div.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container2").appendChild(div);
+
+        }
+        two = false;
     });
-    // add the text of the selected file next to 'select image'
-    document.querySelector('#files').addEventListener('change', (event) => {
-        let url = document.querySelector('#files').value;
-        document.querySelector('#url').innerHTML = url.substring(url.lastIndexOf('\\') + 1);
+
+    document.querySelector('#container2').addEventListener('change', function (e) {
+        document.getElementById('closeModal').click();
+        $('#label2').fadeOut();
+        document.getElementById('file2').remove();
+        document.querySelector('#div1').style.display = 'block'
+        document.querySelector('#div1').innerHTML += `<p>${e.target.files[0].name}</p>`;
+        // alert(e.target.files[0].name)
+    })
+
+    //--------------end  second picture----------------------------------------------------------------------------
+
+    //-------------- third picture----------------------------------------------------------------------------
+    var three = true;
+    pic3.addEventListener('click', function (e) {
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('container3').style.display = 'block';
+        document.getElementById('container4').style.display = 'none';
+        document.getElementById('container5').style.display = 'none';
+
+        document.getElementById('modalBtn').click()
+        if (three) {
+
+
+            var div = document.createElement("div");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("class", "image");
+            file.setAttribute("accept", "image/*");
+
+            // add the file and text to the div
+            div.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container3").appendChild(div);
+
+        }
+        three = false;
     });
+
+    document.querySelector('#container3').addEventListener('change', function (e) {
+        document.getElementById('closeModal').click();
+        $('#label3').fadeOut();
+        document.getElementById('file3').remove();
+        document.querySelector('#div1').style.display = 'block'
+        document.querySelector('#div1').innerHTML += `<p>${e.target.files[0].name}</p>`;
+        // alert(e.target.files[0].name)
+    })
+    //--------------end  third picture----------------------------------------------------------------------------
+
+    //-------------- fourth picture----------------------------------------------------------------------------
+    var four = true;
+    pic4.addEventListener('click', function (e) {
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('container3').style.display = 'none';
+        document.getElementById('container4').style.display = 'block';
+        document.getElementById('container5').style.display = 'none';
+
+        document.getElementById('modalBtn').click()
+        if (four) {
+
+
+            var div = document.createElement("div");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("class", "image");
+            file.setAttribute("accept", "image/*");
+
+            // add the file and text to the div
+            div.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container4").appendChild(div);
+
+        }
+        four = false;
+    });
+
+    document.querySelector('#container4').addEventListener('change', function (e) {
+        document.getElementById('closeModal').click();
+        $('#label4').fadeOut();
+        document.getElementById('file4').remove();
+        document.querySelector('#div1').style.display = 'block'
+        document.querySelector('#div1').innerHTML += `<p>${e.target.files[0].name}</p>`;
+        // alert(e.target.files[0].name)
+    })
+    //--------------end  fourth picture----------------------------------------------------------------------------
+
+    //-------------- fifth picture----------------------------------------------------------------------------
+    var five = true;
+    pic5.addEventListener('click', function (e) {
+        document.getElementById('container1').style.display = 'none';
+        document.getElementById('container2').style.display = 'none';
+        document.getElementById('container3').style.display = 'none';
+        document.getElementById('container4').style.display = 'none';
+        document.getElementById('container5').style.display = 'block';
+
+        document.getElementById('modalBtn').click()
+        if (five) {
+
+
+            var div = document.createElement("div");
+            // Create a file input
+            var file = document.createElement("input");
+            file.setAttribute("type", "file");
+            file.setAttribute("name", "image");
+            file.setAttribute("class", "image");
+            file.setAttribute("accept", "image/*");
+
+            // add the file and text to the div
+            div.appendChild(file);
+
+            //Append the div to the container div
+            document.getElementById("container5").appendChild(div);
+
+        }
+        five = false;
+    });
+
+    document.querySelector('#container5').addEventListener('change', function (e) {
+        document.getElementById('closeModal').click();
+        $('#label5').fadeOut();
+        document.getElementById('file5').remove();
+        document.querySelector('#div1').style.display = 'block'
+        document.querySelector('#div1').innerHTML += `<p>${e.target.files[0].name}</p>`;
+        // alert(e.target.files[0].name)
+    })
+    //--------------end  fifth picture----------------------------------------------------------------------------
+
+
+
 </script>
 
 <script>

@@ -160,7 +160,7 @@
 
 
                 <!--the top part of the card --------------------------------------------------->
-                <h6 class="card-subtitle row ">
+                <h6 class="card-subtitle row">
                     <% users.forEach(function(user){ %>
                         <% if(post.author.id == user.id){ %>
                             <% userComment = user %>
@@ -191,7 +191,7 @@
             </div>
 
 
-            <a href="posts/<%= post._id %>">
+            <a href="posts/<%= post._id %>" style="text-decoration: none;">
 
                 <% if(post.image != undefined){ %>
                     <!--if it is a video-->
@@ -206,10 +206,26 @@
                             </video>
                         </div>
                     <% } else { %>
-                        <!--it is an image-->
-                        <div class=" rounded ">
-                            <img class=" img-fluid " src="<%= post.image %> " alt="" style="">
-                        </div>
+                        <!-- images-->
+                            <% var moreImages = post.image.length > 1 %>
+                            <!--    show main image   -->
+                            <img class="img-fluid " src="<%= post.image[0] %> " alt="" style="">
+
+                            <% if(moreImages){ %>
+                                <p style="margin-top: 3%; margin-left: 10px;">
+                                    <em><%= `${post.image.length - 1} more images` %></em></p>
+                                <div class="d-inline-flex">
+                                    <div class="thumbNail"
+                                         style=" background-image: url('<%= post.image[1] %> ');"></div>
+                                    <div class="thumbNail"
+                                         style=" background-image: url('<%= post.image[2] %> ');"></div>
+                                    <div class="thumbNail"
+                                         style=" background-image: url('<%= post.image[3] %> ');"></div>
+                                    <div class="thumbNail"
+                                         style=" background-image: url('<%= post.image[4] %> ');"></div>
+                                </div>
+                            <% } %>
+
                     <% } %>
             </a>
             <% } %>
