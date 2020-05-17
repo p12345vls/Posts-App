@@ -33,7 +33,7 @@ var commentRoutes = require("./routes/comments"),
 //     useNewUrlParser: true
 // });
 
-mongoose.connect("mongodb://heroku_snvwlvg8:h16n608skv8gsi4lti5gtv9cl0@ds153495.mlab.com:53495/heroku_snvwlvg8", {
+mongoose.connect("", {
     useNewUrlParser: true
 });
 app.use(bodyParser.urlencoded({
